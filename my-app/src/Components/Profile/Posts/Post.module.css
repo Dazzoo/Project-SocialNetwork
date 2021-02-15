@@ -1,0 +1,8 @@
+.avatarMini{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.postText{
+    display: inline-block;
+}

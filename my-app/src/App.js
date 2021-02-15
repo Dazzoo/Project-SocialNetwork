@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header.js'
-import Sidebar from './Components/Sidebar.js'
-import Profile from './Components/Profile.js'
+import Header from './Components/Header/Header.js'
+import Sidebar from './Components/Sidebar/Sidebar.js'
+import Profile from './Components/Profile/Profile.js'
 
 
 
