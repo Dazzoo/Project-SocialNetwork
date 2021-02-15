@@ -1,0 +1,6 @@
+.sideBar{
+    border: 1px black solid;
+    flex-direction: column;
+    width: 150px;
+    height: 800px;
+}
