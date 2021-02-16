@@ -1,6 +1,4 @@
 import c from './Post.module.css'
-let props = {countLikes: '2'
-};
 
 const Post = (props) => {
     return (

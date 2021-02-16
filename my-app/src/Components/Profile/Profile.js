@@ -7,7 +7,9 @@ let Profile = () =>{
             <div className={c.profile}>
             <img src='https://cdn.wallpapersafari.com/75/49/cfnSpg.jpg'/>
             </div>
-        <Post onClick={1} />
+        <Post onClick={1}/>
+        <Post onClick={4}/>
+        <Post onClick={2}/>
         </div>
     );
 }

@@ -4,8 +4,8 @@ let Sidebar = () => {
     return (
         <aside className={c.sideBar}>
             <ul>
-                <li>Profile</li>
-                <li>Messages</li>
+                <li><a href='/profile'>Profile</a></li>
+                <li><a href='/messages'>Messages</a></li>
                 <li>News</li>
                 <li>Music</li>
                 <li>Settings</li>
