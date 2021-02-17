@@ -1,14 +1,15 @@
-import c from './Sidebar.module.css'
+import c from './Sidebar.module.css';
+import {NavLink} from "react-router-dom";
 
 let Sidebar = () => {
     return (
         <aside className={c.sideBar}>
             <ul>
-                <li><a href='/profile'>Profile</a></li>
-                <li><a href='/messages'>Messages</a></li>
-                <li><a href='/news'>News</a></li>
-                <li><a href='/music'>Music</a></li>
-                <li><a href='/settings'>Settings</a></li>
+                <li><NavLink  to="/profile">Profile</NavLink></li>
+                <li><NavLink  to="/messages">Messages</NavLink></li>
+                <li><NavLink  to="/news">News</NavLink></li>
+                <li><NavLink  to="/music">Music</NavLink></li>
+                <li><NavLink  to="/settings">Settings</NavLink></li>
             </ul>
         </aside>
     );
