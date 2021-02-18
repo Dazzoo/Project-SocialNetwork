@@ -1,5 +1,11 @@
-.message{
+.messages{
     width: 400px;
-    height: 150px;
     background-color: dodgerblue;
+}
+.dialogs{
+    display: inline-block;
+}
+
+.messagesText{
+    display: inline-block;
 }

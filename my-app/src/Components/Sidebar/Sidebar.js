@@ -5,11 +5,11 @@ let Sidebar = () => {
     return (
         <aside className={c.sideBar}>
             <ul>
-                <li><NavLink  to="/profile">Profile</NavLink></li>
-                <li><NavLink  to="/messages">Messages</NavLink></li>
-                <li><NavLink  to="/news">News</NavLink></li>
-                <li><NavLink  to="/music">Music</NavLink></li>
-                <li><NavLink  to="/settings">Settings</NavLink></li>
+                <li><NavLink  to="/profile" activeClassName={c.active}>Profile</NavLink></li>
+                <li><NavLink  to="/messages" activeClassName={c.active}>Messages</NavLink></li>
+                <li><NavLink  to="/news" activeClassName={c.active}>News</NavLink></li>
+                <li><NavLink  to="/music" activeClassName={c.active}>Music</NavLink></li>
+                <li><NavLink  to="/settings" activeClassName={c.active}>Settings</NavLink></li>
             </ul>
         </aside>
     );
