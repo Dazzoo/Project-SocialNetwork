@@ -1,11 +1,16 @@
-.messages{
-    width: 400px;
-    background-color: dodgerblue;
-}
 .dialogs{
-    display: inline-block;
+    width: 300px;
+    background-color: dodgerblue;
+    display: flex;
+
+}
+.dialogsItems{
+    flex-grow: 1;
+    border: 1px solid black;
 }
 
-.messagesText{
-    display: inline-block;
+.lastMessages{
+    flex-grow: 1;
+    border: 1px solid black;
+    align-items: flex-start;
 }
