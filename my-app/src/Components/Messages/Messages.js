@@ -1,24 +1,7 @@
 import c from './Messages.module.css'
 import {NavLink} from "react-router-dom"
-import {BrowserRouter, Route} from "react-router-dom";
-
-
-const Dialog = (props) => {
-    return (
-        <div className={c.dialog}>
-            <NavLink to={"/messages/" + props.id}>{props.name}</NavLink>
-        </div>
-    );
-
-}
-
-const LastMessage = (props) => {
-    return (
-        <div className={c.lastMessage}>
-            {props.text}
-        </div>
-    );
-}
+import DialogName from "./MessageItems/DialogName/DialogName"
+import LastMessage from "./MessageItems/LastMessage/LastMessage"
 
 const dialogsData = [
     {id: 1, name: 'Monica'},
@@ -38,10 +21,9 @@ const messagesData = [
     {id: 6, message: 'Here we go again'},
     ];
 
-const UserNamesShow = dialogsData.map( n  => <Dialog name= {n.name} id= {n.id} />);
+const UserNamesShow = dialogsData.map( n  => <DialogName name= {n.name} id= {n.id} />);
 
 const LastMessageShow = messagesData.map( m  => <LastMessage text={m.message} id= {m.id} />);
-
 
 
 const Messages = () => {

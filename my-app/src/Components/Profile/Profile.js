@@ -1,15 +1,13 @@
 import c from './Profile.module.css'
-import Post from './Posts/Post.js'
+import PostsShow from './Posts/Post.js'
 
 let Profile = () =>{
     return (
         <div className='wrapper'>
             <div className={c.profile}>
-            <img src='https://cdn.wallpapersafari.com/75/49/cfnSpg.jpg'/>
+                <img src='https://cdn.wallpapersafari.com/75/49/cfnSpg.jpg'/>
             </div>
-        <Post onClick={1}/>
-        <Post onClick={4}/>
-        <Post onClick={2}/>
+            {PostsShow}
         </div>
     );
 }
