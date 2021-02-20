@@ -1,5 +1,4 @@
 import c from './Messages.module.css'
-import '../../App.css';
 import {NavLink} from "react-router-dom"
 import {BrowserRouter, Route} from "react-router-dom";
 
@@ -11,38 +10,33 @@ const Dialog = (props) => {
         </div>
     );
 
-};
-
-const Text = (props) => {
-    return (
-        <div className={c.text}>
-            {props.lastMessage}
-        </div>
-    );
 }
 
 const LastMessage = (props) => {
     return (
-        <div className={c.lastMessages}>
-            <Text lastMessage="Hi" />
-            <Text lastMessage="How do you do bro?" />
-            <Text lastMessage="I would like more, heh)" />
-            <Text lastMessage="Nope, its bad idea." />
-            <Text lastMessage="I am from Taiwan" />
-            <Text lastMessage="Here we go again" />
-        </div>
-
-    );
-}
-
-const UserDialog = (props) => {
-    return (
         <div>
             {props.text}
         </div>
-
     );
 }
+
+const dialogsData = [
+    {id: 1, name: 'Monica'},
+    {id: 2, name: 'Artem'},
+    {id: 3, name: 'Nasty'},
+    {id: 4, name: 'Nika'},
+    {id: 5, name: 'Andrey'},
+    {id: 6, name: 'Oliver'}
+    ]
+const messagesData = [
+    {id: 1, message: 'Hi'},
+    {id: 2, message: 'How do you do bro?'},
+    {id: 3, message: 'I would like more, heh)'},
+    {id: 4, message: 'Nope, its bad idea.'},
+    {id: 5, message: 'I am from Taiwan'},
+    {id: 6, message: 'Here we go again'},
+    ]
+
 
 
 const Messages = () => {
@@ -50,20 +44,21 @@ const Messages = () => {
         <BrowserRouter>
         <div className={c.dialogs}>
             <div className={c.dialogsItems}>
-                <Dialog name="Monica" id="1"/>
-                <Dialog name="Artem" id="2"/>
-                <Dialog name="Nasty" id="3"/>
-                <Dialog name="Nika" id="4"/>
-                <Dialog name="Andrey" id="5"/>
-                <Dialog name="Oliver" id="6"/>
+                <Dialog name={dialogsData[0].name} id={dialogsData[0].id}/>
+                <Dialog name={dialogsData[1].name} id={dialogsData[1].id}/>
+                <Dialog name={dialogsData[2].name} id={dialogsData[2].id}/>
+                <Dialog name={dialogsData[3].name} id={dialogsData[3].id}/>
+                <Dialog name={dialogsData[4].name} id={dialogsData[4].id}/>
+                <Dialog name={dialogsData[5].name} id={dialogsData[5].id}/>
             </div>
-            <Route path='/messages' component={LastMessage}/>
-            <Route path='/messages/1' component={UserDialog}/>
-            <Route path='/messages/2' component={UserDialog}/>
-            <Route path='/messages/3' component={UserDialog}/>   {/* Сделать открытие всей переписки с человеком по клику ника */}
-            <Route path='/messages/4' component={UserDialog}/>
-            <Route path='/messages/5' component={UserDialog}/>
-            <Route path='/messages/6' component={UserDialog}/>
+            <div className={c.lastMessages}>
+            <LastMessage text={messagesData[0].message}/>
+            <LastMessage text={messagesData[1].message}/>
+            <LastMessage text={messagesData[2].message}/>
+            <LastMessage text={messagesData[3].message}/>
+            <LastMessage text={messagesData[4].message}/>
+            <LastMessage text={messagesData[5].message}/>
+            </div>
         </div>
         </BrowserRouter>
     );
