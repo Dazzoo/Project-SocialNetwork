@@ -14,7 +14,7 @@ const Dialog = (props) => {
 
 const LastMessage = (props) => {
     return (
-        <div>
+        <div className={c.lastMessage}>
             {props.text}
         </div>
     );
@@ -28,6 +28,7 @@ const dialogsData = [
     {id: 5, name: 'Andrey'},
     {id: 6, name: 'Oliver'}
     ]
+
 const messagesData = [
     {id: 1, message: 'Hi'},
     {id: 2, message: 'How do you do bro?'},
@@ -35,32 +36,25 @@ const messagesData = [
     {id: 4, message: 'Nope, its bad idea.'},
     {id: 5, message: 'I am from Taiwan'},
     {id: 6, message: 'Here we go again'},
-    ]
+    ];
+
+const UserNamesShow = dialogsData.map( n  => <Dialog name= {n.name} id= {n.id} />);
+
+const LastMessageShow = messagesData.map( m  => <LastMessage text={m.message} id= {m.id} />);
 
 
 
 const Messages = () => {
     return (
-        <BrowserRouter>
         <div className={c.dialogs}>
             <div className={c.dialogsItems}>
-                <Dialog name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <Dialog name={dialogsData[1].name} id={dialogsData[1].id}/>
-                <Dialog name={dialogsData[2].name} id={dialogsData[2].id}/>
-                <Dialog name={dialogsData[3].name} id={dialogsData[3].id}/>
-                <Dialog name={dialogsData[4].name} id={dialogsData[4].id}/>
-                <Dialog name={dialogsData[5].name} id={dialogsData[5].id}/>
+                {UserNamesShow}
             </div>
             <div className={c.lastMessages}>
-            <LastMessage text={messagesData[0].message}/>
-            <LastMessage text={messagesData[1].message}/>
-            <LastMessage text={messagesData[2].message}/>
-            <LastMessage text={messagesData[3].message}/>
-            <LastMessage text={messagesData[4].message}/>
-            <LastMessage text={messagesData[5].message}/>
+                {LastMessageShow}
             </div>
         </div>
-        </BrowserRouter>
+
     );
 }
 
