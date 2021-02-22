@@ -11,9 +11,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 
 
-function App(props) {
-
-
+const App = (props) => {
 
   return (
       <BrowserRouter>
@@ -21,8 +19,8 @@ function App(props) {
         <Header/>
         <div className='flexbox'>
             <Sidebar/>
-            <Route path='/profile' component={() => <MyProfile Posts={props.Posts}/>}/>
-            <Route path='/messages' component={() => <MyMessages dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
+            <Route path='/profile' component={() => <MyProfile Posts={props.state.PostsPage.posts}/>}/>
+            <Route path='/messages' component={() => <MyMessages dialogsData={props.state.MessagePage.dialogs} messagesData={props.state.MessagePage.messages}/>}/>
             <Route path='/news' component={MyNews}/>
             <Route path='/music' component={MyMusic}/>
             <Route path='/settings' component={MySettings}/>

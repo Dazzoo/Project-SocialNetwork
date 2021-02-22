@@ -2,7 +2,7 @@ import c from './MyProfile.module.css'
 import Post from './Posts/Post.js'
 import Profile from './Profile/Profile.js'
 
-let MyProfile = (props) =>{
+const MyProfile = (props) =>{
 
 
 
