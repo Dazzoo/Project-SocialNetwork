@@ -1,4 +1,4 @@
-import c from './../../Messages.module.css'
+import c from './../../MyMessages.module.css'
 
 const LastMessage = (props) => {
     return (

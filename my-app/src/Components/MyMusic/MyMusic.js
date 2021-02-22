@@ -1,6 +1,6 @@
-import c from './Music.module.css'
+import c from './MyMusic.module.css'
 
-const Music = () => {
+const MyMusic = () => {
     return (
     <div className={c.music}>
         Now playing - "Twenty one pilots - Stressed out"
@@ -8,4 +8,4 @@ const Music = () => {
     );
 }
 
-export default Music;
+export default MyMusic;

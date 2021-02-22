@@ -1,6 +1,6 @@
-import c from './Settings.module.css'
+import c from './MySettings.module.css'
 
-const Settings = () => {
+const MySettings = () => {
     return (
     <div className={c.settings}>
     Change password
@@ -9,4 +9,4 @@ const Settings = () => {
     );
 }
 
-export default Settings;
+export default MySettings;

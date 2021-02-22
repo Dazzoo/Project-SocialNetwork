@@ -1,6 +1,6 @@
-import c from './News.module.css'
+import c from './MyNews.module.css'
 
-const News = () => {
+const MyNews = () => {
     return (
     <div className={c.news}>
         Breaking News: Today is today
@@ -8,4 +8,4 @@ const News = () => {
     );
 }
 
-export default News;
+export default MyNews;

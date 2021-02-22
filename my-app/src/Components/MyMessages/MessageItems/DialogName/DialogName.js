@@ -1,4 +1,4 @@
-import c from './../../Messages.module.css'
+import c from './../../MyMessages.module.css'
 import {NavLink} from "react-router-dom"
 
 const DialogName = (props) => {

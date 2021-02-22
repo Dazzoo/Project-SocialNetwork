@@ -2,27 +2,30 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header/Header.js'
 import Sidebar from './Components/Sidebar/Sidebar.js'
-import Profile from './Components/Profile/Profile.js'
-import Messages from './Components/Messages/Messages.js'
-import News from './Components/News/News.js'
-import Music from './Components/Music/Music.js'
-import Settings from './Components/Settings/Settings.js'
+import MyProfile from './Components/MyProfile/MyProfile.js'
+import MyMessages from './Components/MyMessages/MyMessages.js'
+import MyNews from './Components/MyNews/MyNews.js'
+import MyMusic from './Components/MyMusic/MyMusic.js'
+import MySettings from './Components/MySettings/MySettings.js'
 import {BrowserRouter, Route} from "react-router-dom";
 
 
 
-function App() {
+function App(props) {
+
+
+
   return (
       <BrowserRouter>
       <div className='wrapper'>
         <Header/>
         <div className='flexbox'>
             <Sidebar/>
-            <Route path='/profile' component={Profile}/>
-            <Route path='/messages' component={Messages}/>
-            <Route path='/news' component={News}/>
-            <Route path='/music' component={Music}/>
-            <Route path='/settings' component={Settings}/>
+            <Route path='/profile' component={() => <MyProfile Posts={props.Posts}/>}/>
+            <Route path='/messages' component={() => <MyMessages dialogsData={props.dialogsData} messagesData={props.messagesData}/>}/>
+            <Route path='/news' component={MyNews}/>
+            <Route path='/music' component={MyMusic}/>
+            <Route path='/settings' component={MySettings}/>
         </div>
       </div>
       </BrowserRouter>
