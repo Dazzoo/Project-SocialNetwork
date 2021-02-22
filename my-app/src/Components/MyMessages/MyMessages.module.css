@@ -1,5 +1,5 @@
 .dialogs{
-    width: 300px;
+    width: 500px;
     background-color: dodgerblue;
     display: flex;
 
@@ -22,4 +22,11 @@
 }
 .lastMessage{
     padding-top: 5px;
+}
+.useravatar{
+    display: inline-block;
+    max-width: 100px;
+}
+.username{
+    display: inline-block;
 }

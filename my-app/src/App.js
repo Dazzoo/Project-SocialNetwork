@@ -20,7 +20,8 @@ const App = (props) => {
         <div className='flexbox'>
             <Sidebar/>
             <Route path='/profile' component={() => <MyProfile Posts={props.state.PostsPage.posts}/>}/>
-            <Route path='/messages' component={() => <MyMessages dialogsData={props.state.MessagePage.dialogs} messagesData={props.state.MessagePage.messages}/>}/>
+            <Route path='/messages' component={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
+                                                                 messagesData={props.state.MessagePage.messages}/>}/>
             <Route path='/news' component={MyNews}/>
             <Route path='/music' component={MyMusic}/>
             <Route path='/settings' component={MySettings}/>

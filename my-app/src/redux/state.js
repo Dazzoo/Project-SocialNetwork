@@ -10,13 +10,14 @@ const State = {
             {id: 6, message: 'Here we go again'}
         ],
         dialogs: [
-            {id: 1, name: 'Monica'},
-            {id: 2, name: 'Artem'},
-            {id: 3, name: 'Nasty'},
-            {id: 4, name: 'Nika'},
-            {id: 5, name: 'Andrey'},
-            {id: 6, name: 'Oliver'}
+            {id: 1, name: 'Monica', avatar:'https://avas.at.ua/_ph/15/2/454969051.jpg?1614027850'},
+            {id: 2, name: 'Artem', avatar:'http://avatars.mitosa.net/warcraft/039.jpg'},
+            {id: 3, name: 'Nasty', avatar:'https://avatarmaker.net/images/1.png'},
+            {id: 4, name: 'Nika', avatar:'https://pngicon.ru/file/uploads/2_16.png'},
+            {id: 5, name: 'Andrey', avatar:'http://cdn.lowgif.com/full/62784c38bb4af71f-furry-avatars-tumblr.gif'},
+            {id: 6, name: 'Oliver', avatar:'https://avatarfiles.alphacoders.com/244/thumb-244618.jpg'}
         ]
+
     },
     PostsPage: {
         posts: [

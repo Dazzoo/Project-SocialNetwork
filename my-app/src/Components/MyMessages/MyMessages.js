@@ -12,7 +12,7 @@ const MyMessages = (props) => {
 
 
 
-    const UserNamesShow = props.dialogsData.map( n  => <DialogName name= {n.name} id= {n.id} />);
+    const UserNamesShow = props.dialogsData.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} />);
 
     const LastMessageShow = props.messagesData.map( m  => <LastMessage text={m.message} id= {m.id} />);
 
