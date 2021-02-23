@@ -1,7 +1,11 @@
 import c from './Sidebar.module.css';
 import {NavLink} from "react-router-dom";
+import  Friend from './Friend/Friend.js'
 
-let Sidebar = () => {
+const Sidebar = (props) => {
+
+    const FriendShow = props.friends.map( n  => <Friend name= {n.name} id= {n.id} />);
+
     return (
         <aside className={c.sideBar}>
             <ul>
@@ -11,6 +15,12 @@ let Sidebar = () => {
                 <li><NavLink  to="/music" activeClassName={c.active}>Music</NavLink></li>
                 <li><NavLink  to="/settings" activeClassName={c.active}>Settings</NavLink></li>
             </ul>
+            <div className={c.friends}>
+                FriendsOnline
+            </div>
+            <div>
+                {FriendShow}
+            </div>
         </aside>
     );
 };

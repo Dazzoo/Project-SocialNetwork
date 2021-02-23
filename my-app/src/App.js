@@ -18,7 +18,7 @@ const App = (props) => {
       <div className='wrapper'>
         <Header/>
         <div className='flexbox'>
-            <Sidebar/>
+            <Sidebar friends={props.state.Friends.friendsOnline}/>
             <Route path='/profile' component={() => <MyProfile Posts={props.state.PostsPage.posts}/>}/>
             <Route path='/messages' component={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
                                                                  messagesData={props.state.MessagePage.messages}/>}/>

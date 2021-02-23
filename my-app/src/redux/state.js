@@ -26,7 +26,18 @@ const State = {
             {id: 3, likeCount: 6, text:"Сегодня в нашем королевстве война, северяне нападают"},
             {id: 4, likeCount: 2, text:"Сегодня в нашем королевстве война, северяне напали"}
         ]
+    },
+    Friends: {
+        friendsOnline: [
+            {id: 1, name: 'Alex'},
+            {id: 2, name: 'George'},
+            {id: 3, name: 'Diona'},
+            {id: 4, name: 'Nika'},
+            {id: 5, name: 'Nasty'},
+            {id: 6, name: 'Monica'}
+        ]
     }
+
 }
 
 export default State;
