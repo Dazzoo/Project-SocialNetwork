@@ -1,3 +1,5 @@
+import {rerender} from './../render.js'
+
 
 const State = {
     MessagePage: {
@@ -38,6 +40,12 @@ const State = {
         ]
     }
 
+}
+
+export let NewPost = (PostMessage) => {
+    let post = {id: 5, likeCount: 0,text: PostMessage};
+    State.PostsPage.posts.push(post);
+    rerender(State);
 }
 
 export default State;

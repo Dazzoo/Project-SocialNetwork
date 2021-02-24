@@ -19,7 +19,7 @@ const App = (props) => {
         <Header/>
         <div className='flexbox'>
             <Sidebar friends={props.state.Friends.friendsOnline}/>
-            <Route path='/profile' component={() => <MyProfile Posts={props.state.PostsPage.posts}/>}/>
+            <Route path='/profile' component={() => <MyProfile Posts={props.state.PostsPage.posts} newpost={props.newpost}/>}/>
             <Route path='/messages' component={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
                                                                  messagesData={props.state.MessagePage.messages}/>}/>
             <Route path='/news' component={MyNews}/>

@@ -4,15 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import State from './redux/state'
+import {NewPost} from './redux/state'
+import {rerender} from './render.js'
+
+rerender(State);
 
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App state={State}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
