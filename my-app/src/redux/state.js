@@ -1,4 +1,4 @@
-import {rerender} from './../render.js'
+import {RenderEntireTree} from './../render.js'
 
 
 const State = {
@@ -27,7 +27,8 @@ const State = {
             {id: 2, likeCount: 2, text:"Сегодня в нашем королевстве все хорошо"},
             {id: 3, likeCount: 6, text:"Сегодня в нашем королевстве война, северяне нападают"},
             {id: 4, likeCount: 2, text:"Сегодня в нашем королевстве война, северяне напали"}
-        ]
+        ],
+        textArea: ""
     },
     Friends: {
         friendsOnline: [
@@ -42,10 +43,17 @@ const State = {
 
 }
 
-export let NewPost = (PostMessage) => {
-    let post = {id: 5, likeCount: 0,text: PostMessage};
+export let NewPost = () => {
+    let post = {id: 5, likeCount: 0,text: State.PostsPage.textArea};
     State.PostsPage.posts.push(post);
-    rerender(State);
+    RenderEntireTree(State);
 }
+
+export let ReadTextArea = (value) => {
+    State.PostsPage.textArea = value
+    RenderEntireTree(State);
+}
+
+window.state = State
 
 export default State;

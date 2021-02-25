@@ -7,10 +7,10 @@ const MyProfile = (props) =>{
 
     let TextAreaElement = React.createRef()
 
-    let AddPost = () => {
-        props.newpost(TextAreaElement.current.value);
-    }
+    let GetElement = () => {
+        props.readTextArea(TextAreaElement.current.value)
 
+    }
 
 
     const PostsShow = props.Posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />)
@@ -19,8 +19,8 @@ const MyProfile = (props) =>{
     return (
         <div className='wrapper'>
             <Profile/>
-            <textarea ref={TextAreaElement} className={c.textarea}></textarea>
-            <button onClick={AddPost} >Post</button>
+            <textarea onChange={GetElement} value = {props.textAreaValue} ref={TextAreaElement} className={c.textarea}></textarea>
+            <button onClick={props.newpost}>Post</button>
             {PostsShow}
         </div>
     );
