@@ -1,7 +1,8 @@
-import {RenderEntireTree} from './../render.js'
+let RenderEntireTree = () => {
 
+}
 
-const State = {
+export const State = {
     MessagePage: {
         messages: [
             {id: 1, message: 'Hi'},
@@ -51,9 +52,11 @@ export let NewPost = () => {
 
 export let ReadTextArea = (value) => {
     State.PostsPage.textArea = value
-    RenderEntireTree(State);
+    RenderEntireTree(State)
+}
+
+export let CallBackEntireTree = (observer) =>{
+    RenderEntireTree = observer
 }
 
 window.state = State
-
-export default State;

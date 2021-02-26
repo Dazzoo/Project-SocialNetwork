@@ -1,10 +1,26 @@
+import {State} from './redux/state'
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import State from './redux/state'
-import {RenderEntireTree} from './render.js'
+import {NewPost, ReadTextArea} from './redux/state'
+import {CallBackEntireTree} from './redux/state'
 
+
+export const RenderEntireTree = (State) => {
+    return(
+        ReactDOM.render(
+            <React.StrictMode>
+                <App state={State} newpost={NewPost} readTextArea={ReadTextArea}/>
+            </React.StrictMode>,
+            document.getElementById('root')
+        )
+    );
+}
 RenderEntireTree(State);
+
+CallBackEntireTree(RenderEntireTree);
 
 
 
