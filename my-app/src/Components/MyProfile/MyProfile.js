@@ -7,8 +7,15 @@ const MyProfile = (props) =>{
 
     let TextAreaElement = React.createRef()
 
-    let GetElement = () => {
-        props.readTextArea(TextAreaElement.current.value)
+    let AddPost = () => {
+        let action = {type: 'ADD-POST',}
+        props.dispatch(action)
+    }
+
+    let UpdatePostText = () => {
+        let text = TextAreaElement.current.value
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+        props.dispatch(action)
     }
 
 
@@ -18,8 +25,8 @@ const MyProfile = (props) =>{
     return (
         <div className='wrapper'>
             <Profile/>
-            <textarea onChange={GetElement} value = {props.textAreaValue} ref={TextAreaElement} className={c.textarea}></textarea>
-            <button onClick={props.newpost}>Post</button>
+            <textarea onChange={UpdatePostText} value = {props.textAreaValue} ref={TextAreaElement} className={c.textarea}></textarea>
+            <button onClick={AddPost}>Post</button>
             {PostsShow}
         </div>
     );

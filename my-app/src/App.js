@@ -20,8 +20,7 @@ const App = (props) => {
         <div className='flexbox'>
             <Sidebar friends={props.state.Friends.friendsOnline}/>
             <Route path='/profile' render={() => <MyProfile Posts={props.state.PostsPage.posts}
-                                                               newpost={props.newpost}
-                                                               readTextArea={props.readTextArea}
+                                                            dispatch={props.dispatch}
                                                                textAreaValue={props.state.PostsPage.textArea}/>}/>
             <Route path='/messages' render={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
                                                                  messagesData={props.state.MessagePage.messages}/>}/>

@@ -11,7 +11,7 @@ export const RenderEntireTree = (state) => {
     return(
         ReactDOM.render(
             <React.StrictMode>
-                <App state={state} newpost={store.NewPost.bind(store)} readTextArea={store.ReadTextArea.bind(store)}/>
+                <App state={state} dispatch={store.dispatch.bind(store)}/>
             </React.StrictMode>,
             document.getElementById('root')
         )
@@ -19,7 +19,7 @@ export const RenderEntireTree = (state) => {
     );
 }
 store.CallBackEntireTree(RenderEntireTree);
-RenderEntireTree(store._state);
+RenderEntireTree(store.getState());
 
 
 

@@ -43,18 +43,25 @@ export let store = {
     RenderEntireTree() {
 
     },
-    NewPost() {
-        let post = {id: 5, likeCount: 0, text: this._state.PostsPage.textArea};
-        this._state.PostsPage.posts.push(post);
-        this.RenderEntireTree(this._state);
-    },
-    ReadTextArea(value) {
-        this._state.PostsPage.textArea = value
-        this.RenderEntireTree(this._state)
-    },
+
     CallBackEntireTree(observer) {
         this.RenderEntireTree = observer
+    },
+    getState(){
+        return this._state
+    },
+    dispatch(action) {
+        if(action.type === 'ADD-POST'){
+            let post = {id: 5, likeCount: 0, text: this._state.PostsPage.textArea};
+            this._state.PostsPage.posts.push(post);
+            this.RenderEntireTree(this._state);
+        }
+        if(action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.PostsPage.textArea = action.newText
+            this.RenderEntireTree(this._state)
+        }
     }
+
 }
 
 
