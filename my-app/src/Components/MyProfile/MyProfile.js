@@ -9,7 +9,6 @@ const MyProfile = (props) =>{
 
     let GetElement = () => {
         props.readTextArea(TextAreaElement.current.value)
-
     }
 
 
