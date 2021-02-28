@@ -16,7 +16,8 @@ export let store = {
                 {id: 4, name: 'Nika', avatar: 'https://pngicon.ru/file/uploads/2_16.png'},
                 {id: 5, name: 'Andrey', avatar: 'http://cdn.lowgif.com/full/62784c38bb4af71f-furry-avatars-tumblr.gif'},
                 {id: 6, name: 'Oliver', avatar: 'https://avatarfiles.alphacoders.com/244/thumb-244618.jpg'}
-            ]
+            ],
+            textArea: ""
 
         },
         PostsPage: {
@@ -54,16 +55,32 @@ export let store = {
         if(action.type === 'ADD-POST'){
             let post = {id: 5, likeCount: 0, text: this._state.PostsPage.textArea};
             this._state.PostsPage.posts.push(post);
+            this._state.PostsPage.textArea = ''
             this.RenderEntireTree(this._state);
         }
         if(action.type === 'UPDATE-NEW-POST-TEXT'){
             this._state.PostsPage.textArea = action.newText
             this.RenderEntireTree(this._state)
         }
+        if(action.type === 'ADD-MESSAGE'){
+            let message = {id: 7, message: this._state.MessagePage.textArea }
+            this._state.MessagePage.messages.push(message);
+            this._state.MessagePage.textArea = ''
+            this.RenderEntireTree(this._state);
+        }
+        if(action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
+            this._state.MessagePage.textArea = action.newMessage
+            this.RenderEntireTree(this._state)
+
+        }
     }
 
 }
 
+export const AddPostActionCreator = () => ({type: 'ADD-POST'})
+export const UpdateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+export const AddMessagetActionCreator = () => ({type: 'ADD-MESSAGE'})
+export const UpdateNewMessageTextActionCreator = (text) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text})
 
 
 window.store = store

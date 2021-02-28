@@ -3,18 +3,24 @@ import {NavLink} from "react-router-dom"
 import DialogName from "./MessageItems/DialogName/DialogName"
 import LastMessage from "./MessageItems/LastMessage/LastMessage"
 import React from 'react';
+import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/store'
 
 
 
 
 
 const MyMessages = (props) => {
+
     let NewMessageElement = React.createRef();
 
-    let sendMessage = () => {
+    let UpdateMessage = () => {
         let text = NewMessageElement.current.value;
-        alert(text);
+        props.dispatch(UpdateNewMessageTextActionCreator(text))
     };
+
+    let AddMessage = () => {
+        props.dispatch(AddMessagetActionCreator())
+    }
 
 
 
@@ -33,8 +39,8 @@ const MyMessages = (props) => {
                 {LastMessageShow}
             </div>
             <div>
-                <textarea className={c.textfield} ref={NewMessageElement}></textarea>
-                <button className={c.sendMessage} onClick={sendMessage}>Send</button>
+                <textarea onChange={UpdateMessage} value={props.textAreaValue} className={c.textfield} ref={NewMessageElement}></textarea>
+                <button className={c.sendMessage} onClick={AddMessage}>Send</button>
             </div>
         </div>
 

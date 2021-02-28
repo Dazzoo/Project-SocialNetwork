@@ -21,9 +21,11 @@ const App = (props) => {
             <Sidebar friends={props.state.Friends.friendsOnline}/>
             <Route path='/profile' render={() => <MyProfile Posts={props.state.PostsPage.posts}
                                                             dispatch={props.dispatch}
-                                                               textAreaValue={props.state.PostsPage.textArea}/>}/>
+                                                            textAreaValue={props.state.PostsPage.textArea}/>}/>
             <Route path='/messages' render={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
-                                                                 messagesData={props.state.MessagePage.messages}/>}/>
+                                                              messagesData={props.state.MessagePage.messages}
+                                                              textAreaValue={props.state.MessagePage.textArea}
+                                                              dispatch={props.dispatch}/>}/>
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>
             <Route path='/settings' render={MySettings}/>

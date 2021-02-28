@@ -2,20 +2,20 @@ import c from './MyProfile.module.css'
 import Post from './Posts/Post.js'
 import Profile from './Profile/Profile.js'
 import React from 'react';
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/store'
+
 
 const MyProfile = (props) =>{
 
     let TextAreaElement = React.createRef()
 
     let AddPost = () => {
-        let action = {type: 'ADD-POST',}
-        props.dispatch(action)
+        props.dispatch(AddPostActionCreator())
     }
 
     let UpdatePostText = () => {
         let text = TextAreaElement.current.value
-        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text}
-        props.dispatch(action)
+        props.dispatch(UpdateNewPostTextActionCreator(text))
     }
 
 
