@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom"
 import DialogName from "./MessageItems/DialogName/DialogName"
 import LastMessage from "./MessageItems/LastMessage/LastMessage"
 import React from 'react';
-import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/store'
+import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/MessagesReducer'
 
 
 

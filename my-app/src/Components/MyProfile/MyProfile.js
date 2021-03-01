@@ -2,11 +2,10 @@ import c from './MyProfile.module.css'
 import Post from './Posts/Post.js'
 import Profile from './Profile/Profile.js'
 import React from 'react';
-import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/store'
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/ProfileReducer'
 
 
 const MyProfile = (props) =>{
-
     let TextAreaElement = React.createRef()
 
     let AddPost = () => {

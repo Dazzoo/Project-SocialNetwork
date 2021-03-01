@@ -3,7 +3,6 @@ import {NavLink} from "react-router-dom";
 import  Friend from './Friend/Friend.js'
 
 const Sidebar = (props) => {
-
     const FriendShow = props.friends.map( n  => <Friend name= {n.name} id= {n.id} />);
 
     return (

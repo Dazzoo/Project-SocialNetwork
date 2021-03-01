@@ -1,4 +1,4 @@
-import {store} from './redux/store'
+import store from './redux/store-redux'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -14,13 +14,16 @@ export const RenderEntireTree = (state) => {
                 <App state={state} dispatch={store.dispatch.bind(store)}/>
             </React.StrictMode>,
             document.getElementById('root')
+
         )
 
     );
 }
-store.CallBackEntireTree(RenderEntireTree);
 RenderEntireTree(store.getState());
-
+store.subscribe(() => {
+    let state = store.getState()
+    RenderEntireTree(state)
+});
 
 
 

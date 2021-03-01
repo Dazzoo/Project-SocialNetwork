@@ -18,13 +18,13 @@ const App = (props) => {
       <div className='wrapper'>
         <Header/>
         <div className='flexbox'>
-            <Sidebar friends={props.state.Friends.friendsOnline}/>
-            <Route path='/profile' render={() => <MyProfile Posts={props.state.PostsPage.posts}
+            <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
+            <Route path='/profile' render={() => <MyProfile Posts={props.state.profilePage.PostsPage.posts}
                                                             dispatch={props.dispatch}
-                                                            textAreaValue={props.state.PostsPage.textArea}/>}/>
-            <Route path='/messages' render={() => <MyMessages dialogsData={props.state.MessagePage.dialogs}
-                                                              messagesData={props.state.MessagePage.messages}
-                                                              textAreaValue={props.state.MessagePage.textArea}
+                                                            textAreaValue={props.state.profilePage.PostsPage.textArea}/>}/>
+            <Route path='/messages' render={() => <MyMessages dialogsData={props.state.messagePage.MessagePage.dialogs}
+                                                              messagesData={props.state.messagePage.MessagePage.messages}
+                                                              textAreaValue={props.state.messagePage.MessagePage.textArea}
                                                               dispatch={props.dispatch}/>}/>
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>

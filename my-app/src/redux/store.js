@@ -1,3 +1,6 @@
+import {ProfilePageReducer} from './ProfilePageReducer'
+import {MessagesPageReducer} from './MessagesPageReducer'
+
 export let store = {
     _state: {
         MessagePage: {
@@ -42,7 +45,6 @@ export let store = {
 
     },
     RenderEntireTree() {
-
     },
 
     CallBackEntireTree(observer) {
@@ -52,35 +54,14 @@ export let store = {
         return this._state
     },
     dispatch(action) {
-        if(action.type === 'ADD-POST'){
-            let post = {id: 5, likeCount: 0, text: this._state.PostsPage.textArea};
-            this._state.PostsPage.posts.push(post);
-            this._state.PostsPage.textArea = ''
-            this.RenderEntireTree(this._state);
-        }
-        if(action.type === 'UPDATE-NEW-POST-TEXT'){
-            this._state.PostsPage.textArea = action.newText
-            this.RenderEntireTree(this._state)
-        }
-        if(action.type === 'ADD-MESSAGE'){
-            let message = {id: 7, message: this._state.MessagePage.textArea }
-            this._state.MessagePage.messages.push(message);
-            this._state.MessagePage.textArea = ''
-            this.RenderEntireTree(this._state);
-        }
-        if(action.type === 'UPDATE-NEW-MESSAGE-TEXT'){
-            this._state.MessagePage.textArea = action.newMessage
-            this.RenderEntireTree(this._state)
-
-        }
+        this._state.PostsPage = ProfilePageReducer(this._state.PostsPage, action)
+        this._state.MessagePage = MessagesPageReducer(this._state.MessagePage, action)
+        this.RenderEntireTree(this._state)
     }
 
 }
 
-export const AddPostActionCreator = () => ({type: 'ADD-POST'})
-export const UpdateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
-export const AddMessagetActionCreator = () => ({type: 'ADD-MESSAGE'})
-export const UpdateNewMessageTextActionCreator = (text) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text})
+
 
 
 window.store = store
