@@ -1,5 +1,4 @@
 
-
 let initialState = {
     Sidebar: {
         friendsOnline: [

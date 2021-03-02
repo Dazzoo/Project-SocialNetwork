@@ -5,26 +5,26 @@ import React from 'react';
 import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/ProfileReducer'
 
 
+
 const MyProfile = (props) =>{
     let TextAreaElement = React.createRef()
 
     let AddPost = () => {
-        props.dispatch(AddPostActionCreator())
+        props.addPost()
     }
 
     let UpdatePostText = () => {
         let text = TextAreaElement.current.value
-        props.dispatch(UpdateNewPostTextActionCreator(text))
+        props.updatePostText(text)
     }
 
-
-    const PostsShow = props.Posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />)
+    const PostsShow = props.state.profilePage.PostsPage.posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />)
 
 
     return (
         <div className='wrapper'>
             <Profile/>
-            <textarea onChange={UpdatePostText} value = {props.textAreaValue} ref={TextAreaElement} className={c.textarea}></textarea>
+            <textarea onChange={UpdatePostText} value={props.state.profilePage.PostsPage.textArea} ref={TextAreaElement} className={c.textarea}></textarea>
             <button onClick={AddPost}>Post</button>
             {PostsShow}
         </div>

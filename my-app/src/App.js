@@ -2,8 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header/Header.js'
 import Sidebar from './Components/Sidebar/Sidebar.js'
-import MyProfile from './Components/MyProfile/MyProfile.js'
-import MyMessages from './Components/MyMessages/MyMessages.js'
+import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
+import MyMessagesContainer from './Components/MyMessages/MyMessagesContainer.js'
 import MyNews from './Components/MyNews/MyNews.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
@@ -19,13 +19,8 @@ const App = (props) => {
         <Header/>
         <div className='flexbox'>
             <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
-            <Route path='/profile' render={() => <MyProfile Posts={props.state.profilePage.PostsPage.posts}
-                                                            dispatch={props.dispatch}
-                                                            textAreaValue={props.state.profilePage.PostsPage.textArea}/>}/>
-            <Route path='/messages' render={() => <MyMessages dialogsData={props.state.messagePage.MessagePage.dialogs}
-                                                              messagesData={props.state.messagePage.MessagePage.messages}
-                                                              textAreaValue={props.state.messagePage.MessagePage.textArea}
-                                                              dispatch={props.dispatch}/>}/>
+            <Route path='/profile' render={() => <MyProfileContainer store={props.store}/>}/>
+            <Route path='/messages' render={() => <MyMessagesContainer store={props.store}/>}/>
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>
             <Route path='/settings' render={MySettings}/>
