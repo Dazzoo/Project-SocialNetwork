@@ -1,28 +1,25 @@
-import c from './MyProfile.module.css'
-import Post from './Posts/Post.js'
-import Profile from './Profile/Profile.js'
 import React from 'react'
 import MyProfile from './MyProfile'
 import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/ProfileReducer'
+import {connect} from 'react-redux'
 
 
 
-const MyProfileContainer = (props) =>{
-    let state = props.store.getState()
-
-    let AddPost = () => {
-        props.store.dispatch(AddPostActionCreator())
+let mapStateToProps = (state) => {
+    return {
+        ProfilePage: state.profilePage.PostsPage,
+        newPostText: state.profilePage.PostsPage.textArea,
+        posts: state.profilePage.PostsPage.posts
     }
-
-    let UpdatePostText = (text) => {
-        props.store.dispatch(UpdateNewPostTextActionCreator(text))
-    }
-
-
-    return (
-        <MyProfile addPost={AddPost} updatePostText={UpdatePostText} state={state}/>
-    );
 }
 
+let mapDispatchToProps = (dispatch) => {
+    return {
+        AddPost: () => {dispatch(AddPostActionCreator())},
+        UpdatePostText: (text) => {dispatch(UpdateNewPostTextActionCreator(text))}
+    }
+}
+
+const MyProfileContainer = connect(mapStateToProps, mapDispatchToProps)(MyProfile)
 
 export default MyProfileContainer;

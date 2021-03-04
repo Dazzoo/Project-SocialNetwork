@@ -10,6 +10,7 @@ import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../
 
 
 const MyMessages = (props) => {
+
     let NewMessageElement = React.createRef();
 
     let UpdateMessage = () => {
@@ -23,9 +24,9 @@ const MyMessages = (props) => {
 
 
 
-    const UserNamesShow = props.state.messagePage.MessagePage.dialogs.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} />);
+    const UserNamesShow = props.dialogs.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} />);
 
-    const LastMessageShow = props.state.messagePage.MessagePage.messages.map( m  => <LastMessage text={m.message} id= {m.id} />);
+    const LastMessageShow = props.messages.map( m  => <LastMessage text={m.message} id= {m.id} />);
 
 
     return (
@@ -38,7 +39,7 @@ const MyMessages = (props) => {
                 {LastMessageShow}
             </div>
             <div>
-                <textarea onChange={UpdateMessage} value={props.state.messagePage.MessagePage.textArea} className={c.textfield} ref={NewMessageElement}></textarea>
+                <textarea onChange={UpdateMessage} value={props.newMessageText} className={c.textfield} ref={NewMessageElement}></textarea>
                 <button className={c.sendMessage} onClick={AddMessage}>Send</button>
             </div>
         </div>

@@ -19,8 +19,8 @@ const App = (props) => {
         <Header/>
         <div className='flexbox'>
             <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
-            <Route path='/profile' render={() => <MyProfileContainer store={props.store}/>}/>
-            <Route path='/messages' render={() => <MyMessagesContainer store={props.store}/>}/>
+            <Route path='/profile' render={() => <MyProfileContainer/>}/>
+            <Route path='/messages' render={() => <MyMessagesContainer/>}/>
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>
             <Route path='/settings' render={MySettings}/>
