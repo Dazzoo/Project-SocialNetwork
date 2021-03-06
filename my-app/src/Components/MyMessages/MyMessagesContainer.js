@@ -10,11 +10,11 @@ import {connect} from 'react-redux'
 
 
 let mapStateToProps = (state) => {
+    debugger
     return {
-        MessagePage: state.messagePage.MessagePage,
-        newMessageText: state.messagePage.MessagePage.textArea,
-        dialogs: state.messagePage.MessagePage.dialogs,
-        messages: state.messagePage.MessagePage.messages
+        newMessageText: state.messagePage.textArea,
+        dialogs: state.messagePage.dialogs,
+        messages: state.messagePage.messages,
     }
 }
 

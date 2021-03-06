@@ -1,6 +1,5 @@
 
 let initialState = {
-    MessagePage: {
         messages: [
             {id: 1, message: 'Hi'},
             {id: 2, message: 'How do you do bro?'},
@@ -18,29 +17,29 @@ let initialState = {
             {id: 6, name: 'Oliver', avatar: 'https://avatarfiles.alphacoders.com/244/thumb-244618.jpg'}
         ],
         textArea: ""
-    }
 }
 
 const messageReducer = (state = initialState, action) => {
+    debugger
     switch (action.type){
-        case 'ADD-MESSAGE': {
-            let StateCopy = {...state}
-            let message = {id: 7, message: state.MessagePage.textArea }
-            StateCopy.MessagePage.messages.push(message);
-            StateCopy.MessagePage.textArea = '';
-            return StateCopy;
-        }
-        case 'UPDATE-NEW-MESSAGE-TEXT':{
-            let StateCopy = {...state}
-            StateCopy.MessagePage = {...state.MessagePage}
-            StateCopy.MessagePage.textArea = action.newMessage;
-            return StateCopy;
-        }
+        case 'ADD-MESSAGE':
+            let messageText = state.textArea
+            return{
+                ...state,
+                textArea: "",
+                messages: [...state.messages, {id: 7, message: messageText }]
+            };
+        case 'UPDATE-NEW-MESSAGE-TEXT':
+            return{
+                ...state,
+                textArea: action.newMessage
+            };
         default:
             return state;
 
     }
 }
+
 
 export const AddMessagetActionCreator = () => ({type: 'ADD-MESSAGE'})
 export const UpdateNewMessageTextActionCreator = (text) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text})
