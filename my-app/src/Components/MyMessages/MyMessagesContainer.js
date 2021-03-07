@@ -10,7 +10,6 @@ import {connect} from 'react-redux'
 
 
 let mapStateToProps = (state) => {
-    debugger
     return {
         newMessageText: state.messagePage.textArea,
         dialogs: state.messagePage.dialogs,

@@ -2,3 +2,11 @@
     height: 160px;
     border: 1px black solid;
 }
+.img{
+    width: 100%;
+    height: auto;
+}
+.imageContainer{
+    width: 160px;
+
+}

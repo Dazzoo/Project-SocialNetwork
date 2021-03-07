@@ -20,7 +20,6 @@ let initialState = {
 }
 
 const messageReducer = (state = initialState, action) => {
-    debugger
     switch (action.type){
         case 'ADD-MESSAGE':
             let messageText = state.textArea

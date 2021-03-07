@@ -13,6 +13,7 @@ const Sidebar = (props) => {
                 <li><NavLink  to="/news" activeClassName={c.active}>News</NavLink></li>
                 <li><NavLink  to="/music" activeClassName={c.active}>Music</NavLink></li>
                 <li><NavLink  to="/settings" activeClassName={c.active}>Settings</NavLink></li>
+                <li><NavLink  to="/findUsers" activeClassName={c.active}>FindUsers</NavLink></li>
             </ul>
             <div className={c.friends}>
                 FriendsOnline

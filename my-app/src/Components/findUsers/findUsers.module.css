@@ -1,0 +1,18 @@
+.profileImage{
+    width: 200px;
+    height: 200px;
+}
+img{
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+
+.inlineBlock{
+    display: inline-block;
+
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+}

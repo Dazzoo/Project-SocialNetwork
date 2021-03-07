@@ -8,11 +8,11 @@ import MyNews from './Components/MyNews/MyNews.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
 import {BrowserRouter, Route} from "react-router-dom";
+import FindUsersContainer from './Components/findUsers/findUsersContainer'
 
 
 
 const App = (props) => {
-
   return (
       <BrowserRouter>
       <div className='wrapper'>
@@ -24,6 +24,7 @@ const App = (props) => {
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>
             <Route path='/settings' render={MySettings}/>
+            <Route path='/findUsers' render={() => <FindUsersContainer/>}/>
         </div>
       </div>
       </BrowserRouter>
