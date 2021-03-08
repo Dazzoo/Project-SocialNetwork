@@ -1,18 +1,10 @@
 
 let initialState = {
-    users: [
-        {id: 1, avatar: 'https://cdn62.zvuk.com/pic?type=artist&id=623102&size=600x600&ext=',
-            followed: false, userName: 'George Miller', location: {country: 'Japan', city: 'Osaka'}, status: 'I am pretty boy living on the west side' },
-        {id: 2, avatar: 'https://cdn62.zvuk.com/pic?type=artist&id=623102&size=600x600&ext=',
-            followed: false, userName: 'George Miller', location: {country: 'Japan', city: 'Osaka'}, status: 'I am pretty boy living on the west side' },
-        {id: 3, avatar: 'https://cdn62.zvuk.com/pic?type=artist&id=623102&size=600x600&ext=',
-            followed: false, userName: 'George Miller', location: {country: 'Japan', city: 'Osaka'}, status: 'I am pretty boy living on the west side' }
-    ]
+    users: [ ]
 
 }
 
 const usersReducer = (state = initialState, action) => {
-    debugger
     switch (action.type){
         case 'Followed':{
             return {...state,
@@ -36,6 +28,12 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         }
+        case 'SetUsers':{
+            return {...state,
+            users: action.usersList
+            }
+
+        }
         default:
             return state
         }
@@ -44,6 +42,7 @@ const usersReducer = (state = initialState, action) => {
 
 export const FollowedAC = (userId) => ({type: 'Followed', userId: userId})
 export const UnfollowedAC = (userId) => ({type: 'Unfollowed', userId: userId})
+export const SetUsersAC = (usersList) => ({type: 'SetUsers' , usersList: usersList})
 
 export default usersReducer
 
