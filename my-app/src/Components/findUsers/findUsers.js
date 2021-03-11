@@ -4,16 +4,30 @@ import * as axios from 'axios';
 
 
 class findUsers extends React.Component {
-    constructor(props) {
-        super(props);
-
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        .then(response => {
+            this.props.SetUsers(response.data.items)
+            this.props.SetTotalCount(response.data.totalCount)})
+    }
+    changeCurrentPage(newCurrentPage){
+        this.props.ChangePage(newCurrentPage)
+        console.log(this.props.currentPage)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.SetUsers(response.data.items)})
     }
+
     render() {
+        let pagesCount = Math.ceil (this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++){
+            pages.push(i)
+        }
+
         return (
             <div>
+                {pages.map(p => {return <span className={`${this.props.currentPage === p && c.activePage} ${c.pagesIcon}`} onClick={() => {this.changeCurrentPage(p)}}>{p}</span>})}
                 {this.props.users.map( u =>
                 <div key={u.id} className={c.wrapper}>
                     <div className={c.inlineBlock}>
@@ -36,7 +50,7 @@ class findUsers extends React.Component {
                 }
             </div>
         )
-    }
+                    }
 }
 
 

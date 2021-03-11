@@ -12,3 +12,13 @@ img{
 .wrapper{
     display: block;
 }
+.pagesIcon{
+    margin-right: 5px;
+    border: 1px solid black;
+    padding: 1px 5px;
+}
+.activePage{
+    border: 3px solid black;
+    padding: 1px 5px;
+    font-weight: 8px;
+}
