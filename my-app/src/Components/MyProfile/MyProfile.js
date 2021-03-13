@@ -1,6 +1,6 @@
 import c from './MyProfile.module.css'
 import Post from './Posts/Post.js'
-import Profile from './Profile/Profile.js'
+import ProfileContainer from './Profile/ProfileContainer.js'
 import React from 'react';
 
 
@@ -21,7 +21,7 @@ const MyProfile = (props) =>{
 
     return (
         <div className='wrapper'>
-            <Profile/>
+            <ProfileContainer/>
             <textarea onChange={UpdatePostText} value={props.newPostText} ref={TextAreaElement} className={c.textarea}></textarea>
             <button onClick={AddPost}>Post</button>
             {PostsShow}

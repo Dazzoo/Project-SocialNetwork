@@ -1,18 +1,12 @@
-import c from './Profile.module.css'
-
+import React from 'react'
+import style from '../MyProfile.module.css'
 
 const Profile = (props) => {
     return (
-        <div className='Post_wrapper'>
-            <div className={c.profile}>
-                <img src='https://cdn.wallpapersafari.com/75/49/cfnSpg.jpg'/>
-            </div>
+        <div className={style.Avatar}>
+            <img src={props.profile.photos.large}/>
         </div>
-    );
-
+    )
 }
 
-
-
-
-export default Profile;
+export default Profile
