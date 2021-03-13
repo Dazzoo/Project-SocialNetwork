@@ -8,10 +8,8 @@ const FindUsers = (props) => {
         for (let i = 1; i <= pagesCount; i++){
             pages.push(i)
         }
-        debugger
         return (
             <div>
-
                 {pages.map(p => {return <span className={`${props.currentPage === p && c.activePage} ${c.pagesIcon}`}
                                                 onClick={() => {props.changeCurrentPage(p)}}>{p}</span>})}
                 {props.isFetching ? <FetchingIcon/> : null}

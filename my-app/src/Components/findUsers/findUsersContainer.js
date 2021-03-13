@@ -1,5 +1,5 @@
 import React from 'react'
-import {FollowedAC, UnfollowedAC, SetUsersAC, ChangePageAC, TotalCountAC, FetchingAC} from './../../redux/usersReducer'
+import {Follow, Unfollow, SetUsers, ChangePage, SetTotalUsersCount, SetFetching} from './../../redux/usersReducer'
 import {connect} from 'react-redux'
 import FindUsers from "./findUsers";
 import * as axios from 'axios';
@@ -13,7 +13,7 @@ class FindUsersAPI extends React.Component {
             .then(response => {
                 this.props.SetFetching(false)
                 this.props.SetUsers(response.data.items)
-                this.props.SetTotalCount(response.data.totalCount)})
+                this.props.SetTotalUsersCount(response.data.totalCount)})
     }
     changeCurrentPage = (newCurrentPage) => {
         this.props.SetFetching(true)
@@ -48,17 +48,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        Follow: (userId) => {dispatch(FollowedAC(userId))},
-        Unfollow: (userId) => {dispatch(UnfollowedAC(userId))},
-        SetUsers: (usersList) => {dispatch(SetUsersAC(usersList))},
-        ChangePage: (newCurrentPage) => {dispatch(ChangePageAC(newCurrentPage))},
-        SetTotalCount: (totalUsers) => {dispatch(TotalCountAC(totalUsers))},
-        SetFetching: (isFetching) => {dispatch(FetchingAC(isFetching))}
-    }
-}
 
-const FindUsersContainer = connect(mapStateToProps, mapDispatchToProps)(FindUsersAPI)
+const FindUsersContainer = connect(mapStateToProps, {Follow, Unfollow, SetUsers, ChangePage, SetTotalUsersCount, SetFetching})(FindUsersAPI)
 
 export default FindUsersContainer;
