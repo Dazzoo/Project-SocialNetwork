@@ -1,5 +1,6 @@
 import React from 'react';
 import c from './findUsers.module.css';
+import FetchingIcon from './FetchingIcon/FetchingIcon'
 
 const FindUsers = (props) => {
         let pagesCount = Math.ceil (props.totalUsersCount / props.pageSize)
@@ -10,8 +11,10 @@ const FindUsers = (props) => {
         debugger
         return (
             <div>
+
                 {pages.map(p => {return <span className={`${props.currentPage === p && c.activePage} ${c.pagesIcon}`}
                                                 onClick={() => {props.changeCurrentPage(p)}}>{p}</span>})}
+                {props.isFetching ? <FetchingIcon/> : null}
                 {props.users.map( u =>
                     <div key={u.id} className={c.wrapper}>
                         <div className={c.inlineBlock}>
