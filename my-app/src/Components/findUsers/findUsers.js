@@ -1,6 +1,7 @@
 import React from 'react';
 import c from './findUsers.module.css';
 import FetchingIcon from './FetchingIcon/FetchingIcon'
+import {NavLink} from "react-router-dom"
 
 const FindUsers = (props) => {
         let pagesCount = Math.ceil (props.totalUsersCount / props.pageSize)
@@ -17,7 +18,9 @@ const FindUsers = (props) => {
                     <div key={u.id} className={c.wrapper}>
                         <div className={c.inlineBlock}>
                             <div className={c.profileImage}>
+                                <NavLink to={"/profile/" + u.id}>
                                 <img src={u.photos.small != null ? u.photos.small : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
+                                </NavLink>
                             </div>
                             <div>
                                 {u.followed

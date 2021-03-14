@@ -19,7 +19,7 @@ const App = (props) => {
         <Header/>
         <div className='flexbox'>
             <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
-            <Route path='/profile' render={() => <MyProfileContainer/>}/>
+            <Route path='/profile/:userId?' render={() => <MyProfileContainer/>}/>
             <Route path='/messages' render={() => <MyMessagesContainer/>}/>
             <Route path='/news' render={MyNews}/>
             <Route path='/music' render={MyMusic}/>
