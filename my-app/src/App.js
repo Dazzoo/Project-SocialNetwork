@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './Components/Header/Header.js'
+import HeaderContainer from './Components/Header/HeaderContainer'
 import Sidebar from './Components/Sidebar/Sidebar.js'
 import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyMessagesContainer from './Components/MyMessages/MyMessagesContainer.js'
@@ -16,7 +16,7 @@ const App = (props) => {
   return (
       <BrowserRouter>
       <div className='wrapper'>
-        <Header/>
+        <HeaderContainer/>
         <div className='flexbox'>
             <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
             <Route path='/profile/:userId?' render={() => <MyProfileContainer/>}/>
