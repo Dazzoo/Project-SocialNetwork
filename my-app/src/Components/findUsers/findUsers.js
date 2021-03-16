@@ -3,6 +3,7 @@ import c from './findUsers.module.css';
 import FetchingIcon from './FetchingIcon/FetchingIcon'
 import {NavLink} from "react-router-dom"
 import * as axios from 'axios';
+import {UserAPI} from  '../../redux/API'
 
 const FindUsers = (props) => {
         let pagesCount = Math.ceil (props.totalUsersCount / props.pageSize)
@@ -27,12 +28,9 @@ const FindUsers = (props) => {
                                 {u.followed
                                     ? <button onClick={() => {
                                         props.SetFetching(true)
-                                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/` + u.id,
-                                            {withCredentials: true,
-                                            headers: { 'API-KEY': 'ff5ddc63-b78e-409a-967b-b90f4f348fb6'}
-                                            })
-                                            .then(response => {
-                                                if(response.data.resultCode === 0){
+                                        UserAPI.deleteFollow(u.id)
+                                            .then(data => {
+                                                if(data.resultCode === 0){
                                                     props.SetFetching(false)
                                                     props.Follow(u.id)
                                                 }
@@ -41,12 +39,9 @@ const FindUsers = (props) => {
                                         }}>Unfollow</button>
                                     : <button onClick={() => {
                                         props.SetFetching(true)
-                                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/` + u.id, {},
-                                            {withCredentials: true,
-                                                headers: { 'API-KEY': 'ff5ddc63-b78e-409a-967b-b90f4f348fb6'}
-                                            })
-                                            .then(response => {
-                                                if(response.data.resultCode === 0){
+                                            UserAPI.postFollow(u.id)
+                                            .then(data => {
+                                                if(data.resultCode === 0){
                                                     props.SetFetching(false)
                                                     props.Unfollow(u.id)
                                                 }
