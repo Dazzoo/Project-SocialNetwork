@@ -4,7 +4,8 @@ let initialState = {
     pageSize: 10,
     currentPage: 1,
     totalUsersCount: 2000,
-    isFetching: false
+    isFetching: false,
+    inProgress: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -51,6 +52,16 @@ const usersReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case 'InProgressADD':{
+            return {...state,
+                inProgress: [action.inProgress]
+            }
+        }
+        case 'InProgressREMOVE':{
+            return {...state,
+                inProgress: []
+            }
+        }
         default:
             return state
         }
@@ -63,6 +74,9 @@ export const SetUsers = (usersList) => ({type: 'SetUsers' , usersList: usersList
 export const ChangePage = (newCurrentPage) => ({type: 'ChangePage', newCurrentPage: newCurrentPage})
 export const SetTotalUsersCount = (totalCount) => ({type: 'SetTotalCount', totalCount: totalCount})
 export const SetFetching = (isFetching) => ({type: 'Fetching', isFetching: isFetching})
+export const AddInProgress = (inProgress) => ({type: 'InProgressADD', inProgress: inProgress})
+export const RemoveInProgress = () => ({type: 'InProgressREMOVE'})
+
 
 export default usersReducer
 

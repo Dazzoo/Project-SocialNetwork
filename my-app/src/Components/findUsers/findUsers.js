@@ -26,23 +26,23 @@ const FindUsers = (props) => {
                             </div>
                             <div>
                                 {u.followed
-                                    ? <button onClick={() => {
-                                        props.SetFetching(true)
+                                    ? <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
+                                        props.AddInProgress(u.id)
                                         UserAPI.deleteFollow(u.id)
                                             .then(data => {
                                                 if(data.resultCode === 0){
-                                                    props.SetFetching(false)
+                                                    props.RemoveInProgress()
                                                     props.Follow(u.id)
                                                 }
 
                                             })
                                         }}>Unfollow</button>
-                                    : <button onClick={() => {
-                                        props.SetFetching(true)
-                                            UserAPI.postFollow(u.id)
+                                    : <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
+                                        props.AddInProgress(u.id)
+                                        UserAPI.postFollow(u.id)
                                             .then(data => {
                                                 if(data.resultCode === 0){
-                                                    props.SetFetching(false)
+                                                    props.RemoveInProgress()
                                                     props.Unfollow(u.id)
                                                 }
                                             })
