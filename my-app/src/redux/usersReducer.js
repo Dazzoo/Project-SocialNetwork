@@ -1,3 +1,4 @@
+import {UserAPI} from './API'
 
 let initialState = {
     users: [ ],
@@ -76,6 +77,54 @@ export const SetTotalUsersCount = (totalCount) => ({type: 'SetTotalCount', total
 export const SetFetching = (isFetching) => ({type: 'Fetching', isFetching: isFetching})
 export const AddInProgress = (inProgress) => ({type: 'InProgressADD', inProgress: inProgress})
 export const RemoveInProgress = () => ({type: 'InProgressREMOVE'})
+
+export const FollowThunk = (id) => {
+     return (dispatch) => {
+         dispatch(AddInProgress(id))
+         UserAPI.deleteFollow(id)
+             .then(data => {
+                 if(data.resultCode === 0){
+                     dispatch(RemoveInProgress())
+                     dispatch(Follow(id))
+                 }
+             })
+     }
+}
+
+export const UnfollowThunk = (id) => {
+    return (dispatch) => {
+        dispatch(AddInProgress(id))
+        UserAPI.postFollow(id)
+            .then(data => {
+                if(data.resultCode === 0){
+                    dispatch(RemoveInProgress())
+                    dispatch(Unfollow(id))
+                }
+            })
+    }
+}
+
+export const GetUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(SetFetching(true))
+        UserAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(SetFetching(false))
+            dispatch(SetUsers(data.items))
+            dispatch(SetTotalUsersCount(data.totalCount))
+        })
+    }
+}
+
+export const ChangeCurrentPage = (newCurrentPage) => {
+    return (dispatch) => {
+            dispatch(SetFetching(true))
+            dispatch(ChangePage(newCurrentPage))
+            UserAPI.getUsers(newCurrentPage, this.props.pageSize).then(data => {
+            dispatch(SetFetching(false))
+            dispatch(SetUsers(data.items))
+    })
+    }
+}
 
 
 export default usersReducer

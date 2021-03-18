@@ -1,5 +1,5 @@
 import React from 'react'
-import {Follow, Unfollow, SetUsers, ChangePage, SetTotalUsersCount, SetFetching, AddInProgress, RemoveInProgress} from './../../redux/usersReducer'
+import {Follow, Unfollow, SetUsers, ChangePage, SetTotalUsersCount, SetFetching, AddInProgress, RemoveInProgress, FollowThunk, UnfollowThunk, GetUsers, ChangeCurrentPage} from './../../redux/usersReducer'
 import {connect} from 'react-redux'
 import FindUsers from "./findUsers";
 import * as axios from 'axios';
@@ -8,27 +8,17 @@ import {UserAPI} from '../../redux/API'
 
 class FindUsersAPI extends React.Component {
     componentDidMount() {
-        this.props.SetFetching(true)
-        UserAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.SetFetching(false)
-            this.props.SetUsers(data.items)
-            this.props.SetTotalUsersCount(data.totalCount)
-        })
-    }
-    changeCurrentPage = (newCurrentPage) => {
-        this.props.SetFetching(true)
-        this.props.ChangePage(newCurrentPage)
-        UserAPI.getUsers(newCurrentPage, this.props.pageSize).then(data => {
-            this.props.SetFetching(false)
-            this.props.SetUsers(data.items)
-        })
-    }
+        this.props.GetUsers(this.props.currentPage, this.props.pageSize)
+        }
+
+
 
     render(){
-        return ( <FindUsers {...this.props} changeCurrentPage={this.changeCurrentPage}/>
+        return ( <FindUsers {...this.props}/>
         )
     }
 }
+
 
 let mapStateToProps = (state) => {
     return {
@@ -42,6 +32,6 @@ let mapStateToProps = (state) => {
 }
 
 
-const FindUsersContainer = connect(mapStateToProps, {Follow, Unfollow, SetUsers, ChangePage, SetTotalUsersCount, SetFetching, AddInProgress, RemoveInProgress})(FindUsersAPI)
+const FindUsersContainer = connect(mapStateToProps, {SetUsers, ChangePage, SetTotalUsersCount, SetFetching, FollowThunk, UnfollowThunk, GetUsers, ChangeCurrentPage})(FindUsersAPI)
 
 export default FindUsersContainer;

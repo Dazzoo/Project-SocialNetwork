@@ -14,7 +14,7 @@ const FindUsers = (props) => {
         return (
             <div>
                 {pages.map(p => {return <span className={`${props.currentPage === p && c.activePage} ${c.pagesIcon}`}
-                                                onClick={() => {props.changeCurrentPage(p)}}>{p}</span>})}
+                                                onClick={() => {props.ChangeCurrentPage(p)}}>{p}</span>})}
                 {props.isFetching ? <FetchingIcon/> : null}
                 {props.users.map( u =>
                     <div key={u.id} className={c.wrapper}>
@@ -27,25 +27,10 @@ const FindUsers = (props) => {
                             <div>
                                 {u.followed
                                     ? <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
-                                        props.AddInProgress(u.id)
-                                        UserAPI.deleteFollow(u.id)
-                                            .then(data => {
-                                                if(data.resultCode === 0){
-                                                    props.RemoveInProgress()
-                                                    props.Follow(u.id)
-                                                }
-
-                                            })
+                                        props.FollowThunk(u.id)
                                         }}>Unfollow</button>
                                     : <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
-                                        props.AddInProgress(u.id)
-                                        UserAPI.postFollow(u.id)
-                                            .then(data => {
-                                                if(data.resultCode === 0){
-                                                    props.RemoveInProgress()
-                                                    props.Unfollow(u.id)
-                                                }
-                                            })
+                                        props.UnfollowThunk(u.id)
                                     }}>Follow</button>
                                 }
                             </div>
