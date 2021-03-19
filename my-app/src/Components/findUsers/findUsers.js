@@ -14,7 +14,7 @@ const FindUsers = (props) => {
         return (
             <div>
                 {pages.map(p => {return <span className={`${props.currentPage === p && c.activePage} ${c.pagesIcon}`}
-                                                onClick={() => {props.ChangeCurrentPage(p)}}>{p}</span>})}
+                                                onClick={() => {props.ChangeCurrentPage(p, props.pageSize)}}>{p}</span>})}
                 {props.isFetching ? <FetchingIcon/> : null}
                 {props.users.map( u =>
                     <div key={u.id} className={c.wrapper}>

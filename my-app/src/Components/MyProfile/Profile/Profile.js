@@ -11,7 +11,7 @@ const Profile = (props) => {
     }
     return (
         <div className={style.Avatar}>
-            <img src={props.profile.photos.large}/>
+            <img src={props.profile.photos.large? props.profile.photos.large : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
             <div>{props.profile.fullName ? 'FullName: ' + props.profile.fullName : null}</div>
             <div>{props.profile.aboutMe ? 'About me: ' + props.profile.aboutMe : null}</div>
             <div>{props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
