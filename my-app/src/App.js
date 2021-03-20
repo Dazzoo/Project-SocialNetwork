@@ -9,6 +9,7 @@ import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
 import {BrowserRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
+import LoginContainer from  './Components/Login/LoginContainer'
 
 
 
@@ -18,17 +19,18 @@ const App = (props) => {
       <div className='wrapper'>
         <HeaderContainer/>
         <div className='flexbox'>
-            <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline}/>
-            <Route path='/profile/:userId?' render={() => <MyProfileContainer/>}/>
-            <Route path='/messages' render={() => <MyMessagesContainer/>}/>
-            <Route path='/news' render={MyNews}/>
-            <Route path='/music' render={MyMusic}/>
-            <Route path='/settings' render={MySettings}/>
-            <Route path='/findUsers' render={() => <FindUsersContainer/>}/>
+            <Sidebar friends={props.state.sidebar.Sidebar.friendsOnline} />
+            <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
+            <Route path='/messages' render={() => <MyMessagesContainer/>} />
+            <Route path='/news' render={MyNews} />
+            <Route path='/music' render={MyMusic} />
+            <Route path='/settings' render={MySettings} />
+            <Route path='/findUsers' render={() => <FindUsersContainer/>} />
+            <Route path='/login' render={() => <LoginContainer/>} />
         </div>
       </div>
       </BrowserRouter>
-          );
+          )
 }
 
 

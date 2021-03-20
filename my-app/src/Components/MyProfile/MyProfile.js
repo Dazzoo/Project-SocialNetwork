@@ -4,6 +4,7 @@ import ProfileContainer from './Profile/ProfileContainer.js'
 import React from 'react';
 
 
+
 const MyProfile = (props) =>{
     let TextAreaElement = React.createRef()
 
@@ -17,7 +18,6 @@ const MyProfile = (props) =>{
     }
 
     const PostsShow = props.posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />)
-
 
     return (
         <div className='wrapper'>
