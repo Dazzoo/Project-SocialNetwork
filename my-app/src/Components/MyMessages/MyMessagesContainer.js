@@ -4,12 +4,12 @@ import React from 'react';
 import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/MessagesReducer'
 import {connect} from 'react-redux'
 import {Redirect} from  'react-router-dom'
+import withAuthRedirect from './../../hoc/withAuthRedirect'
 
 
 
 class MyMessagesСlassContainer extends React.Component{
     render() {
-        if(this.props.isAuth === false){return <Redirect to='/login' />}
         return (
             <MyMessages {...this.props}/>
         )
@@ -22,7 +22,6 @@ let mapStateToProps = (state) => {
         newMessageText: state.messagePage.textArea,
         dialogs: state.messagePage.dialogs,
         messages: state.messagePage.messages,
-        isAuth: state.auth.isAuth
     }
 }
 
@@ -33,8 +32,9 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
+const withAuth = withAuthRedirect(MyMessagesСlassContainer)
 
-const MyMessagesContainer = connect(mapStateToProps, mapDispatchToProps)(MyMessagesСlassContainer)
+const MyMessagesContainer = connect(mapStateToProps, mapDispatchToProps)(withAuth)
 
 export default MyMessagesContainer;
 
