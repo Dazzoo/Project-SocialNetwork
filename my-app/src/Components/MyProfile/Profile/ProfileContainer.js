@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Profile from './Profile'
@@ -24,7 +24,8 @@ class ProfileClassContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 

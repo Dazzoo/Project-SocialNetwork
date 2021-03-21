@@ -5,6 +5,7 @@ import FindUsers from "./findUsers";
 import * as axios from 'axios';
 import {UserAPI} from '../../redux/API'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 
 class FindUsersAPI extends React.Component {
@@ -30,8 +31,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-const withAuth = withAuthRedirect(FindUsersAPI)
 
-const FindUsersContainer = connect(mapStateToProps, {SetUsers, ChangePage, SetTotalUsersCount, SetFetching, FollowThunk, UnfollowThunk, GetUsers, ChangeCurrentPage})(withAuth)
-
-export default FindUsersContainer;
+export default compose(
+    connect(mapStateToProps, {SetUsers, ChangePage, SetTotalUsersCount, SetFetching, FollowThunk, UnfollowThunk, GetUsers, ChangeCurrentPage}),
+    withAuthRedirect
+)(FindUsersAPI);

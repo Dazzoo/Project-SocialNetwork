@@ -3,6 +3,7 @@ import MyProfile from './MyProfile'
 import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/ProfileReducer'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
+import {compose} from 'redux'
 
 
 class MyProfileClassContainer extends React.Component{
@@ -33,6 +34,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MyProfileContainer = connect(mapStateToProps, mapDispatchToProps)(MyProfileClassContainer)
 
-export default MyProfileContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps)
+)(MyProfileClassContainer);
