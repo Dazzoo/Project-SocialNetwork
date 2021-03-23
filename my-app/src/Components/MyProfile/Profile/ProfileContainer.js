@@ -2,7 +2,7 @@
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Profile from './Profile'
-import {GetProfile, getProfileThunk} from '../../../redux/ProfileReducer'
+import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk} from '../../../redux/ProfileReducer'
 import { withRouter } from "react-router"
 
 class ProfileClassContainer extends React.Component {
@@ -12,6 +12,7 @@ class ProfileClassContainer extends React.Component {
             userId = 2
         }
         this.props.getProfileThunk(userId)
+        this.props.getStatusThunk(userId)
     }
 
     render() {
@@ -32,7 +33,7 @@ let mapStateToProps = (state) => {
 let WithRouterContainer = withRouter(ProfileClassContainer)
 
 
-const ProfileContainer = connect(mapStateToProps, {GetProfile, getProfileThunk})(WithRouterContainer)
+const ProfileContainer = connect(mapStateToProps, {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk})(WithRouterContainer)
 
 
 

@@ -4,15 +4,20 @@ import FetchingIcon from '../../findUsers/FetchingIcon/FetchingIcon'
 
 class Profile extends React.Component{
     state = {
-        editMode: false
+        editMode: false,
+        status: ""
     }
 
-    ActivateStatus(){
+    ActivateStatus = () =>{
         this.setState({editMode: true})
     }
 
-    UnActivateStatus(){
+    UnActivateStatus = () =>{
         this.setState({editMode: false})
+        this.props.putStatusThunk(this.state.status)
+    }
+    UpdateStatus = (e) =>{
+        this.setState({status: e.currentTarget.value})
     }
 
     render() {
@@ -29,8 +34,8 @@ class Profile extends React.Component{
                 <div>{this.props.profile.aboutMe ? 'About me: ' + this.props.profile.aboutMe : null}</div>
                 <div>{this.props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
                 {this.state.editMode === false ?
-                    <span className={style.status} onClick={this.ActivateStatus.bind(this)} >{this.props.status}</span> :
-                    <input autoFocus={true} onBlur={this.UnActivateStatus.bind(this)} value={this.props.status} />}
+                    <span className={style.status} onClick={this.ActivateStatus} >{this.props.status}</span> :
+                    <input onChange={this.UpdateStatus} autoFocus={true} onBlur={this.UnActivateStatus} value={this.state.status} />}
             </div>
         )
     }
