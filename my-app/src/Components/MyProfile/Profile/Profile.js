@@ -34,7 +34,7 @@ class Profile extends React.Component{
                 <div>{this.props.profile.aboutMe ? 'About me: ' + this.props.profile.aboutMe : null}</div>
                 <div>{this.props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
                 {this.state.editMode === false ?
-                    <span className={style.status} onClick={this.ActivateStatus} >{this.props.status}</span> :
+                    <span className={style.status} onClick={this.ActivateStatus} >{this.props.status ? this.props.status : '-----'}</span> :
                     <input onChange={this.UpdateStatus} autoFocus={true} onBlur={this.UnActivateStatus} value={this.state.status} />}
             </div>
         )
