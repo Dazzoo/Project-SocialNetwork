@@ -15,17 +15,15 @@ let initialState = {
             {id: 4, name: 'Nika', avatar: 'https://pngicon.ru/file/uploads/2_16.png'},
             {id: 5, name: 'Andrey', avatar: 'http://cdn.lowgif.com/full/62784c38bb4af71f-furry-avatars-tumblr.gif'},
             {id: 6, name: 'Oliver', avatar: 'https://avatarfiles.alphacoders.com/244/thumb-244618.jpg'}
-        ],
-        textArea: ""
+        ]
 }
 
 const messageReducer = (state = initialState, action) => {
     switch (action.type){
         case 'ADD-MESSAGE':
-            let messageText = state.textArea
+            let messageText = action.text
             return{
                 ...state,
-                textArea: "",
                 messages: [...state.messages, {id: 7, message: messageText }]
             };
         case 'UPDATE-NEW-MESSAGE-TEXT':
@@ -40,7 +38,6 @@ const messageReducer = (state = initialState, action) => {
 }
 
 
-export const AddMessagetActionCreator = () => ({type: 'ADD-MESSAGE'})
-export const UpdateNewMessageTextActionCreator = (text) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: text})
+export const AddMessagetActionCreator = (text) => ({type: 'ADD-MESSAGE', text})
 
 export default messageReducer

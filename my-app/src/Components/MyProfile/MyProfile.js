@@ -2,31 +2,50 @@ import c from './MyProfile.module.css'
 import Post from './Posts/Post.js'
 import ProfileContainer from './Profile/ProfileContainer.js'
 import React from 'react';
+import {Form, Field} from 'react-final-form'
 
 
 
-const MyProfile = (props) =>{
-    let TextAreaElement = React.createRef()
-
-    let AddPost = () => {
-        props.AddPost()
+class MyProfile extends React.Component{
+    onSubmit = (value) => {
+        this.props.AddPost(value.postField)
     }
 
-    let UpdatePostText = () => {
-        let text = TextAreaElement.current.value
-        props.UpdatePostText(text)
+    render() {
+        return (
+            <div className='wrapper'>
+                <ProfileContainer/>
+                <Form
+                    onSubmit={this.onSubmit}
+                    validate={this.validate}
+                    render={({handleSubmit}) => (
+                            <form onSubmit={handleSubmit}>
+                                <div  >
+                                    <Field
+                                        className={c.textarea}
+                                        name="postField"
+                                        component="textarea"
+                                        type="text"
+                                        placeholder="How are you today?"
+                                    />
+                                </div>
+                                <div>
+                                    <button type="submit">
+                                        Post
+                                    </button>
+                                </div>
+                            </form>
+                        )}
+                />
+                <Posts {...this.props}/>
+            </div>
+        )
     }
 
-    const PostsShow = props.posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />)
+}
 
-    return (
-        <div className='wrapper'>
-            <ProfileContainer/>
-            <textarea onChange={UpdatePostText} value={props.newPostText} ref={TextAreaElement} className={c.textarea}></textarea>
-            <button onClick={AddPost}>Post</button>
-            {PostsShow}
-        </div>
-    );
+const Posts = (props) =>{
+        return( props.posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />) )
 }
 
 

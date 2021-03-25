@@ -2,22 +2,23 @@ import React from 'react'
 import style from './Login.module.css'
 import {Form, Field} from 'react-final-form'
 
-const Login = (props) => {
-    const onSubmit = (e) =>{
-        props.LoginThunk(e.email,e.password)
+class Login extends React.Component{
+    onSubmit = (e) =>{
+        this.props.LoginThunk(e.email,e.password)
         e.email = ''
         e.password = ''
+        console.log(this.state)
     }
-    const validate = (e) =>{
+    validate = (e) =>{
         console.log('validate')
     }
-
+    render(){
     return (
         <div>
             <div className={style.Login}>LoginPage</div>
             <Form
-                onSubmit={onSubmit}
-                validate={validate}
+                onSubmit={this.onSubmit}
+                validate={this.validate}
                 render={({handleSubmit}) => (
                     <form onSubmit={handleSubmit}>
                         <div>
@@ -54,6 +55,7 @@ const Login = (props) => {
             />
         </div>
     )
+    }
 }
 
 export default Login

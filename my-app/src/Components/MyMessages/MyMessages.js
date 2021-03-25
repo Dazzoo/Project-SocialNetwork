@@ -4,47 +4,66 @@ import DialogName from "./MessageItems/DialogName/DialogName"
 import LastMessage from "./MessageItems/LastMessage/LastMessage"
 import React from 'react';
 import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/MessagesReducer'
+import {Form, Field} from 'react-final-form'
 
 
 
 
 
-const MyMessages = (props) => {
+class MyMessages extends React.Component{
 
-    let NewMessageElement = React.createRef();
-
-    let UpdateMessage = () => {
-        let text = NewMessageElement.current.value;
-        props.updateMessage(text)
-    };
-
-    let AddMessage = () => {
-        props.addMessage()
+    onSubmit = (value) => {
+        this.props.addMessage(value.message)
     }
 
 
+    render() {
+        return (
+            <div className={c.dialogs}>
+                <div className={c.dialogsItems}>
+                    <UserNames {...this.props}/>
+                </div>
+                <div className={c.lastMessages}>
+                    <LastMessages {...this.props}/>
+                </div>
+                <div>
+                    <Form
+                        onSubmit={this.onSubmit}
+                        validate={this.validate}
+                        render={({handleSubmit}) => (
+                            <form onSubmit={handleSubmit}>
+                            <Field
+                                name="message"
+                                component="textarea"
+                                type="text"
+                                placeholder="Type your message"
+                            />
+                                <div>
+                                    <button type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        )}
+                    />
+                </div>
+            </div>
 
-    const UserNamesShow = props.dialogs.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} />);
+        )
+    }
 
-    const LastMessageShow = props.messages.map( m  => <LastMessage text={m.message} id= {m.id} />);
+}
 
-
+const UserNames = (props) =>{
     return (
-        <div className={c.dialogs}>
-            <div className={c.dialogsItems}>
-                {UserNamesShow}
-            </div>
-            <div className={c.lastMessages}>
+        props.dialogs.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} />)
+    )
+}
 
-                {LastMessageShow}
-            </div>
-            <div>
-                <textarea onChange={UpdateMessage} value={props.newMessageText} className={c.textfield} ref={NewMessageElement}></textarea>
-                <button className={c.sendMessage} onClick={AddMessage}>Send</button>
-            </div>
-        </div>
-
-    );
+const LastMessages = (props) =>{
+    return (
+        props.messages.map( m  => <LastMessage text={m.message} id= {m.id} />)
+    )
 }
 
 export default MyMessages;
