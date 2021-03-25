@@ -29,6 +29,9 @@ export  const AuthAPI = {
     },
     postAuth(email, password){
         return instance.post('/auth/login', {email, password})
+    },
+    deleteAuth(){
+        return instance.delete('/auth/login')
     }
 }
 

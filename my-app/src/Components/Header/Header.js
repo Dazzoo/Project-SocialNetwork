@@ -10,7 +10,10 @@ const Header = (props) => {
                 <img className={c.header} src='http://goprincetontigers.com/images/logos/site/site.png' />
             </div>
             <div className={c.Login}>
-                {props.isAuth? props.email : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth? <div>{props.email}
+                                    <div><button onClick={props.LogOutThunk}>LogOut</button></div>
+                                </div>
+                            : <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </header>
     );

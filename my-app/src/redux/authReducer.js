@@ -21,6 +21,13 @@ const authReducer = (state = initialState, action) => {
                 isAuth: action.isAuth
             }
         }
+        case 'DeleteAuth':{
+            return  {...state,
+                id: null,
+                email: null,
+                login: null,
+            }
+        }
         default:
             return state
         }
@@ -30,16 +37,48 @@ const authReducer = (state = initialState, action) => {
 export const SetUserLoginData = (id, email, login) => ({type: 'UserData', data: {id, email, login}})
 export const SetAuth = (isAuth) => ({type: 'SetAuth', isAuth})
 
+export const DeleteAuth = () => ({type:'DeleteAuth'})
+
 export const SetAuthThunk = () => {
     return (dispatch) =>{
         AuthAPI.getAuth()
-        .then(data =>{
-            if(data.resultCode === 0){
-                dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
-                dispatch(SetAuth(true))
-            }
+            .then(data =>{
+                if(data.resultCode === 0){
+                    dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
+                    dispatch(SetAuth(true))
+                }
 
-        })
+            })
+    }
+}
+
+export const LoginThunk = (email, password) => {
+    return (dispatch) =>{
+        AuthAPI.postAuth(email, password)
+            .then(response =>{
+                if(response.data.resultCode === 0){
+                    AuthAPI.getAuth()
+                        .then(data =>{
+                            if(data.resultCode === 0){
+                                dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
+                                dispatch(SetAuth(true))
+                            }
+
+                        })
+                }
+            })
+    }
+}
+
+export const LogOutThunk = () => {
+    return (dispatch) => {
+        AuthAPI.deleteAuth()
+            .then(response =>{
+                if(response.data.resultCode === 0){
+                    dispatch(DeleteAuth())
+                    dispatch(SetAuth(false))
+                }
+            })
     }
 }
 
