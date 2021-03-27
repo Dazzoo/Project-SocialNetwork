@@ -3,15 +3,26 @@ import style from './Login.module.css'
 import {Form, Field} from 'react-final-form'
 
 class Login extends React.Component{
-    onSubmit = (e) =>{
-        this.props.LoginThunk(e.email,e.password)
-        e.email = ''
-        e.password = ''
+    onSubmit = (values) =>{
+        this.props.LoginThunk(values.email,values.password)
+        values.email = ''
+        values.password = ''
         console.log(this.state)
     }
-    validate = (e) =>{
-        console.log('validate')
+
+    validate = (values) =>{
+        const errors = {}
+        if(!values.email){
+            errors.email = 'Required'
+        }
+        if(!values.password){
+            errors.password = 'Required'
+        }
+
+        return errors
     }
+
+
     render(){
     return (
         <div>
@@ -22,20 +33,25 @@ class Login extends React.Component{
                 render={({handleSubmit}) => (
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <Field
-                                name="email"
-                                component="input"
-                                type="text"
-                                placeholder="Email"
-                                />
+                            <Field name="email">
+                                {({input, meta}) => (
+                                    <div>
+                                        <input type="text" placeholder="Email" {...input} />
+                                        {meta.touched && meta.error && <span className={style.errorText} >{meta.error}</span>}
+                                    </div>
+
+                                )}
+                                </Field>
                         </div>
                         <div>
-                            <Field
-                                name="password"
-                                component="input"
-                                type="text"
-                                placeholder="Password"
-                            />
+                            <Field name="password">
+                                {({input, meta}) => (
+                                    <div>
+                                        <input type="text" placeholder="Password" {...input} />
+                                        {meta.touched && meta.error && <span className={style.errorText} >{meta.error}</span>}
+                                    </div>
+                                )}
+                            </Field>
                         </div>
                         <div>
                             <Field

@@ -7,8 +7,18 @@ import {Form, Field} from 'react-final-form'
 
 
 class MyProfile extends React.Component{
-    onSubmit = (value) => {
-        this.props.AddPost(value.postField)
+    onSubmit = (values) => {
+        this.props.AddPost(values.postField)
+    }
+    validate = (values) => {
+        const errors = {}
+        debugger
+
+        if(values.postField && values.postField.length < 10){
+            errors.postField = 'Minimum post length is 10 symbols'
+        }
+
+        return errors
     }
 
     render() {
@@ -20,14 +30,16 @@ class MyProfile extends React.Component{
                     validate={this.validate}
                     render={({handleSubmit}) => (
                             <form onSubmit={handleSubmit}>
-                                <div  >
-                                    <Field
-                                        className={c.textarea}
-                                        name="postField"
-                                        component="textarea"
-                                        type="text"
-                                        placeholder="How are you today?"
-                                    />
+                                <div>
+                                    <Field name="postField">
+                                        {({input, meta}) => (
+                                        <div>
+                                            <textarea className={c.textarea}  type="text" placeholder="How are you today?" {...input}  />
+                                            {meta.touched && meta.error && <div className={c.errorText}>{meta.error}</div>}
+                                            <span></span>
+                                        </div>
+                                            )}
+                                    </Field>
                                 </div>
                                 <div>
                                     <button type="submit">

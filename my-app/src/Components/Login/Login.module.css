@@ -1,3 +1,7 @@
 .Login{
     font-size: 100px;
 }
+
+.errorText{
+    color:red;
+}

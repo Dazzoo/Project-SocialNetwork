@@ -16,3 +16,7 @@
 .status{
     font-weight: bold;
 }
+
+.errorText{
+    color:red;
+}
