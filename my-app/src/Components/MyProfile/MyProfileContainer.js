@@ -1,9 +1,10 @@
 import React from 'react'
 import MyProfile from './MyProfile'
-import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/ProfileReducer'
+import {AddPostActionCreator, UpdateNewPostTextActionCreator} from './../../redux/profileReducer'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {compose} from 'redux'
+import {TakeProfilePage, TakePosts, TakeAuth} from '../../redux/profile-selector'
 
 
 class MyProfileClassContainer extends React.Component{
@@ -20,10 +21,9 @@ class MyProfileClassContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        ProfilePage: state.profilePage,
-        newPostText: state.profilePage.textArea,
-        posts: state.profilePage.posts,
-        isAuth: state.auth.isAuth
+        ProfilePage: TakeProfilePage(state),
+        posts: TakePosts(state),
+        isAuth: TakeAuth(state)
     }
 }
 

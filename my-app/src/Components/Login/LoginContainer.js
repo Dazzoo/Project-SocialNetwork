@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Login from './Login'
 import {LoginThunk, SetUserLoginData, SetAuthThunk, SetFetching} from './../../redux/authReducer'
+import {TakeIsAuth, TakeEmail, TakeErrorMessage, TakeIsFetching} from '../../redux/auth-selector'
 
 
 
@@ -16,10 +17,10 @@ class LoginClassContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth,
-        email: state.auth.email,
-        errorMessage: state.auth.errorMessage,
-        isFetching: state.auth.isFetching
+        isAuth: TakeIsAuth(state),
+        email: TakeEmail(state),
+        errorMessage: TakeErrorMessage(state),
+        isFetching: TakeIsFetching(state)
     }
 }
 

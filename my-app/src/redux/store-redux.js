@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from 'redux'
-import profileReducer from './ProfileReducer'
+import profileReducer from './profileReducer'
 import messageReducer from './MessagesReducer'
 import sidebarReducer from './SidebarReducer'
 import usersReducer from './usersReducer'

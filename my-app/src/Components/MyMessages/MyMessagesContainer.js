@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {Redirect} from  'react-router-dom'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
 import {compose} from 'redux'
+import {TakeTextArea, TakeDialogs, TakeMessages} from  '../../redux/messages-selector'
 
 
 
@@ -20,9 +21,9 @@ class MyMessagesСlassContainer extends React.Component{
 
 let mapStateToProps = (state) => {
     return {
-        newMessageText: state.messagePage.textArea,
-        dialogs: state.messagePage.dialogs,
-        messages: state.messagePage.messages,
+        newMessageText: TakeTextArea(state),
+        dialogs: TakeDialogs(state),
+        messages: TakeMessages(state)
     }
 }
 

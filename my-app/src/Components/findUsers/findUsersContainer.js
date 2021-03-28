@@ -6,6 +6,7 @@ import * as axios from 'axios';
 import {UserAPI} from '../../redux/API'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
 import {compose} from 'redux'
+import {TakeUsers, TakePageSize, TakeCurrentPage, TakeTotalUsersCount, TakeIsFetching, TakeInProgress} from './../../redux/users-selector'
 
 
 class FindUsersAPI extends React.Component {
@@ -22,12 +23,12 @@ class FindUsersAPI extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.findUsers.users,
-        pageSize: state.findUsers.pageSize,
-        currentPage: state.findUsers.currentPage,
-        totalUsersCount: state.findUsers.totalUsersCount,
-        isFetching: state.findUsers.isFetching,
-        inProgress: state.findUsers.inProgress
+        users: TakeUsers(state),
+        pageSize: TakePageSize(state),
+        currentPage: TakePageSize(state),
+        totalUsersCount: TakeTotalUsersCount(state),
+        isFetching: TakeIsFetching(state),
+        inProgress: TakeInProgress(state)
     }
 }
 

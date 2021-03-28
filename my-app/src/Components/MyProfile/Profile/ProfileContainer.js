@@ -2,8 +2,9 @@
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Profile from './Profile'
-import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk} from '../../../redux/ProfileReducer'
+import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk} from '../../../redux/profileReducer'
 import { withRouter } from "react-router"
+import {TakeProfile, TakeStatus} from  '../../../redux/profile-selector'
 
 class ProfileClassContainer extends React.Component {
     componentDidMount() {
@@ -25,8 +26,8 @@ class ProfileClassContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status
+        profile: TakeProfile(state),
+        status: TakeStatus(state)
     }
 }
 
