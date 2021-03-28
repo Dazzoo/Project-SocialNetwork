@@ -5,3 +5,9 @@
 .errorText{
     color:red;
 }
+
+.submitError{
+    border: red 2px solid;
+    width: 150px;
+    padding: 3px;
+}

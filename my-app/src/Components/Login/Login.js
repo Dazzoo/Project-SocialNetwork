@@ -1,13 +1,31 @@
 import React from 'react'
 import style from './Login.module.css'
 import {Form, Field} from 'react-final-form'
+import {FORM_ERROR} from 'final-form'
+import {Redirect} from  'react-router-dom'
+import FetchingIcon from './../findUsers/FetchingIcon/FetchingIcon'
+
+
 
 class Login extends React.Component{
-    onSubmit = (values) =>{
-        this.props.LoginThunk(values.email,values.password)
+
+    sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+    onSubmit = async values =>{
+        this.props.SetFetching(true)
+        const promise = this.props.LoginThunk(values.email, values.password)
+        await this.sleep(3000)
+        this.props.SetFetching(false)
+        if(values.email && values.email.indexOf('@') === -1){
+            return {email: 'Please, enter valid email address'}
+        }
         values.email = ''
         values.password = ''
-        console.log(this.state)
+        if(this.props.errorMessage != null){
+            return { [FORM_ERROR]: 'The email adress or password is incorrect' }
+        }
+
+
     }
 
     validate = (values) =>{
@@ -24,20 +42,23 @@ class Login extends React.Component{
 
 
     render(){
+        {if(this.props.isAuth === true){return <Redirect to='/profile' />}}
     return (
         <div>
             <div className={style.Login}>LoginPage</div>
             <Form
                 onSubmit={this.onSubmit}
                 validate={this.validate}
-                render={({handleSubmit}) => (
+                render={({handleSubmit, submitError}) => (
                     <form onSubmit={handleSubmit}>
                         <div>
                             <Field name="email">
                                 {({input, meta}) => (
                                     <div>
                                         <input type="text" placeholder="Email" {...input} />
-                                        {meta.touched && meta.error && <span className={style.errorText} >{meta.error}</span>}
+                                        {(meta.error || meta.submitError) && meta.touched && (
+                                            <span className={style.errorText} >{meta.error || meta.submitError}</span>
+                                        )}
                                     </div>
 
                                 )}
@@ -47,8 +68,10 @@ class Login extends React.Component{
                             <Field name="password">
                                 {({input, meta}) => (
                                     <div>
-                                        <input type="text" placeholder="Password" {...input} />
-                                        {meta.touched && meta.error && <span className={style.errorText} >{meta.error}</span>}
+                                        <input type="password" placeholder="Password" {...input} />
+                                        {(meta.error || meta.submitError) && meta.touched && (
+                                            <span className={style.errorText} >{meta.error || meta.submitError}</span>
+                                        )}
                                     </div>
                                 )}
                             </Field>
@@ -61,8 +84,10 @@ class Login extends React.Component{
                             />
                             Remember me
                         </div>
+                        {this.props.isFetching? <FetchingIcon/> : null}
+                        {submitError && <div className={style.submitError}>{submitError}</div>}
                         <div>
-                            <button type="submit">
+                            <button type="submit" disabled={this.submitting}>
                                 Submit
                                 </button>
                         </div>
@@ -73,5 +98,7 @@ class Login extends React.Component{
     )
     }
 }
+
+
 
 export default Login

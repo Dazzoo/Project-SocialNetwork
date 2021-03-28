@@ -3,7 +3,6 @@ import c from './findUsers.module.css';
 import FetchingIcon from './FetchingIcon/FetchingIcon'
 import {NavLink} from "react-router-dom"
 import * as axios from 'axios';
-import {UserAPI} from  '../../redux/API'
 
 const FindUsers = (props) => {
         let pagesCount = Math.ceil (props.totalUsersCount / props.pageSize)
