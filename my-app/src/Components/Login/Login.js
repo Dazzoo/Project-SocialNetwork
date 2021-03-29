@@ -13,8 +13,12 @@ class Login extends React.Component{
 
     onSubmit = async values =>{
         this.props.SetFetching(true)
-        const promise = this.props.LoginThunk(values.email, values.password)
-        await this.sleep(3000)
+        this.props.LoginThunk(values.email, values.password)
+        while (this.props.authRequestIsDone != true){
+            await this.sleep(100)
+
+        }
+        this.props.AuthRequestIsDone(false)
         this.props.SetFetching(false)
         if(values.email && values.email.indexOf('@') === -1){
             return {email: 'Please, enter valid email address'}
@@ -24,8 +28,6 @@ class Login extends React.Component{
         if(this.props.errorMessage != null){
             return { [FORM_ERROR]: 'The email adress or password is incorrect' }
         }
-
-
     }
 
     validate = (values) =>{

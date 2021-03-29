@@ -7,7 +7,9 @@ let initialState = {
     login: null,
     isFetching: false,
     isAuth: false,
-    errorMessage: null
+    errorMessage: null,
+    authRequestIsDone: false,
+    initialized: false
 
 }
 
@@ -40,6 +42,16 @@ const authReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
+        case  'authRequestIsDone':{
+            return {...state,
+                authRequestIsDone: action.authRequestIsDone
+            }
+        }
+        case 'INITIALIZE':{
+            return {...state,
+                initialized: true
+            }
+        }
         default:
             return state
         }
@@ -50,26 +62,27 @@ export const SetUserLoginData = (id, email, login) => ({type: 'UserData', data: 
 export const SetAuth = (isAuth) => ({type: 'SetAuth', isAuth})
 export const SetErrorMessage = (errorMessage) => ({type: 'LoginError', errorMessage})
 export const SetFetching = (isFetching) => ({type: 'isFetching', isFetching})
+export const AuthRequestIsDone = (authRequestIsDone) => ({type: 'authRequestIsDone', authRequestIsDone})
+export const Initialize = () => ({type: 'INITIALIZE'})
 
 export const DeleteAuth = () => ({type:'DeleteAuth'})
 
-export const SetAuthThunk = () => {
-    return (dispatch) =>{
-        AuthAPI.getAuth()
+export const SetAuthThunk = () => (dispatch) => {
+    return AuthAPI.getAuth()
             .then(data =>{
                 if(data.resultCode === 0){
                     dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
                     dispatch(SetAuth(true))
                 }
-
             })
-    }
+
 }
 
 export const LoginThunk = (email, password) => (dispatch) =>{
           return AuthAPI.postAuth(email, password)
             .then(response =>{
                 if(response.data.resultCode === 0){
+                    dispatch(AuthRequestIsDone(true))
                     dispatch(SetErrorMessage(null))
                     AuthAPI.getAuth()
                         .then(data =>{
@@ -81,10 +94,19 @@ export const LoginThunk = (email, password) => (dispatch) =>{
                 }
                 else{
                     dispatch(SetErrorMessage(response.data.messages))
+                    dispatch(AuthRequestIsDone(true))
+
                 }
             })
-    }
+}
 
+export const InitializeApp = () => (dispatch) =>{
+    let promise = dispatch(SetAuthThunk())
+        promise.then(() =>{
+            dispatch(Initialize())
+        })
+
+}
 
 
 

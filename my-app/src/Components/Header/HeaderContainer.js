@@ -5,9 +5,6 @@ import * as axios from 'axios'
 import {SetUserLoginData, SetAuth, SetAuthThunk, LogOutThunk} from '../../redux/authReducer'
 
 class HeaderClassComponent extends React.Component{
-    componentDidMount() {
-        this.props.SetAuthThunk()
-    }
 
     render() {
         return <Header {...this.props}/>

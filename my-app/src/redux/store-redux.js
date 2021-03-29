@@ -12,7 +12,7 @@ let reducers = combineReducers({
     messagePage: messageReducer,
     sidebar: sidebarReducer,
     findUsers: usersReducer,
-    auth: authReducer,
+    auth: authReducer
 })
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware))
