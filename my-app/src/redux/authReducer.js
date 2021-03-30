@@ -71,6 +71,7 @@ export const SetAuthThunk = () => (dispatch) => {
     return AuthAPI.getAuth()
             .then(data =>{
                 if(data.resultCode === 0){
+                    debugger
                     dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
                     dispatch(SetAuth(true))
                 }

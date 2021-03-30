@@ -1,46 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import style from '../MyProfile.module.css'
 import FetchingIcon from '../../findUsers/FetchingIcon/FetchingIcon'
 
-class Profile extends React.Component{
-    state = {
-        editMode: false,
-        status: ""
+
+
+const Profile = (props) => {
+    let [editMode, setEditMode] = useState(false)
+    let [status, setStatus] = useState(props.status)
+
+
+    const ActivateEditMode = () => {
+        setEditMode(true)
     }
 
-    ActivateStatus = () =>{
-        this.setState({editMode: true})
+    const DeactivateEditMode = () => {
+        setEditMode(false)
+        props.putStatusThunk(status)
     }
 
-    UnActivateStatus = () =>{
-        this.setState({editMode: false})
-        this.props.putStatusThunk(this.state.status)
-    }
-    UpdateStatus = (e) =>{
-        this.setState({status: e.currentTarget.value})
+    const OnStatusChange = (e) => {
+        setStatus(e.currentTarget.value)
     }
 
-    render() {
-        if(!this.props.profile){
-            return (
-                <FetchingIcon/>
-
-            )
-        }
-        return (
-            <div className={style.Avatar}>
-                <img src={this.props.profile.photos.large? this.props.profile.photos.large : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
-                <div>{this.props.profile.fullName ? 'FullName: ' + this.props.profile.fullName : null}</div>
-                <div>{this.props.profile.aboutMe ? 'About me: ' + this.props.profile.aboutMe : null}</div>
-                <div>{this.props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
-                {this.state.editMode === false ?
-                    <span className={style.status} onClick={this.ActivateStatus} >{this.props.status ? this.props.status : '-----'}</span> :
-                    <input onChange={this.UpdateStatus} autoFocus={true} onBlur={this.UnActivateStatus} value={this.state.status} />}
-            </div>
-        )
-    }
-
-
+    return (
+        <div className={style.Avatar}>
+            <img src={props.profile.photos.large ? props.profile.photos.large : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
+            <div>{props.profile.fullName ? 'FullName: ' + props.profile.fullName : null}</div>
+            <div>{props.profile.aboutMe ? 'About me: ' + props.profile.aboutMe : null}</div>
+            <div>{props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
+            {editMode === false ?
+                <span className={style.status} onClick={ActivateEditMode} >{status ? status : 'How you feeling today?'}</span> :
+                <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />
+            }
+        </div>
+    )
 }
+
+
+
+
+
+
+
+
 
 export default Profile

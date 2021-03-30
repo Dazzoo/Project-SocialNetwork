@@ -1,6 +1,7 @@
 
 
 export const TakeProfile = (state) => {
+    debugger
     return state.profilePage.profile
 }
 

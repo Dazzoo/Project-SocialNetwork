@@ -12,7 +12,6 @@ class MyProfile extends React.Component{
     }
     validate = (values) => {
         const errors = {}
-        debugger
 
         if(values.postField && values.postField.length < 10){
             errors.postField = 'Minimum post length is 10 symbols'

@@ -5,9 +5,11 @@ import Profile from './Profile'
 import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk} from '../../../redux/profileReducer'
 import { withRouter } from "react-router"
 import {TakeProfile, TakeStatus} from  '../../../redux/profile-selector'
+ import Preloader from '../../findUsers/FetchingIcon/FetchingIcon'
 
 class ProfileClassContainer extends React.Component {
     componentDidMount() {
+
         let userId = this.props.match.params.userId
         if(!userId){
             userId = 15582
@@ -17,6 +19,11 @@ class ProfileClassContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.profile){
+            return (
+                <Preloader/>
+            )
+        }
     return (
         <Profile {...this.props} />
             )
