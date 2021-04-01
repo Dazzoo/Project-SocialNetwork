@@ -11,7 +11,7 @@ let initialState = {
     inProgress: []
 }
 
-const usersReducer = (state = initialState, action) => {
+export const usersReducer = (state = initialState, action) => {
     switch (action.type){
         case 'Followed':{
             return {...state,
@@ -80,52 +80,39 @@ export const SetFetching = (isFetching) => ({type: 'Fetching', isFetching: isFet
 export const AddInProgress = (inProgress) => ({type: 'InProgressADD', inProgress: inProgress})
 export const RemoveInProgress = (removeId) => ({type: 'InProgressREMOVE', removeId})
 
-export const FollowThunk = (id) => {
-     return (dispatch) => {
+export const FollowThunk = (id) => async (dispatch) => {
          dispatch(AddInProgress(id))
-         UserAPI.deleteFollow(id)
-             .then(data => {
+         let data = await UserAPI.deleteFollow(id)
                  if(data.resultCode === 0){
                      dispatch(RemoveInProgress(id))
                      dispatch(Follow(id))
                  }
-             })
-     }
 }
 
-export const UnfollowThunk = (id) => {
-    return (dispatch) => {
+export const UnfollowThunk = (id) => async (dispatch) => {
         dispatch(AddInProgress(id))
-        UserAPI.postFollow(id)
-            .then(data => {
+        let data = await UserAPI.postFollow(id)
                 if(data.resultCode === 0){
                     dispatch(RemoveInProgress(id))
                     dispatch(Unfollow(id))
                 }
-            })
-    }
+
 }
 
-export const GetUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+export const GetUsers = (currentPage, pageSize) => async (dispatch) => {
         dispatch(SetFetching(true))
-        UserAPI.getUsers(currentPage, pageSize).then(data => {
+        let data = await UserAPI.getUsers(currentPage, pageSize)
             dispatch(SetFetching(false))
             dispatch(SetUsers(data.items))
             dispatch(SetTotalUsersCount(data.totalCount))
-        })
-    }
 }
 
-export const ChangeCurrentPage = (newCurrentPage, pageSize) => {
-    return (dispatch) => {
+export const ChangeCurrentPage = (newCurrentPage, pageSize) => async (dispatch) => {
             dispatch(SetFetching(true))
             dispatch(ChangePage(newCurrentPage))
-            UserAPI.getUsers(newCurrentPage, pageSize).then(data => {
+            let data = await UserAPI.getUsers(newCurrentPage, pageSize)
             dispatch(SetFetching(false))
             dispatch(SetUsers(data.items))
-    })
-    }
 }
 
 

@@ -7,10 +7,9 @@ let initialState = {
     login: null,
     isFetching: false,
     isAuth: false,
-    errorMessage: null,
+    LoginDataError: false,
     authRequestIsDone: false,
     initialized: false
-
 }
 
 const authReducer = (state = initialState, action) => {
@@ -42,14 +41,14 @@ const authReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             }
         }
-        case  'authRequestIsDone':{
-            return {...state,
-                authRequestIsDone: action.authRequestIsDone
-            }
-        }
         case 'INITIALIZE':{
             return {...state,
                 initialized: true
+            }
+        }
+        case 'LOGIN-DATA-ERROR':{
+            return {...state,
+                LoginDataError: action.value
             }
         }
         default:
@@ -60,52 +59,42 @@ const authReducer = (state = initialState, action) => {
 
 export const SetUserLoginData = (id, email, login) => ({type: 'UserData', data: {id, email, login}})
 export const SetAuth = (isAuth) => ({type: 'SetAuth', isAuth})
-export const SetErrorMessage = (errorMessage) => ({type: 'LoginError', errorMessage})
 export const SetFetching = (isFetching) => ({type: 'isFetching', isFetching})
-export const AuthRequestIsDone = (authRequestIsDone) => ({type: 'authRequestIsDone', authRequestIsDone})
 export const Initialize = () => ({type: 'INITIALIZE'})
+export const LoginDataError = (value) => ({type: 'LOGIN-DATA-ERROR', value})
 
 export const DeleteAuth = () => ({type:'DeleteAuth'})
 
-export const SetAuthThunk = () => (dispatch) => {
-    return AuthAPI.getAuth()
-            .then(data =>{
+export const SetAuthThunk = () => async (dispatch) => {
+        let data = await AuthAPI.getAuth()
                 if(data.resultCode === 0){
-                    debugger
                     dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
-                    dispatch(SetAuth(true))
-                }
-            })
-
+                    dispatch(SetAuth(true))}
+    return null
 }
 
-export const LoginThunk = (email, password) => (dispatch) =>{
-          return AuthAPI.postAuth(email, password)
-            .then(response =>{
+export const LoginThunk = (email, password) => async (dispatch) =>{
+          let response = await AuthAPI.postAuth(email, password)
                 if(response.data.resultCode === 0){
-                    dispatch(AuthRequestIsDone(true))
-                    dispatch(SetErrorMessage(null))
-                    AuthAPI.getAuth()
-                        .then(data =>{
+                    let data = await AuthAPI.getAuth()
                             if(data.resultCode === 0){
                                 dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
                                 dispatch(SetAuth(true))
                             }
-                        })
+                    dispatch(LoginDataError(false))
+                    return null
                 }
-                else{
-                    dispatch(SetErrorMessage(response.data.messages))
-                    dispatch(AuthRequestIsDone(true))
+                else if(response.data.resultCode !== 0){
+                    dispatch(LoginDataError(true))
+                    return null
+                }
 
-                }
-            })
+    return null
 }
 
-export const InitializeApp = () => (dispatch) =>{
-    let promise = dispatch(SetAuthThunk())
-        promise.then(() =>{
+export const InitializeApp = () => async (dispatch) =>{
+    await dispatch(SetAuthThunk())
             dispatch(Initialize())
-        })
 
 }
 
@@ -114,16 +103,13 @@ export const InitializeApp = () => (dispatch) =>{
 
 
 
-export const LogOutThunk = () => {
-    return (dispatch) => {
-        AuthAPI.deleteAuth()
-            .then(response =>{
+export const LogOutThunk = () => async (dispatch) => {
+        let response = await AuthAPI.deleteAuth()
                 if(response.data.resultCode === 0){
                     dispatch(DeleteAuth())
                     dispatch(SetAuth(false))
                 }
-            })
-    }
+    return null
 }
 
 

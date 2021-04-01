@@ -25,7 +25,7 @@ let mapStateToProps = (state) => {
     return {
         users: TakeUsers(state),
         pageSize: TakePageSize(state),
-        currentPage: TakePageSize(state),
+        currentPage: TakeCurrentPage(state),
         totalUsersCount: TakeTotalUsersCount(state),
         isFetching: TakeIsFetching(state),
         inProgress: TakeInProgress(state)

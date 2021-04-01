@@ -14,7 +14,9 @@
     width: 200px;
 }
 .status{
+    margin: 2px;
     font-weight: bold;
+    border: darkorchid 3px solid;
 }
 
 .errorText{

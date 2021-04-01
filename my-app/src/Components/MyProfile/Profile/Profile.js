@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import style from '../MyProfile.module.css'
 import FetchingIcon from '../../findUsers/FetchingIcon/FetchingIcon'
 
@@ -7,6 +7,10 @@ import FetchingIcon from '../../findUsers/FetchingIcon/FetchingIcon'
 const Profile = (props) => {
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
+
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
 
 
     const ActivateEditMode = () => {
