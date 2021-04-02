@@ -12,8 +12,9 @@ import {Form, Field} from 'react-final-form'
 
 class MyMessages extends React.Component{
 
-    onSubmit = (value) => {
-        this.props.addMessage(value.message)
+    onSubmit = (values) => {
+        this.props.addMessage(values.message)
+        values.message = ''
     }
 
 

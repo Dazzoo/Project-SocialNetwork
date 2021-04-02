@@ -9,6 +9,8 @@ import {Form, Field} from 'react-final-form'
 class MyProfile extends React.Component{
     onSubmit = (values) => {
         this.props.AddPost(values.postField)
+        values.postField = ''
+        values.submit = ''
     }
     validate = (values) => {
         const errors = {}

@@ -33,7 +33,7 @@ const Profile = (props) => {
             <div>{props.profile.aboutMe ? 'About me: ' + props.profile.aboutMe : null}</div>
             <div>{props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
             {editMode === false ?
-                <span className={style.status} onClick={ActivateEditMode} >{status ? status : 'How you feeling today?'}</span> :
+                <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span> :
                 <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />
             }
         </div>
