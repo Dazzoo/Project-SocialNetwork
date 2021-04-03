@@ -13,11 +13,7 @@ let state = store.getState()
 
         ReactDOM.render(
             <React.StrictMode>
-                <BrowserRouter>
-                <Provider store={store}>
                     <App state={state}/>
-                </Provider>
-                </BrowserRouter>
             </React.StrictMode>,
             document.getElementById('root')
 

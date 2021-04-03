@@ -24,7 +24,7 @@ class MyProfile extends React.Component{
 
     render() {
         return (
-            <div className='wrapper'>
+            <div>
                 <ProfileContainer/>
                 <Form
                     onSubmit={this.onSubmit}

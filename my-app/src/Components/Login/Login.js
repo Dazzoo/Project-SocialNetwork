@@ -42,7 +42,7 @@ class Login extends React.Component{
         {if(this.props.isAuth === true){return <Redirect to='/profile' />}}
     return (
         <div>
-            <div className={style.Login}>LoginPage</div>
+            <div className={style.Login}>Login</div>
             <Form
                 onSubmit={this.onSubmit}
                 validate={this.validate}
@@ -84,7 +84,7 @@ class Login extends React.Component{
                         {this.props.isFetching? <FetchingIcon/> : null}
                         {submitError && <div className={style.submitError}>{submitError}</div>}
                         <div>
-                            <button type="submit" disabled={this.submitting}>
+                            <button type="submit" class="btn btn-success" disabled={this.submitting}>
                                 Submit
                                 </button>
                         </div>

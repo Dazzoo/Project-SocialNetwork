@@ -6,7 +6,7 @@ const Sidebar = (props) => {
     const FriendShow = props.friends.map( n  => <Friend name= {n.name} id= {n.id} />);
 
     return (
-        <aside className={c.sideBar}>
+        <div>
             <ul>
                 <li><NavLink  to="/profile" activeClassName={c.active}>Profile</NavLink></li>
                 <li><NavLink  to="/messages" activeClassName={c.active}>Messages</NavLink></li>
@@ -21,7 +21,7 @@ const Sidebar = (props) => {
             <div>
                 {FriendShow}
             </div>
-        </aside>
+        </div>
     );
 };
 

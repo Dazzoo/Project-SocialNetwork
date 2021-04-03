@@ -1,0 +1,43 @@
+
+
+.backgroundLight{
+  background-color: rgb(255,255,255);
+}
+.backgroundDark{
+  background-color: #33363d;
+}
+
+.wrapper{
+  max-width:1200px;
+  margin:0 auto;
+  border: 1px black solid;
+}
+
+.gridbox{
+  display: grid;
+  grid-template-columns: 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px;
+  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+  gap: 0px 0px;
+  grid-template-areas:
+    "headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else";
+}
+
+.headerComponent { grid-area: headerComponent;}
+.sidebar { grid-area: sidebar;}
+.else { grid-area: else; }
+.footer { grid-area: footer; }
+

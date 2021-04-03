@@ -9,7 +9,8 @@ let initialState = {
     isAuth: false,
     LoginDataError: false,
     authRequestIsDone: false,
-    initialized: false
+    initialized: false,
+    theme: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -51,6 +52,11 @@ const authReducer = (state = initialState, action) => {
                 LoginDataError: action.value
             }
         }
+        case 'CHANGE_THEME':{
+            return  {...state,
+                theme: action.switcher
+            }
+        }
         default:
             return state
         }
@@ -62,6 +68,7 @@ export const SetAuth = (isAuth) => ({type: 'SetAuth', isAuth})
 export const SetFetching = (isFetching) => ({type: 'isFetching', isFetching})
 export const Initialize = () => ({type: 'INITIALIZE'})
 export const LoginDataError = (value) => ({type: 'LOGIN-DATA-ERROR', value})
+export const ChangeTheme = (switcher) => ({type: 'CHANGE_THEME' , switcher})
 
 export const DeleteAuth = () => ({type:'DeleteAuth'})
 

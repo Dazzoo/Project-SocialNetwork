@@ -1,15 +1,37 @@
 .header{
-    height: 160px;
-    border: 1px black solid;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "logoPlace logoPlace logoPlace else else else else else else else else else"
+    "logoPlace logoPlace logoPlace else else else else else else else else else";
+    border: 1px solid black;
 }
+
+.logoPlace { grid-area: logoPlace; }
+
+.else { grid-area: else; }
+
 .img{
     width: 100%;
     height: auto;
+    display: inline-block;
 }
-.imageContainer{
-    width: 160px;
-
+.logoPic{
+    height: 58px;
+    width: 44px;
+}
+.logoText{
+    padding-left: 5px;
+    height: 50px;
+    width: 120px;
+}
+.themeButton{
+    display: inline-block;
 }
 .Login{
-    float:right;
+    display: inline-block;
+    float: right;
 }

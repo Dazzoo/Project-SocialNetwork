@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import style from './App.module.css';
 import React from 'react'
 import {connect} from 'react-redux'
 import HeaderContainer from './Components/Header/HeaderContainer'
@@ -16,6 +16,9 @@ import {InitializeApp} from './redux/authReducer'
 import { withRouter } from "react-router"
 import { compose } from 'redux'
 import Preloader from  './Components/findUsers/FetchingIcon/FetchingIcon'
+import {Provider} from "react-redux"
+import store from './redux/store-redux'
+
 
 
 
@@ -30,10 +33,16 @@ class App extends React.Component {
             return <Preloader/>
         }
         return (
-                <div className='wrapper'>
-                    <HeaderContainer/>
-                    <div className='flexbox'>
-                        <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+            <div className={`${this.props.theme && style.backgroundDark} ${!this.props.theme && style.backgroundLight}`}>
+                <div className={style.wrapper}>
+                    <div className={style.gridbox}>
+                        <div className={style.headerComponent} >
+                            <HeaderContainer />
+                        </div>
+                        <div className={style.sidebar} >
+                            <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+                        </div>
+                        <div className={style.else}>
                         <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
                         <Route path='/messages' render={() => <MyMessagesContainer/>} />
                         <Route path='/news' render={MyNews} />
@@ -41,9 +50,10 @@ class App extends React.Component {
                         <Route path='/settings' render={MySettings} />
                         <Route path='/findUsers' render={() => <FindUsersContainer/>} />
                         <Route path='/login' render={() => <LoginContainer/>} />
+                        </div>
                     </div>
                 </div>
-
+            </div>
         )
 
 
@@ -51,10 +61,13 @@ class App extends React.Component {
 
 }
 
+
+
 const mapStateToProps = (state) => {
     return {
         state: state,
-        initialized: state.auth.initialized
+        initialized: state.auth.initialized,
+        theme: state.auth.theme
     }
 }
 
@@ -63,6 +76,20 @@ const mapStateToProps = (state) => {
 
 
 
-export default compose(
+let AppContainer = compose(
     withRouter,
     connect(mapStateToProps,{InitializeApp}))(App)
+
+class AppHightContainer extends React.Component {
+    render(){
+        return (
+            <BrowserRouter>
+                <Provider store={store}>
+                    <AppContainer/>
+                </Provider>
+            </BrowserRouter>
+        )
+    }
+}
+
+export default AppHightContainer
