@@ -19,10 +19,10 @@ const Header = (props) => {
                 {props.theme && <button type="button" className="btn btn-light" onClick={() => props.ChangeTheme(false)}>Light theme</button>}
             </div>
             <div className={style.Login}>
-                {props.isAuth? <div>{props.email}
-                                    <div><button type="button" class="btn btn-danger" onClick={props.LogOutThunk}>LogOut</button></div>
+                {props.isAuth? <div className="" >{props.email}
+                                    <div className={style.LogOut} ><button type="button" class={"btn btn-danger"} onClick={props.LogOutThunk}>LogOut</button></div>
                                 </div>
-                            : <NavLink  to={'/login'}><button type="button" class="btn btn-success" >Login</button></NavLink> }
+                            : <NavLink  to={'/login'}><button type="button" class="btn btn-success " >Login</button></NavLink> }
             </div>
             </div>
         </header>

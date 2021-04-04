@@ -40,7 +40,7 @@ class MyMessages extends React.Component{
                                 placeholder="Type your message"
                             />
                                 <div>
-                                    <button type="submit">
+                                    <button type="submit" class="btn btn-primary">
                                         Submit
                                     </button>
                                 </div>

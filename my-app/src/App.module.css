@@ -1,5 +1,4 @@
 
-
 .backgroundLight{
   background-color: rgb(255,255,255);
 }
@@ -39,5 +38,5 @@
 .headerComponent { grid-area: headerComponent;}
 .sidebar { grid-area: sidebar;}
 .else { grid-area: else; }
-.footer { grid-area: footer; }
+.footer { grid-area: footer;}
 

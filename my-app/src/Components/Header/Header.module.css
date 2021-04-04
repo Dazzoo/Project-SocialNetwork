@@ -34,4 +34,11 @@
 .Login{
     display: inline-block;
     float: right;
+    margin-right:10px;
+}
+
+.LogOut{
+    display: inline-block;
+    margin-right:10px;
+
 }

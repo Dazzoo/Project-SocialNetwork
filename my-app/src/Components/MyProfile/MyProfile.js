@@ -43,7 +43,7 @@ class MyProfile extends React.Component{
                                     </Field>
                                 </div>
                                 <div>
-                                    <button type="submit">
+                                    <button type="submit" class="btn btn-primary">
                                         Post
                                     </button>
                                 </div>

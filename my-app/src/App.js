@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import style from './App.module.css';
-import React from 'react'
+import React, { Suspense } from 'react'
 import {connect} from 'react-redux'
 import HeaderContainer from './Components/Header/HeaderContainer'
 import Sidebar from './Components/Sidebar/Sidebar.js'
 import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
-import MyMessagesContainer from './Components/MyMessages/MyMessagesContainer.js'
 import MyNews from './Components/MyNews/MyNews.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
@@ -18,6 +17,9 @@ import { compose } from 'redux'
 import Preloader from  './Components/findUsers/FetchingIcon/FetchingIcon'
 import {Provider} from "react-redux"
 import store from './redux/store-redux'
+import withReactLazy from './hoc/withReactLazy'
+const MyMessagesContainer = React.lazy(() => import('./Components/MyMessages/MyMessagesContainer'))
+
 
 
 
@@ -44,11 +46,11 @@ class App extends React.Component {
                         </div>
                         <div className={style.else}>
                         <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
-                        <Route path='/messages' render={() => <MyMessagesContainer/>} />
-                        <Route path='/news' render={MyNews} />
-                        <Route path='/music' render={MyMusic} />
-                        <Route path='/settings' render={MySettings} />
-                        <Route path='/findUsers' render={() => <FindUsersContainer/>} />
+                        <Route path='/messages' render={() => withReactLazy(MyMessagesContainer)} />
+                        <Route path='/news' render={() => withReactLazy(MyNews)} />
+                        <Route path='/music' render={() => withReactLazy(MyMusic)} />
+                        <Route path='/settings' render={() => withReactLazy(MySettings)} />
+                        <Route path='/findUsers' render={() => withReactLazy(FindUsersContainer)} />
                         <Route path='/login' render={() => <LoginContainer/>} />
                         </div>
                     </div>

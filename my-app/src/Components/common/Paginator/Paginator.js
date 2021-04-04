@@ -12,17 +12,16 @@ const Paginator = ({totalUsersCount, pageSize, currentPage, ChangeCurrentPage}) 
     const [PositionNumber, setCurrentPageArea] = useState(1)
     let leftAreaBorder = (PositionNumber - 1) * PositionSize + 1
     let rightAreaBorder = (PositionNumber * PositionSize)
-    debugger
 
     return (
         <div>
-            { PositionNumber > 1 && <button onClick={() => {setCurrentPageArea(PositionNumber - 1)}} >Pre</button> }
+            { PositionNumber > 1 && <button class="btn btn-outline-primary" onClick={() => {setCurrentPageArea(PositionNumber - 1)}} >Pre</button> }
 
             {pages.filter(pos => pos >= leftAreaBorder && pos < rightAreaBorder)
-                .map(p => {return <span className={`${currentPage === p && style.activePage} ${style.pagesIcon}`}
+                .map(p => {return <span className={`${currentPage === p && style.activePage} ${"btn btn-primary"}`}
                                           onClick={() => {ChangeCurrentPage(p, pageSize)}}>{p}</span>})}
 
-            { PositionNumber < PositionCount && <button onClick={() => {setCurrentPageArea(PositionNumber + 1)}} >Next</button> }
+            { PositionNumber < PositionCount && <button class="btn btn-outline-primary" onClick={() => {setCurrentPageArea(PositionNumber + 1)}} >Next</button> }
         </div>
     )
 }

@@ -14,10 +14,10 @@ const User = ({u, props}) => {
                 </div>
                 <div>
                     {u.followed
-                        ? <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
+                        ? <button class="btn btn-outline-danger" disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
                             props.FollowThunk(u.id)
                         }}>Unfollow</button>
-                        : <button disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
+                        : <button class="btn btn-outline-success" disabled={props.inProgress.some(id => id === u.id)} onClick={() => {
                             props.UnfollowThunk(u.id)
                         }}>Follow</button>
                     }
