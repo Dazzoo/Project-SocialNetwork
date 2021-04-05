@@ -27,3 +27,7 @@ export const TakeIs0wner = (state) => {
 export const TakeId = (state) => {
     return state.auth.id
 }
+
+export const TakeLikedPostsID = (state) => {
+    return state.profilePage.likedPostsID
+}

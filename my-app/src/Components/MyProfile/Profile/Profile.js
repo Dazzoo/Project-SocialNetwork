@@ -14,7 +14,9 @@ const Profile = (props) => {
 
 
     const ActivateEditMode = () => {
-        setEditMode(true)
+        if(props.isOwner){
+            setEditMode(true)
+        }
     }
 
     const DeactivateEditMode = () => {

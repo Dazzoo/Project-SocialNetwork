@@ -3,8 +3,9 @@ import MyProfile from './MyProfile'
 import {AddPostActionCreator} from './../../redux/profileReducer'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-import {TakeProfilePage, TakePosts, TakeAuth} from '../../redux/profile-selector'
+import {TakeProfilePage, TakePosts, TakeAuth, TakeLikedPostsID} from '../../redux/profile-selector'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
+    import {AddPost, AddLikedPost, RemoveLikedPost} from '../../redux/profileReducer'
 
 
 
@@ -22,18 +23,13 @@ let mapStateToProps = (state) => {
     return {
         ProfilePage: TakeProfilePage(state),
         posts: TakePosts(state),
-        isAuth: TakeAuth(state)
-    }
-}
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-        AddPost: (text) => {dispatch(AddPostActionCreator(text))},
+        isAuth: TakeAuth(state),
+        likedPostsID: TakeLikedPostsID(state)
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {AddPostActionCreator, AddLikedPost, RemoveLikedPost}),
     withAuthRedirect
 )(MyProfileClassContainer);

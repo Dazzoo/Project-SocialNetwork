@@ -8,7 +8,7 @@ import {Form, Field} from 'react-final-form'
 
 class MyProfile extends React.Component{
     onSubmit = (values) => {
-        this.props.AddPost(values.postField)
+        this.props.AddPostActionCreator(values.postField)
         values.postField = ''
         values.submit = ''
     }
@@ -58,7 +58,7 @@ class MyProfile extends React.Component{
 }
 
 const Posts = (props) =>{
-        return( props.posts.map(el => <Post id={el.id} likeCount={el.likeCount} text={el.text} />) )
+        return( props.posts.map(el => <Post {...props}  id={el.id} likeCount={el.likeCount} text={el.text} />) )
 }
 
 
