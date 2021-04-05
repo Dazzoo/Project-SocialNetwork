@@ -45,5 +45,14 @@ export const  ProfileAPI = {
     },
     async putStatus(status){
         return await instance.put('profile/status', {status: status})
+    },
+    async putPhoto(photo){
+        const formData = new FormData()
+        formData.append("image", photo)
+        return await instance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 }

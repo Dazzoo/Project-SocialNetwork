@@ -8,7 +8,7 @@ import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNews from './Components/MyNews/MyNews.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
-import {BrowserRouter, Route} from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
 import {InitializeApp} from './redux/authReducer'
@@ -85,11 +85,11 @@ let AppContainer = compose(
 class AppHightContainer extends React.Component {
     render(){
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }

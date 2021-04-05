@@ -26,16 +26,23 @@ const Profile = (props) => {
         setStatus(e.currentTarget.value)
     }
 
+    const changeProfilePhoto = (e) => {
+        if (e.target.files.length)(
+            props.savePhoto(e.target.files[0])
+        )
+    }
+
+
     return (
         <div className={style.Avatar}>
             <img src={props.profile.photos.large ? props.profile.photos.large : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
+            {props.isOwner? <input type="file" className={style.customFileInput} onChange={changeProfilePhoto} /> : null }
             <div>{props.profile.fullName ? 'FullName: ' + props.profile.fullName : null}</div>
             <div>{props.profile.aboutMe ? 'About me: ' + props.profile.aboutMe : null}</div>
             <div>{props.profile.aboutMe ? <div>lookingForAJob : yes</div> : <div>lookingForAJob : no</div>}</div>
             {editMode === false ?
                 <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span> :
-                <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />
-            }
+                <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />}
         </div>
     )
 }

@@ -19,3 +19,11 @@ export const TakePosts = (state) => {
 export const TakeAuth = (state) => {
     return state.auth.isAuth
 }
+
+export const TakeIs0wner = (state) => {
+    return state.profilePage.isOwner
+}
+
+export const TakeId = (state) => {
+    return state.auth.id
+}
