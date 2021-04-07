@@ -54,5 +54,10 @@ export const  ProfileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    async putProfile(profile){
+        let response = await instance.put('/profile', profile)
+        debugger
+            return response
     }
 }
