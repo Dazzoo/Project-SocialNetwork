@@ -7,4 +7,12 @@
     height: 200px;
 }
 
+.infoName{
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: bold;
+}
 
+.infoValue{
+    display: inline-block;
+}

@@ -15,10 +15,10 @@ class ProfileClassContainer extends React.Component {
                 small: this.profile.photos.small,
                 large: this.profile.photos.large
             },
-            aboutMe: 'яя',
+            aboutMe: formData.aboutMe ? formData.aboutMe : (this.profile.aboutMe ? this.profile.aboutMe : null ) ,
             userId: formData.userId,
             lookingForAJob: formData.lookingForAJob ? formData.lookingForAJob : this.profile.lookingForAJob,
-            lookingForAJobDescription: formData.lookingForAJobDescription ? formData.lookingForAJobDescription : this.profile.lookingForAJobDescription ,
+            lookingForAJobDescription: formData.lookingForAJobDescription ? formData.lookingForAJobDescription : (this.profile.lookingForAJobDescription ? this.profile.lookingForAJobDescription : null ) ,
             fullName: formData.fullName ? formData.fullName : this.profile.fullName,
             contacts:{
                 github: formData.github? formData.github : this.profile.contacts.github,
@@ -33,6 +33,8 @@ class ProfileClassContainer extends React.Component {
         }
         return profile
     }
+
+
     // не ререндериться страница при обновлении инфы профиля
     // lookingForAJobDescription, aboutMe is required
 
