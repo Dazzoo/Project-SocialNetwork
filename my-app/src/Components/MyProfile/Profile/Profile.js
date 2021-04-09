@@ -48,12 +48,10 @@ const Profile = (props) => {
 
 
     return (
-        <div>
+        <div className={style.gridContainer} >
             <Avatar {...props} />
 
-            {props.isOwner? <input type="file" className={style.customFileInput} onChange={changeProfilePhoto} />
-            :
-                null }
+
 
             {editModeProfile ?
 
@@ -63,17 +61,24 @@ const Profile = (props) => {
 
                 <ProfileInfo {...props} />
             }
-            {editModeProfile? null
-                :
-                (props.isOwner? <button className="btn btn-primary" onClick={() => setEditModeProfile(true)}>Edit Profile</button> : null) }
-            {editModeProfile ?
-                null
-                :
-                (!editMode ?
-                <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span>
+            <div className={style.editInfo}>
+                {editModeProfile? null
                     :
-                <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />)
-            }
+                    (props.isOwner? <button className="btn btn-primary" onClick={() => setEditModeProfile(true)}>Edit Profile</button> : null) }
+                {props.isOwner? <input type="file" className={style.customFileInput} onChange={changeProfilePhoto} />
+                    :
+                    null }
+            </div>
+            <div className={style.statusWrapper} >
+                {editModeProfile ?
+                    null
+                    :
+                    (!editMode ?
+                    <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span>
+                        :
+                    <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />)
+                }
+            </div>
 
         </div>
     )

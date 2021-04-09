@@ -1,12 +1,18 @@
 import React from 'react'
-import style from './Profile.module.css'
+import style from '../MyProfile.module.css'
 
 const ProfileInfo = (props) => {
     return (
-        <div className="d-print-none p-2 bg-primary text-white" >
-                {props.profile.fullName ? <div >Full name :</div> : null} <div>{props.profile.fullName ? props.profile.fullName : null}</div>
-                {props.profile.aboutMe ? <div >About me :</div> : null} <div>{props.profile.aboutMe ? props.profile.aboutMe : null}</div>
-            <div >{props.profile.lookingForAJobDescription ? 'lookingForAJob : ' + props.profile.lookingForAJobDescription : null }</div>
+        <div className={style.infoWrapper}>
+                <div>
+                    {props.profile.fullName ? <div className={style.infoName} >Full name :</div> : null} <div className={style.infoValue}>{props.profile.fullName ? props.profile.fullName : null}</div>
+                </div>
+                <div>
+                    {props.profile.aboutMe ? <div className={style.infoName} >About me :</div> : null} <div className={style.infoValue} >{props.profile.aboutMe ? props.profile.aboutMe : null}</div>
+                </div>
+                <div>
+                    {props.profile.lookingForAJobDescription ? <div className={style.infoName} >lookingForAJob :</div> : null } <div className={style.infoValue} >{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : null }</div>
+                </div>
             <div >{Object.keys(props.profile.contacts).map(key => {
                 if(props.profile.contacts[key] !== null){
                     return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
@@ -18,7 +24,7 @@ const ProfileInfo = (props) => {
 
 const Contact = (props) => {
     return <div>
-        {props.contactTitle + ' : ' + props.contactValue}
+        <div className={style.infoName} >{props.contactTitle} :</div>    <div className={style.infoValue} >{props.contactValue}</div>
     </div>
 }
 
