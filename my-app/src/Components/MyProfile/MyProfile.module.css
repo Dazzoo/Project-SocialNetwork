@@ -97,9 +97,9 @@
     width: 200px;
 }
 .infoWrapper{
-    width: 500px;
+    width: 740px;
     display: inline-block;
-    border: 1px solid blue;
+    border: 1px solid cornflowerblue;
     grid-area: info;
     padding-left: 0px;
 

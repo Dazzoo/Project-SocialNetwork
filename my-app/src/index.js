@@ -15,9 +15,11 @@ let state = store.getState()
             <React.StrictMode>
                     <App state={state}/>
             </React.StrictMode>,
-            document.getElementById('root')
+            document.getElementById('bodyRoot')
+
 
         )
+
 
 
 // If you want to start measuring performance in your app, pass a function

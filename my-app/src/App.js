@@ -34,6 +34,8 @@ class App extends React.Component {
         if(!this.props.initialized){
             return <Preloader/>
         }
+        if(this.props.theme){document.getElementById('bodyRoot').style.background = '#33363d'}
+        if(!this.props.theme){document.getElementById('bodyRoot').style.background = 'white'}
         return (
             <div className={`${this.props.theme && style.backgroundDark} ${!this.props.theme && style.backgroundLight}`}>
                 <div className={style.wrapper}>
@@ -42,7 +44,7 @@ class App extends React.Component {
                             <HeaderContainer />
                         </div>
                         <div className={style.sidebar} >
-                            <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+                            <Sidebar theme={this.props.theme} friends={this.props.state.sidebar.Sidebar.friendsOnline} />
                         </div>
                         <div className={style.else}>
                         <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
@@ -56,6 +58,7 @@ class App extends React.Component {
                     </div>
                 </div>
             </div>
+
         )
 
 

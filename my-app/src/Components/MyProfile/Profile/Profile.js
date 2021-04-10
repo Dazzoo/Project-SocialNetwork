@@ -7,7 +7,7 @@ import createField from '../../common/Fields/Field'
 import Avatar from './Avatar'
 import EditProfile from './EditProfile'
 import ProfileInfo from  './ProfileInfo'
-
+import Status from './Status'
 
 
 const Profile = (props) => {
@@ -26,7 +26,7 @@ const Profile = (props) => {
         }
     }
 
-    const DeactivateEditMode = () => {
+    const DeactivateEditMode = (status) => {
         setEditMode(false)
         props.putStatusThunk(status)
     }
@@ -76,13 +76,15 @@ const Profile = (props) => {
                     (!editMode ?
                     <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span>
                         :
-                    <input onChange={OnStatusChange} value={status} onBlur={DeactivateEditMode} autoFocus={true} />)
+                        <Status {...props} DeactivateEditMode={DeactivateEditMode}/>)
                 }
             </div>
 
         </div>
     )
 }
+
+
 
 
 
