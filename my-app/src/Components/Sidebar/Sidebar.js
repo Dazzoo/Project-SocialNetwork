@@ -27,10 +27,10 @@ const Sidebar = (props) => {
 
 
     return (
-        <div>
+        <div className={c.sidebarWrapper}>
             <ul>
-                <li><NavLink id="55"   to="/profile" activeClassName={c.active}>Profile</NavLink></li>
-                <li><NavLink id="56"   to="/messages" activeClassName={c.active}>Messages</NavLink></li>
+                <li><NavLink id="55"  to="/profile" activeClassName={c.active}>Profile</NavLink></li>
+                <li><NavLink id="56"  to="/messages" activeClassName={c.active}>Messages</NavLink></li>
                 <li><NavLink id="57"  to="/news" activeClassName={c.active}>News</NavLink></li>
                 <li><NavLink id="58"  to="/music" activeClassName={c.active}>Music</NavLink></li>
                 <li><NavLink id="59"  to="/settings" activeClassName={c.active}>Settings</NavLink></li>

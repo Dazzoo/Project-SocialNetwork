@@ -15,11 +15,11 @@ const Header = (props) => {
             <div className={style.else}>
             <div className={style.themeButton}>
 
-                {!props.theme && <button type="button" className="btn btn-secondary" onClick={() => props.ChangeTheme(true)} >Dark theme</button>}
-                {props.theme && <button type="button" className="btn btn-light" onClick={() => props.ChangeTheme(false)}>Light theme</button>}
+                {!props.theme && <button type="button" className={`${style.themeButton} ${"btn btn-secondary"} `} onClick={() => props.ChangeTheme(true)} >Dark theme</button>}
+                {props.theme && <button type="button" className={`${style.themeButton} ${'btn btn-light'} `} onClick={() => props.ChangeTheme(false)}>Light theme</button>}
             </div>
             <div className={style.Login}>
-                {props.isAuth? <div className="" >{props.email}
+                {props.isAuth? <div className={style.emailInfo} >{props.email}
                                     <div className={style.LogOut} ><button type="button" className={"btn btn-danger"} onClick={props.LogOutThunk}>LogOut</button></div>
                                 </div>
                             : <NavLink  to={'/login'}><button type="button" class="btn btn-success " >Login</button></NavLink> }

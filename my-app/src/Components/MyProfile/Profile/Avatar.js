@@ -5,7 +5,7 @@ import style from '../MyProfile.module.css'
 const Avatar = (props) => {
     return (
         <div className={`${style.Avatar}  `} >
-            <img className="border border-danger" src={props.profile.photos.large ? props.profile.photos.large
+            <img className={`${style.avatarIcon} `} src={props.profile.photos.large ? props.profile.photos.large
                 :
                 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
         </div>

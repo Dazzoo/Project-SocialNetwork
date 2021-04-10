@@ -8,7 +8,7 @@ const User = ({u, props}) => {
         <div key={u.id} className={style.wrapper}>
             <div className={style.inlineBlock}>
                 <div className={style.profileImage}>
-                    <NavLink to={"/profile/" + u.id}>
+                    <NavLink className={style.userNav} to={"/profile/" + u.id}>
                         <img src={u.photos.small != null ? u.photos.small : 'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
                     </NavLink>
                 </div>
