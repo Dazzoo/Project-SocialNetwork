@@ -19,10 +19,13 @@ const mapStateToProps = (state) => {
     return {
         isAuth: TakeIsAuth(state),
         email: TakeEmail(state),
-        errorMessage: TakeErrorMessage(state),
+        message: TakeErrorMessage(state),
         isFetching: TakeIsFetching(state),
         authRequestIsDone: state.auth.authRequestIsDone,
-        LoginDataError: state.auth.LoginDataError
+        LoginDataError: state.auth.LoginDataError,
+        capchaIsRequired: state.auth.capchaIsRequired,
+        capcha: state.auth.capcha
+
     }
 }
 

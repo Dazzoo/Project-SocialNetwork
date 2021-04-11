@@ -4,24 +4,30 @@ import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import {Redirect} from  'react-router-dom'
 import FetchingIcon from './../findUsers/FetchingIcon/FetchingIcon'
+import Capcha from './Capcha/Capcha'
 
 
 
 class Login extends React.Component{
 
-    sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
     onSubmit = async values =>{
+        console.log(values)
         this.props.SetFetching(true)
-        await this.props.LoginThunk(values.email, values.password)
+        await this.props.LoginThunk(values.email, values.password, values.capcha)
         this.props.SetFetching(false)
+        if(this.props.capchaIsRequired){
+            return { [FORM_ERROR]: <Capcha {...this.props} onSubmit={this.onSubmit} validate={this.validate}/>}
+        }
+        await this.props.LoginThunk(values.email, values.password, values.capcha)
         if(values.email && values.email.indexOf('@') === -1){
             return {email: 'Please, enter valid email address'}
         }
         values.email = ''
         values.password = ''
-        if(this.props.LoginDataError){
-            return { [FORM_ERROR]: 'The email adress or password is incorrect' }
+        if(this.props.message !== null){
+            debugger
+            return { [FORM_ERROR]: this.props.message[0] }
         }
     }
 
@@ -95,6 +101,7 @@ class Login extends React.Component{
     )
     }
 }
+
 
 
 

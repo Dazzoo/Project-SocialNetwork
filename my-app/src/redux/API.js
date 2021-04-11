@@ -27,11 +27,15 @@ export  const AuthAPI = {
         let response = await instance.get('auth/me')
             return response.data
     },
-    async postAuth(email, password){
-        return await instance.post('/auth/login', {email, password})
+    async postAuth(email, password, captcha){
+        return await instance.post('/auth/login', {email, password, captcha})
     },
     async deleteAuth(){
         return await instance.delete('/auth/login')
+    },
+    async getCapcha(){
+        let response = await instance.get('security/get-captcha-url')
+        return response
     }
 }
 

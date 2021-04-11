@@ -2,6 +2,7 @@ import React from 'react'
 import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import createField from '../../common/Fields/Field'
+import style from '../MyProfile.module.css'
 
 
 const EditProfile = (props) => {
@@ -21,9 +22,12 @@ const EditProfile = (props) => {
         mainLink: props.profile.contacts.mainLink
     }
 
-    const onSubmit = (formData) => {
+    const onSubmit = async (formData) => {
         let profile = props.profileConstructor(formData)
-        props.SetProfileThunk(profile)
+        const response = await props.SetProfileThunk(profile)
+        if(response !== 0){
+            return { [FORM_ERROR]: (response.data.messages) }
+        }
         props.setEditModeProfile(false)
 
     }
@@ -38,6 +42,7 @@ const EditProfile = (props) => {
                         <button type="submit" className="btn btn-primary" >
                             Save changes
                         </button>
+                {submitError && <div className={style.submitError}>{submitError}</div>}
                     </div>
                     <div>
                         Full name: { createField('fullName', 'text', null)}

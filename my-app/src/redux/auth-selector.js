@@ -9,7 +9,7 @@ export const TakeEmail = (state) => {
 }
 
 export const TakeErrorMessage = (state) => {
-    return state.auth.errorMessage
+    return state.auth.message
 }
 
 export const TakeIsFetching = (state) => {
