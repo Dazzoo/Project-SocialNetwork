@@ -1,5 +1,6 @@
 import React from 'react'
 import style from '../MyProfile.module.css'
+import cn from 'classnames'
 
 const ProfileInfo = (props) => {
     return (
@@ -18,6 +19,9 @@ const ProfileInfo = (props) => {
                     return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
                 }
             })}</div>
+    {props.editModeProfile? null
+        :
+        (props.isOwner? <button className={cn("btn","btn-primary", style.editProfileButton)} onClick={() => props.setEditModeProfile(true)}>Edit Profile</button> : null) }
         </div>
     )
 }

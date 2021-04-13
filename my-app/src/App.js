@@ -8,7 +8,7 @@ import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNews from './Components/MyNews/MyNews.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
-import {BrowserRouter, Route} from "react-router-dom";
+import {HashRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
 import {InitializeApp} from './redux/authReducer'
@@ -36,10 +36,9 @@ class App extends React.Component {
         if(!this.props.initialized){
             return <PreloaderSkateboardForWindow/>
         }
-        if(this.props.theme){document.getElementById('bodyRoot').style.background = '#33363d'}
-        if(!this.props.theme){document.getElementById('bodyRoot').style.background = 'white'}
+
         return (
-            <div className={`${this.props.theme && style.backgroundDark} ${!this.props.theme && style.backgroundLight}`}>
+            <div >
                 <div className={style.wrapper}>
                     <div className={style.gridbox}>
                         <div className={style.headerComponent} >
@@ -75,7 +74,6 @@ const mapStateToProps = (state) => {
     return {
         state: state,
         initialized: state.auth.initialized,
-        theme: state.auth.theme
     }
 }
 
@@ -91,11 +89,11 @@ let AppContainer = compose(
 class AppHightContainer extends React.Component {
     render(){
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }

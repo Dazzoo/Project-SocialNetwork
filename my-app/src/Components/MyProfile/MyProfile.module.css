@@ -5,18 +5,44 @@
     height: 200px;
 }
 .textarea{
-    width: 500px;
-    height: 100px;
+    min-width: 98%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+
+
+}
+.postButton{
+    margin-left: 10px;
+    margin-bottom: 10px ;
+    width: 11% ;
+}
+.MyProfileWrapper{
+    border-right: 2px solid #9CBBF4;
+    border-left: 2px solid #9CBBF4;
 }
 .Avatar{
-    width: 220px;
+    border: 6px solid cornflowerblue;
+    width: 100%;
     display: inline-block;
     grid-area: avatar;
-}
-.avatarIcon{
     margin-top: 10px;
+    margin-left: 7px;
     border-radius: 7px;
 }
+.avatarIcon{
+    display: flex;
+    border-radius: 7px;
+    width: 220px;
+    margin: 5px auto;
+
+}
+
+
+
+
 .status{
     color: black;
     font-weight: bold;
@@ -40,6 +66,9 @@
 
 .customFileInput {
     color: transparent;
+    display: flex;
+    margin: 0 auto;
+    width: 150px;
 }
 .customFileInput::-webkit-file-upload-button {
     visibility: hidden;
@@ -105,15 +134,29 @@
     width: 200px;
 }
 .infoWrapper{
-    width: 740px;
+    width: 97%;
     display: inline-block;
-    border: 1px solid cornflowerblue;
+    border: 6px solid cornflowerblue;
     grid-area: info;
     padding-left: 0px;
+    border-radius: 7px 7px 7px 7px;
+    margin-top: 10px;
+    margin-left: 15px;
+    padding: 10px 0px;
 
 }
 
 .infoBlockWrapper{
     display: inline-block;
 }
+.editProfileButton{
+    margin-top: 15px;
+    margin-left: 20px;
 
+}
+.postsWrapper{
+    border-radius: 7px 7px 7px 7px;
+    border: 6px solid cornflowerblue;
+    margin: 0px 4px;
+
+}

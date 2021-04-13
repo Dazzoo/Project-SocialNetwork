@@ -6,3 +6,7 @@
 .postText{
     display: inline-block;
 }
+.postWrapper{
+    border-top: 4px solid #9CBBF4;
+    margin: 3px;
+}

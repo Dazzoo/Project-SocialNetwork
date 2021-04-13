@@ -48,7 +48,7 @@ const Profile = (props) => {
 
     return (
         <div className={style.gridContainer} >
-            <Avatar {...props} />
+            <Avatar {...props} isOwner={props.isOwner} changeProfilePhoto={changeProfilePhoto} />
 
 
 
@@ -58,15 +58,14 @@ const Profile = (props) => {
 
                 :
 
-                <ProfileInfo {...props} />
+                <ProfileInfo {...props} editModeProfile={editModeProfile}  setEditModeProfile={setEditModeProfile}  />
             }
             <div className={style.editInfo}>
-                {editModeProfile? null
-                    :
-                    (props.isOwner? <button className="btn btn-primary" onClick={() => setEditModeProfile(true)}>Edit Profile</button> : null) }
-                {props.isOwner? <input type="file" className={style.customFileInput} onChange={changeProfilePhoto} />
-                    :
-                    null }
+
+
+
+
+
             </div>
             <div className={style.statusWrapper} >
                 {editModeProfile ?
