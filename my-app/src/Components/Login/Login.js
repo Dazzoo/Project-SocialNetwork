@@ -3,8 +3,9 @@ import style from './Login.module.css'
 import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import {Redirect} from  'react-router-dom'
-import FetchingIcon from './../findUsers/FetchingIcon/FetchingIcon'
+import {PreloaderThreeDots} from './../common/Preloaders/PreloaderThreeDots'
 import Capcha from './Capcha/Capcha'
+import cn from 'classnames'
 
 
 
@@ -87,13 +88,13 @@ class Login extends React.Component{
                             />
                             Remember me
                         </div>
-                        {this.props.isFetching? <FetchingIcon/> : null}
-                        {submitError && <div className={style.submitError}>{submitError}</div>}
-                        <div>
-                            <button type="submit" class="btn btn-success" disabled={this.submitting}>
-                                Submit
+                        <div className={style.submitButton}>
+                            <button type="submit" className={cn( "btn btn-success")} class="btn btn-success" disabled={this.submitting}>
+                                Login
                                 </button>
                         </div>
+                        {submitError && <div className={style.submitError}>{submitError}</div>}
+                        {this.props.isFetching? <PreloaderThreeDots/> : null}
                     </form>
                 )}
             />

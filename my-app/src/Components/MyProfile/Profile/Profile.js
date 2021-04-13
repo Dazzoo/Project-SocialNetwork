@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import style from '../MyProfile.module.css'
-import FetchingIcon from '../../findUsers/FetchingIcon/FetchingIcon'
 import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import createField from '../../common/Fields/Field'

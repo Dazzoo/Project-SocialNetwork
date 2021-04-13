@@ -5,7 +5,7 @@ import Profile from './Profile'
 import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../../redux/profileReducer'
 import { withRouter } from "react-router"
 import {TakeProfile, TakeStatus, TakeIs0wner, TakeId} from  '../../../redux/profile-selector'
- import Preloader from '../../findUsers/FetchingIcon/FetchingIcon'
+ import {PreloaderSkateboardForComponent} from '../../common/Preloaders/PreloaderSkateboard'
 
 class ProfileClassContainer extends React.Component {
 
@@ -35,8 +35,6 @@ class ProfileClassContainer extends React.Component {
     }
 
 
-    // не ререндериться страница при обновлении инфы профиля
-    // lookingForAJobDescription, aboutMe is required
 
 
     componentDidMount() {
@@ -60,7 +58,7 @@ class ProfileClassContainer extends React.Component {
     render() {
         if(!this.props.profile){
             return (
-                <Preloader/>
+                <PreloaderSkateboardForComponent/>
             )
         }
     return (

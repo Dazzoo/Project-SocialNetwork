@@ -1,0 +1,40 @@
+.preloaderForComponent{
+    width: 150px;
+    height: 150px;
+    position:absolute;
+    margin-left:-75px; /*image width/2 */
+    margin-top:-75px;  /*image height/2 */
+    left:25%;
+    top:40%;
+    z-index:1;
+    display: block;
+    background: white;
+}
+
+.preloaderWrapperForComponent{
+    position:absolute;
+    z-index:3;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.preloaderForWindow{
+    width: 150px;
+    height: 150px;
+    position:absolute;
+    margin-left:-75px;
+    margin-top:-75px;
+    left:50%;
+    top:50%;
+    z-index:1;
+    display: block;
+    background: white;
+}
+.preloaderWrapperForWindow{
+    position:absolute;
+    z-index:3;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
