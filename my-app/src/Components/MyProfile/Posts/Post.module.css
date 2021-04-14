@@ -5,6 +5,7 @@
 }
 .postText{
     display: inline-block;
+    margin: 0px  5px;
 }
 .postWrapper{
     border-top: 4px solid #9CBBF4;

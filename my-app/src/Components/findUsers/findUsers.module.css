@@ -9,12 +9,17 @@ img{
 }
 
 
-.wrapper{
+.userWrapper{
     display: block;
+    margin-left: 50px;
+    margin-top: 10px;
+    border: 3px solid cornflowerblue;
+    width: 200px;
+    overflow: hidden;
 }
 .pagesIcon{
     margin-right: 5px;
-    border: 1px solid black;
+    border: 1px solid cornflowerblue;
     padding: 1px 5px;
 }
 .activePage{
@@ -22,4 +27,10 @@ img{
     padding: 1px 5px;
     font-weight: 8px;
 }
-
+.findUsersWrapper{
+    border: 2px solid #9CBBF4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}

@@ -12,6 +12,8 @@
 }
 
 .gridbox{
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 18px;
   display: grid;
   grid-template-columns: 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px;
   grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;

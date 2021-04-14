@@ -5,6 +5,7 @@
     height: 200px;
 }
 .textarea{
+    display: inline-block;
     min-width: 98%;
     align-items: center;
     justify-content: center;
@@ -13,6 +14,9 @@
     padding: 5px;
 
 
+}
+.editProfileWrapper{
+    margin: 10px 10px;
 }
 .postButton{
     margin-left: 10px;
@@ -49,13 +53,19 @@
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: 2px;
+    margin-top: 30px;
+
 }
 .statusWrapper{
     grid-area: status;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .errorText{
     color:red;
+    display: inline-block;
+    margin-left: 7px;
 }
 .submitError{
     border: red 2px solid;
@@ -69,6 +79,7 @@
     display: flex;
     margin: 0 auto;
     width: 150px;
+    height: 20px;
 }
 .customFileInput::-webkit-file-upload-button {
     visibility: hidden;

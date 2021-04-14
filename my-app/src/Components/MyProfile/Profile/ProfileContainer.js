@@ -37,23 +37,6 @@ class ProfileClassContainer extends React.Component {
 
 
 
-    componentDidMount() {
-        let userId = this.props.match.params.userId
-        if(!userId){
-            userId = 15582
-        }
-        this.props.getProfileThunk(userId)
-        this.props.getStatusThunk(userId)
-        if(userId == this.props.id){
-            this.props.SetIsOwner(true)
-        }
-        else{
-            this.props.SetIsOwner(false)
-        }
-
-
-
-    }
 
     render() {
         if(!this.props.profile){

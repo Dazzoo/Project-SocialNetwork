@@ -1,14 +1,20 @@
 import style from './MyProfile.module.css'
 import Post from './Posts/Post.js'
+
 import ProfileContainer from './Profile/ProfileContainer.js'
 import React from 'react';
 import {Form, Field} from 'react-final-form'
+import {FORM_ERROR} from 'final-form'
 import cn from 'classnames'
 
 
 
 class MyProfile extends React.Component{
+
     onSubmit = (values) => {
+        if(!values.postField){
+            return null
+        }
         this.props.AddPostActionCreator(values.postField)
         values.postField = ''
         values.submit = ''
@@ -31,24 +37,28 @@ class MyProfile extends React.Component{
                 <Form
                     onSubmit={this.onSubmit}
                     validate={this.validate}
-                    render={({handleSubmit}) => (
-                            <form onSubmit={handleSubmit}>
+                    render={({handleSubmit, submitError}) => (
+                            <form onSubmit={handleSubmit }>
                                 <div className={style.textareaWrapper}>
                                     <Field name="postField">
                                         {({input, meta}) => (
                                         <div>
                                             <textarea className={style.textarea} type="text" placeholder="How are you today?" {...input}  />
-                                            {meta.touched && meta.error && <div className={style.errorText}>{meta.error}</div>}
-                                            <span></span>
+                                            <div>
+                                                <button type="submit" className={cn("btn", "btn-primary", style.postButton)}>
+                                                    Post
+                                                </button>
+                                                {submitError && <div className={style.errorText}>{submitError}</div>}
+                                                {meta.touched && meta.error && <div className={style.errorText}>{meta.error}</div>}
+                                            </div>
+
+
                                         </div>
                                             )}
                                     </Field>
+
                                 </div>
-                                <div>
-                                    <button type="submit" className={cn("btn", "btn-primary", style.postButton)}>
-                                        Post
-                                    </button>
-                                </div>
+
                             </form>
                         )}
                 />

@@ -17,6 +17,7 @@ let initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
+
     switch (action.type){
         case 'UserData':{
             return {...state,
@@ -93,7 +94,6 @@ export const SetCapcha = (url) => ({type: 'GET-CAPCHA', url})
 export const DeleteAuth = () => ({type:'DeleteAuth'})
 
 export const GetCapchaThunk = () => async (dispatch) => {
-    debugger
     let respons = await AuthAPI.getCapcha()
     dispatch(SetCapcha(respons.data.url))
 }

@@ -48,13 +48,12 @@ const Profile = (props) => {
 
     return (
         <div className={style.gridContainer} >
-            <Avatar {...props} isOwner={props.isOwner} changeProfilePhoto={changeProfilePhoto} />
-
-
+            <Avatar {...props} isOwner={props.isOwner} changeProfilePhoto={changeProfilePhoto} editModeProfile={editModeProfile}
+                    editMode={editMode} ActivateEditMode={ActivateEditMode} status={status} DeactivateEditMode={DeactivateEditMode} />
 
             {editModeProfile ?
 
-                <EditProfile {...props} setEditModeProfile={setEditModeProfile} profileConstructor={props.profileConstructor} />
+                <EditProfile {...props} setEditModeProfile={setEditModeProfile} profileConstructor={props.profileConstructor}  />
 
                 :
 
@@ -62,21 +61,8 @@ const Profile = (props) => {
             }
             <div className={style.editInfo}>
 
-
-
-
-
             </div>
-            <div className={style.statusWrapper} >
-                {editModeProfile ?
-                    null
-                    :
-                    (!editMode ?
-                    <span className={style.status} onClick={ActivateEditMode} >{status ? status : '____________________'}</span>
-                        :
-                        <Status {...props} DeactivateEditMode={DeactivateEditMode}/>)
-                }
-            </div>
+
 
         </div>
     )

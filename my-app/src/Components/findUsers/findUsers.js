@@ -1,5 +1,5 @@
 import React from 'react';
-import c from './findUsers.module.css';
+import style from './findUsers.module.css';
 import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSkateboard'
 import {NavLink} from "react-router-dom"
 import * as axios from 'axios';
@@ -14,12 +14,13 @@ const FindUsers = (props) => {
                            currentPage={props.currentPage} ChangeCurrentPage={props.ChangeCurrentPage}  />
 
                 {props.isFetching ? <PreloaderSkateboardForComponent/> : null}
-
+                <div className={style.findUsersWrapper}>
                 {props.users.map( u =>
                     <User u={u} props={props} />
 
                 )
                 }
+                </div>
             </div>
         )
 }

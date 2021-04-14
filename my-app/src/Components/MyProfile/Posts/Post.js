@@ -10,17 +10,17 @@ const Post = (props) => {
             props.RemoveLikedPost(props.id)
             props.RemoveOneLike(props.id)
         }
-        // Наш PressLike добавляет айди кликнутоко поста или удаляет если кликнуть второй раз
-        // Сделать анимацию и счетчик
-    }
 
+    }
     return (
+
         <div className={style.postWrapper} >
         <div>
-
         </div>
         <div className='Post_wrapper'>
-            <img className={style.avatarMini} src='https://avatarfiles.alphacoders.com/268/thumb-1920-268622.jpg'/>
+            <img className={style.avatarMini} src={props.ProfilePage.photos.large ? props.ProfilePage.photos.large
+                :
+                'https://www.uniprep.cz/sites/default/files/public/pictures/picture-51-1423427108.png'}/>
             <div className={style.postText}>{props.text}</div>
             {props.likedPostsID.indexOf(props.id) === -1 ? <button className="btn btn-outline-primary" onClick={PressLike}>👍{props.likeCount}</button> : <button className="btn btn-primary" onClick={PressLike}>👍{props.likeCount}</button>}
         </div>

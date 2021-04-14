@@ -4,7 +4,7 @@ import {UserAPI} from './API'
 
 let initialState = {
     users: [ ],
-    pageSize: 10,
+    pageSize: 20,
     currentPage: 1,
     totalUsersCount: 2000,
     isFetching: false,

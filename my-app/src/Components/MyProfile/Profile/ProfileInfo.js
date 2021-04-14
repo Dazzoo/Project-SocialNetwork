@@ -22,6 +22,7 @@ const ProfileInfo = (props) => {
     {props.editModeProfile? null
         :
         (props.isOwner? <button className={cn("btn","btn-primary", style.editProfileButton)} onClick={() => props.setEditModeProfile(true)}>Edit Profile</button> : null) }
+
         </div>
     )
 }

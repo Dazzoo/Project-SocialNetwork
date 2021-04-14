@@ -33,6 +33,7 @@ const EditProfile = (props) => {
     }
 
     return (
+        <div className={style.editProfileWrapper} >
         <Form
             onSubmit={onSubmit}
             initialValues={initFieldsInfo}
@@ -88,6 +89,7 @@ const EditProfile = (props) => {
 
             )}
         />
+        </div>
     )
 }
 

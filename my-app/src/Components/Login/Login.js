@@ -13,7 +13,6 @@ class Login extends React.Component{
 
 
     onSubmit = async values =>{
-        console.log(values)
         this.props.SetFetching(true)
         await this.props.LoginThunk(values.email, values.password, values.capcha)
         this.props.SetFetching(false)
