@@ -23,7 +23,7 @@ import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSka
                 userId = 15582
 
         }
-        if(userId === "userId"){
+        if(userId === ":userId"){
             userId = 15582
         }
         this.props.getProfileThunk(userId)
