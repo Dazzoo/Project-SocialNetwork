@@ -18,12 +18,13 @@ import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSka
 
     componentDidMount(){
         debugger
-        let userId = this.props.params.userId
+        let userId = this.props.match.params.userId
         if(!userId){
-            userId = this.props.match.params.userId
-            if(!userId){
                 userId = 15582
-            }
+
+        }
+        if(userId === "userId"){
+            userId = 15582
         }
         this.props.getProfileThunk(userId)
         this.props.getStatusThunk(userId)

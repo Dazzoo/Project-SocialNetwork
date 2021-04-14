@@ -49,7 +49,7 @@ class App extends React.Component {
                         </div>
                         <div className={style.else}>
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />
-                            <Route path='/profile/:userId?' render={() => <MyProfileContainer params={this.props.match.params}/>} />
+                            <Route path='/profile/:userId?' render={() => <MyProfileContainer />} />
                             <Route path='/messages' render={() => withReactLazy(MyMessagesContainer)} />
                             <Route path='/news' render={() => withReactLazy(MyNews)} />
                             <Route path='/music' render={() => withReactLazy(MyMusic)} />
