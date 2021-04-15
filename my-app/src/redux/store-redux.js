@@ -4,6 +4,7 @@ import messageReducer from './MessagesReducer'
 import sidebarReducer from './SidebarReducer'
 import usersReducer from './usersReducer'
 import authReducer from  './authReducer'
+import newsReducer from './newsReducer'
 import thunkMiddleware from 'redux-thunk'
 
 let reducers = combineReducers({
@@ -11,7 +12,8 @@ let reducers = combineReducers({
     messagePage: messageReducer,
     sidebar: sidebarReducer,
     findUsers: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    news: newsReducer
 })
 
 

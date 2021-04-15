@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import HeaderContainer from './Components/Header/HeaderContainer'
 import Sidebar from './Components/Sidebar/Sidebar.js'
 import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
-import MyNews from './Components/MyNews/MyNews.js'
+import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
 import MyMusic from './Components/MyMusic/MyMusic.js'
 import MySettings from './Components/MySettings/MySettings.js'
 import {HashRouter, Route} from "react-router-dom";
@@ -51,7 +51,7 @@ class App extends React.Component {
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />
                             <Route path='/profile/:userId?' render={() => <MyProfileContainer />} />
                             <Route path='/messages' render={() => withReactLazy(MyMessagesContainer)} />
-                            <Route path='/news' render={() => withReactLazy(MyNews)} />
+                            <Route path='/news' render={() => withReactLazy(MyNewsContainer)} />
                             <Route path='/music' render={() => withReactLazy(MyMusic)} />
                             <Route path='/settings' render={() => withReactLazy(MySettings)} />
                             <Route path='/findUsers' render={() => withReactLazy(FindUsersContainer)} />

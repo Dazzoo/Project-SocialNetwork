@@ -2,6 +2,9 @@
     width: 100px;
     height: 100px;
     display: inline-block;
+    margin: 4px 0px;
+    border-radius: 5px;
+    border: 3px solid #9CBBF4 ;
 }
 .postText{
     display: inline-block;

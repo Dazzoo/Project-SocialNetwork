@@ -1,5 +1,37 @@
-.news{
-    width: 400px;
-    height: 150px;
-    background-color: crimson;
+.MyNews{
+
+
+}
+.newsWrapper{
+    border: 1px solid cornflowerblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+            "title title title title title image image image image image"
+            "title title title title title image image image image image"
+            "title title title title title image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image"
+            "description description description description description image image image image image";
+
+
+}
+.title{
+    font-weight: bold;
+    font-size: 25px;
+    grid-area: title;
+
+}
+.description{
+    grid-area: description;
+}
+.image{
+    border-radius: 5px;
+    grid-area: image;
 }

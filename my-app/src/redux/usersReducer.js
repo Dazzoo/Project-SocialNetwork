@@ -81,38 +81,57 @@ export const AddInProgress = (inProgress) => ({type: 'InProgressADD', inProgress
 export const RemoveInProgress = (removeId) => ({type: 'InProgressREMOVE', removeId})
 
 export const FollowThunk = (id) => async (dispatch) => {
-         dispatch(AddInProgress(id))
-         let data = await UserAPI.deleteFollow(id)
-                 if(data.resultCode === 0){
-                     dispatch(RemoveInProgress(id))
-                     dispatch(Follow(id))
-                 }
+    try {
+        dispatch(AddInProgress(id))
+        let data = await UserAPI.deleteFollow(id)
+        if (data.resultCode === 0) {
+            dispatch(RemoveInProgress(id))
+            dispatch(Follow(id))
+        }
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 export const UnfollowThunk = (id) => async (dispatch) => {
+    try {
         dispatch(AddInProgress(id))
         let data = await UserAPI.postFollow(id)
-                if(data.resultCode === 0){
-                    dispatch(RemoveInProgress(id))
-                    dispatch(Unfollow(id))
-                }
+        if (data.resultCode === 0) {
+            dispatch(RemoveInProgress(id))
+            dispatch(Unfollow(id))
+        }
+    } catch (error) {
+        console.log(error.message)
 
+    }
 }
 
 export const GetUsers = (currentPage, pageSize) => async (dispatch) => {
+    try {
         dispatch(SetFetching(true))
         let data = await UserAPI.getUsers(currentPage, pageSize)
-            dispatch(SetFetching(false))
-            dispatch(SetUsers(data.items))
-            dispatch(SetTotalUsersCount(data.totalCount))
+        dispatch(SetFetching(false))
+        dispatch(SetUsers(data.items))
+        dispatch(SetTotalUsersCount(data.totalCount))
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 export const ChangeCurrentPage = (newCurrentPage, pageSize) => async (dispatch) => {
-            dispatch(SetFetching(true))
-            dispatch(ChangePage(newCurrentPage))
-            let data = await UserAPI.getUsers(newCurrentPage, pageSize)
-            dispatch(SetFetching(false))
-            dispatch(SetUsers(data.items))
+    try {
+        dispatch(SetFetching(true))
+        dispatch(ChangePage(newCurrentPage))
+        let data = await UserAPI.getUsers(newCurrentPage, pageSize)
+        dispatch(SetFetching(false))
+        dispatch(SetUsers(data.items))
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 

@@ -94,52 +94,72 @@ export const SetCapcha = (url) => ({type: 'GET-CAPCHA', url})
 export const DeleteAuth = () => ({type:'DeleteAuth'})
 
 export const GetCapchaThunk = () => async (dispatch) => {
-    let respons = await AuthAPI.getCapcha()
-    dispatch(SetCapcha(respons.data.url))
+    try {
+        let respons = await AuthAPI.getCapcha()
+        dispatch(SetCapcha(respons.data.url))
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 export const SetAuthThunk = () => async (dispatch) => {
+    try {
         let data = await AuthAPI.getAuth()
-                if(data.resultCode === 0){
-                    dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
-                    dispatch(SetAuth(true))}
-    return null
+        if (data.resultCode === 0) {
+            dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
+            dispatch(SetAuth(true))
+        }
+        return null
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 export const LoginThunk = (email, password, captcha) => async (dispatch) =>{
-          let response = await AuthAPI.postAuth(email, password, captcha)
-                debugger
-                if(response.data.resultCode === 0){
-                    let data = await AuthAPI.getAuth()
-                            if(data.resultCode === 0){
-                                dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
-                                dispatch(SetAuth(true))
-                            }
-                    dispatch(LoginDataError(false))
-                    return null
-                }
-                if(response.data.resultCode === 10){
-                    LoginThunk(email, password, captcha)
-                    let respons = await AuthAPI.getCapcha()
-                    dispatch(SetCapcha(respons.data.url))
-                    dispatch(ShowOrHideCapcha(true))
-                    return null
-                }
-                else if(response.data.resultCode !== 0){
+    try {
+        let response = await AuthAPI.postAuth(email, password, captcha)
+        debugger
+        if (response.data.resultCode === 0) {
+            let data = await AuthAPI.getAuth()
+            if (data.resultCode === 0) {
+                dispatch(SetUserLoginData(data.data.id, data.data.email, data.data.login))
+                dispatch(SetAuth(true))
+            }
+            dispatch(LoginDataError(false))
+            return null
+        }
+        if (response.data.resultCode === 10) {
+            LoginThunk(email, password, captcha)
+            let respons = await AuthAPI.getCapcha()
+            dispatch(SetCapcha(respons.data.url))
+            dispatch(ShowOrHideCapcha(true))
+            return null
+        }
+        else if (response.data.resultCode !== 0) {
 
-                        dispatch(LoginDataError(true))
-                        dispatch(LoginErrorMessage(response.data.messages))
-                        return null
+            dispatch(LoginDataError(true))
+            dispatch(LoginErrorMessage(response.data.messages))
+            return null
 
-                }
+        }
 
-    return null
+        return null
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 export const InitializeApp = () => async (dispatch) =>{
-    await dispatch(SetAuthThunk())
-            dispatch(Initialize())
+    try {
+        await dispatch(SetAuthThunk())
+        dispatch(Initialize())
+    } catch (error) {
+        console.log(error.message)
 
+    }
 }
 
 
@@ -148,12 +168,17 @@ export const InitializeApp = () => async (dispatch) =>{
 
 
 export const LogOutThunk = () => async (dispatch) => {
+    try {
         let response = await AuthAPI.deleteAuth()
-                if(response.data.resultCode === 0){
-                    dispatch(DeleteAuth())
-                    dispatch(SetAuth(false))
-                }
-    return null
+        if (response.data.resultCode === 0) {
+            dispatch(DeleteAuth())
+            dispatch(SetAuth(false))
+        }
+        return null
+    } catch (error) {
+        console.log(error.message)
+
+    }
 }
 
 
