@@ -10,7 +10,8 @@ class MyNewsContainer extends React.Component{
     }
 
     render(){
-        if(this.props.newsList === null){
+
+        if(!this.props.newsList){
             return (
                 <PreloaderSkateboardForComponent/>
             )
@@ -22,7 +23,6 @@ class MyNewsContainer extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return {
         newsList: state.news.newsList
     }

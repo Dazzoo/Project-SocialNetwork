@@ -3,35 +3,56 @@
 
 }
 .newsWrapper{
-    border: 1px solid cornflowerblue;
+    border: 6px solid darkred ;
+    margin: 25px;
+    padding: 25px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
     gap: 0px 0px;
     grid-template-areas:
-            "title title title title title image image image image image"
-            "title title title title title image image image image image"
-            "title title title title title image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image"
-            "description description description description description image image image image image";
+            "title title title title title title title title title title"
+            "title title title title title title title title title title"
+            "abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract"
+            "abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract"
+            "abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract"
+            "abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract"
+            "abstract abstract abstract abstract abstract abstract abstract abstract abstract abstract"
+            "image image image image image image image image image image"
+            "image image image image image image image image image image"
+            "image image image image image image image image image image";
 
 
 }
 .title{
+    margin: auto;
+    text-align: center;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 28px;
     grid-area: title;
 
 }
 .description{
-    grid-area: description;
+    padding: 0px 30px;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    grid-area: abstract;
 }
 .image{
+    max-width: 500px;
+    max-height: 500px;
+    margin: auto;
     border-radius: 5px;
     grid-area: image;
+}
+.sourceUrl {
+    color: blue;
+    text-align: start;
+
+}
+.published_at{
+    display: inline-block;
+    color: black;
+    text-align: start;
 }

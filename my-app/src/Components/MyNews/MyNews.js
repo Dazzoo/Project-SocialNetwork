@@ -1,11 +1,12 @@
 import c from './MyNews.module.css'
 import News from './News/News'
 
+
+
 const MyNews = (props) => {
-    debugger
     return (
     <div className={c.MyNews}>
-        {props.newsList.map(el => <News title={el.title} description={el.description} urlToImage={el.urlToImage} />) }
+        {props.newsList.data.map(el => <News title={el.title} description={el.description} image={el.image} url={el.url} published_at={el.published_at}  />) }
         </div>
     );
 }
