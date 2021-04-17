@@ -7,6 +7,7 @@ import {Redirect} from  'react-router-dom'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 import {TakeTextArea, TakeDialogs, TakeMessages} from  '../../redux/messages-selector'
+import { withRouter } from "react-router"
 
 
 
@@ -29,13 +30,14 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: (text) => {dispatch(AddMessagetActionCreator(text))},
+        addMessage: (text, id) => {dispatch(AddMessagetActionCreator(text, id))},
     }
 }
 
 
 
 export default compose(
+    withRouter,
     connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect
 )(MyMessagesСlassContainer);

@@ -1,12 +1,12 @@
 
 let initialState = {
         messages: [
-            {id: 1, message: 'Hi'},
-            {id: 2, message: 'How do you do bro?'},
-            {id: 3, message: 'I would like more, heh)'},
-            {id: 4, message: 'Nope, its bad idea.'},
-            {id: 5, message: 'I am from Taiwan'},
-            {id: 6, message: 'Here we go again'}
+            {id: 1, message: ['Hello, i am Monica. Lets meet tomorrow?']},
+            {id: 2, message: ['Bro, did you already called her?']},
+            {id: 3, message: ['You are so cute)']},
+            {id: 4, message: ['Where are you??? I am been waiting for you 40 minutes']},
+            {id: 5, message: ['Hey, its Andrey, your best friend from childhood']},
+            {id: 6, message: ['My first name is Oliver, dont call me the Ralf']}
         ],
         dialogs: [
             {id: 1, name: 'Monica', avatar: 'https://avas.at.ua/_ph/15/2/454969051.jpg?1614027850'},
@@ -19,17 +19,12 @@ let initialState = {
 }
 
 const messageReducer = (state = initialState, action) => {
+    debugger
     switch (action.type){
         case 'ADD-MESSAGE':
-            let messageText = action.text
-            return{
-                ...state,
-                messages: [...state.messages, {id: 7, message: messageText }]
-            };
-        case 'UPDATE-NEW-MESSAGE-TEXT':
-            return{
-                ...state,
-                textArea: action.newMessage
+
+            return{...state,
+                messages: state.messages.map(m => {if(m.id == action.id){ return{id: action.id, message: [m.message, action.text] }}else{return{id: m.id, message: m.message}}})
             };
         default:
             return state;
@@ -38,6 +33,6 @@ const messageReducer = (state = initialState, action) => {
 }
 
 
-export const AddMessagetActionCreator = (text) => ({type: 'ADD-MESSAGE', text})
+export const AddMessagetActionCreator = (text, id) => ({type: 'ADD-MESSAGE', text, id})
 
 export default messageReducer

@@ -1,12 +1,20 @@
 .MyNews{
+    align-items: center;
+    text-align: center;
+    border-right: 2px solid #9CBBF4;
+    border-left: 2px solid #9CBBF4;
+
 
 
 }
 .newsWrapper{
     border: 6px solid darkred ;
+    background-color: #EAF1FD;
+    max-height: 600px;
+    max-width: 25%;
     margin: 25px;
-    padding: 25px;
-    display: grid;
+    padding: 15px;
+    display: inline-block;
     grid-template-columns: 100%;
     grid-template-rows: 100%;
     gap: 0px 0px;
@@ -28,31 +36,26 @@
     margin: auto;
     text-align: center;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 15px;
     grid-area: title;
 
 }
 .description{
     padding: 0px 30px;
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
     margin: auto;
     grid-area: abstract;
 }
 .image{
     max-width: 500px;
-    max-height: 500px;
     margin: auto;
     border-radius: 5px;
     grid-area: image;
 }
 .sourceUrl {
+    font-size: 13px;
     color: blue;
     text-align: start;
 
-}
-.published_at{
-    display: inline-block;
-    color: black;
-    text-align: start;
 }

@@ -4,9 +4,11 @@ import News from './News/News'
 
 
 const MyNews = (props) => {
+    debugger
     return (
     <div className={c.MyNews}>
-        {props.newsList.data.map(el => <News title={el.title} description={el.description} image={el.image} url={el.url} published_at={el.published_at}  />) }
+        {props.newsList.map(el => <News title={el.title} abstract={el.abstract} url={el.url}
+                                        image={el.multimedia[0].url}    />) }
         </div>
     );
 }

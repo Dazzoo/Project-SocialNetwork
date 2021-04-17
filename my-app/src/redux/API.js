@@ -67,8 +67,8 @@ export const  ProfileAPI = {
 
 export const NewsAPI = {
     async getNews(){
-      const response = await axios.get("http://api.mediastack.com/v1/news?access_key=d515c2333d3badfd9e10b952d1ea47aa&languages=en&countries=ua&categories=general")
-        return response.data
+      const response = await axios.get("https://api.nytimes.com/svc/topstories/v2/science.json?api-key=DrWOmvRR5tl29hFQYw8XX5O77UkHrfdw")
+        return response.data.results
 
     }
 

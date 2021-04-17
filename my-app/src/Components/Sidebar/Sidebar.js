@@ -7,20 +7,6 @@ const Sidebar = (props) => {
     const FriendShow = props.friends.map( n  => <Friend name= {n.name} id= {n.id} />);
 
 
-    useEffect(() => {
-        if(props.theme){document.getElementById('55').style.color = 'white'
-            document.getElementById('56').style.color = 'white'
-            document.getElementById('57').style.color = 'white'
-            document.getElementById('58').style.color = 'white'
-            document.getElementById('59').style.color = 'white'
-            document.getElementById('60').style.color = 'white'}
-        if(!props.theme){document.getElementById('55').style.color = 'black'
-            document.getElementById('56').style.color = 'black'
-            document.getElementById('57').style.color = 'black'
-            document.getElementById('58').style.color = 'black'
-            document.getElementById('59').style.color = 'black'
-            document.getElementById('60').style.color = 'black'}
-    }, [props.theme])
 
 
 

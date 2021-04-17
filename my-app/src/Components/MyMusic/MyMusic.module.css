@@ -2,4 +2,14 @@
     width: 400px;
     height: 150px;
     background-color: yellow;
+
+}
+.MyMusicWrapper{
+    text-align: center;
+    background-color: #EAF1FD;
+    border-right: 2px solid #9CBBF4;
+    border-left: 2px solid #9CBBF4;
+}
+.MyMusicWrapper div{
+    display: inline-block;
 }

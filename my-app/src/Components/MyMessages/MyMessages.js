@@ -5,6 +5,7 @@ import LastMessage from "./MessageItems/LastMessage/LastMessage"
 import React from 'react';
 import {AddMessagetActionCreator, UpdateNewMessageTextActionCreator} from './../../redux/MessagesReducer'
 import {Form, Field} from 'react-final-form'
+import { Route } from "react-router-dom";
 
 
 
@@ -13,7 +14,7 @@ import {Form, Field} from 'react-final-form'
 class MyMessages extends React.Component{
 
     onSubmit = (values) => {
-        this.props.addMessage(values.message)
+        this.props.addMessage(values.message, this.props.match.params.messageId)
         values.message = ''
     }
 
@@ -25,7 +26,7 @@ class MyMessages extends React.Component{
                     <UserNames {...this.props}/>
                 </div>
                 <div className={c.lastMessages}>
-                    <LastMessages {...this.props}/>
+                    <LastMessages {...this.props} />
                 </div>
                 <div>
                     <Form
@@ -63,8 +64,9 @@ const UserNames = (props) =>{
 
 const LastMessages = (props) =>{
     return (
-        props.messages.map( m  => <LastMessage text={m.message} id= {m.id} />)
+        props.messages.map( (m) =>{ if(m.id == props.match.params.messageId){return <LastMessage text={m.message} />} })
     )
+
 }
 
 export default MyMessages;

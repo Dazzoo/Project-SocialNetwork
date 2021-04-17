@@ -17,7 +17,6 @@ import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSka
 
 
     componentDidMount(){
-        debugger
         let userId = this.props.match.params.userId
         if(!userId){
                 userId = 15582

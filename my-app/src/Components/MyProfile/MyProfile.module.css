@@ -26,6 +26,7 @@
 .MyProfileWrapper{
     border-right: 2px solid #9CBBF4;
     border-left: 2px solid #9CBBF4;
+
 }
 .Avatar{
     border: 6px solid cornflowerblue;
@@ -35,6 +36,8 @@
     margin-top: 10px;
     margin-left: 7px;
     border-radius: 7px;
+    background-color: #EAF1FD;
+
 }
 .avatarIcon{
     display: flex;
@@ -154,6 +157,7 @@
     margin-top: 10px;
     margin-left: 15px;
     padding: 10px 0px;
+    background-color: #EAF1FD;
 
 }
 
@@ -169,5 +173,6 @@
     border-radius: 7px 7px 7px 7px;
     border: 6px solid cornflowerblue;
     margin: 0px 4px;
+    background-color: #EAF1FD;
 
 }
