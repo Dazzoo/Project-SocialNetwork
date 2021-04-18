@@ -47,56 +47,64 @@ class Login extends React.Component{
     render(){
         {if(this.props.isAuth === true){return <Redirect to='/profile' />}}
     return (
-        <div>
-            <div className={style.Login}>Login</div>
-            <Form
-                onSubmit={this.onSubmit}
-                validate={this.validate}
-                render={({handleSubmit, submitError}) => (
-                    <form onSubmit={handleSubmit}>
-                        <div>
-                            <Field name="email">
-                                {({input, meta}) => (
-                                    <div>
-                                        <input type="text" placeholder="Email" {...input} />
-                                        {(meta.error || meta.submitError) && meta.touched && (
-                                            <span className={style.errorText} >{meta.error || meta.submitError}</span>
-                                        )}
-                                    </div>
+        <div className={style.LoginWrapper} >
+        <div className={style.LoginContainer}>
+                <div className={style.Login}>Login</div>
+                    <div className={style.InputsWrapper} >
+                        <Form
+                            onSubmit={this.onSubmit}
+                            validate={this.validate}
+                            render={({handleSubmit, submitError}) => (
+                                <form onSubmit={handleSubmit}>
+                                    <div className={style.inputArea} >
+                                        <Field name="email">
+                                            {({input, meta}) => (
+                                                <div>
+                                                    <input  type="text" placeholder="Email" {...input} />
+                                                    <div className={style.errorArea} >
+                                                    {(meta.error || meta.submitError) && meta.touched && (
+                                                        <span className={style.errorText} >{meta.error || meta.submitError}</span>
+                                                    )}
+                                                    </div>
+                                                </div>
 
-                                )}
-                                </Field>
-                        </div>
-                        <div>
-                            <Field name="password">
-                                {({input, meta}) => (
-                                    <div>
-                                        <input type="password" placeholder="Password" {...input} />
-                                        {(meta.error || meta.submitError) && meta.touched && (
-                                            <span className={style.errorText} >{meta.error || meta.submitError}</span>
-                                        )}
+                                            )}
+                                            </Field>
                                     </div>
-                                )}
-                            </Field>
-                        </div>
-                        <div>
-                            <Field
-                                name="checkbox"
-                                component="input"
-                                type="checkbox"
-                            />
-                            Remember me
-                        </div>
-                        <div className={style.submitButton}>
-                            <button type="submit" className={cn( "btn btn-success")} class="btn btn-success" disabled={this.submitting}>
-                                Login
-                                </button>
-                        </div>
-                        {submitError && <div className={style.submitError}>{submitError}</div>}
-                        {this.props.isFetching? <PreloaderThreeDots/> : null}
-                    </form>
-                )}
-            />
+                                    <div className={style.inputArea}  >
+                                        <Field  name="password">
+                                            {({input, meta}) => (
+                                                <div>
+                                                    <input  type="password" placeholder="Password" {...input} />
+                                                    <div className={style.errorArea}>
+                                                    {(meta.error || meta.submitError) && meta.touched && (
+                                                        <span className={style.errorText} >{meta.error || meta.submitError}</span>
+                                                    )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </Field>
+                                    </div>
+                                    <div>
+                                        <Field
+                                            name="checkbox"
+                                            component="input"
+                                            type="checkbox"
+                                        />
+                                        Remember me
+                                    </div>
+                                    <div className={style.submitButton}>
+                                        <button type="submit" className={cn( "btn btn-success")} class="btn btn-success" disabled={this.submitting}>
+                                            Login
+                                            </button>
+                                    </div>
+                                    {submitError && <div className={style.submitError}>{submitError}</div>}
+                                    {this.props.isFetching? <PreloaderThreeDots/> : null}
+                                </form>
+                            )}
+                        />
+                    </div>
+            </div>
         </div>
     )
     }

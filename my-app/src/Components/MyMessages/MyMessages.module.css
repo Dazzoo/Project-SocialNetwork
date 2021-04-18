@@ -1,35 +1,54 @@
-.dialogs{
-    width: 500px;
-    background-color: dodgerblue;
-    display: flex;
 
+
+
+.dialogsWrapper{
+    display: grid;
+    grid-template-columns: 300px 500px;
+    grid-template-rows: 90% 200px;
+    gap: 0px 0px;
+    grid-template-areas:
+            "dialogNames messages"
+            ". inputArea";
+    border: 2px solid #9CBBF4;
 }
 .dialogsItems{
     flex-grow: 1;
-    border: 1px solid black;
     padding: 7px;
+    grid-area: dialogNames;
 }
 
 .lastMessages{
     flex-grow: 1;
-    border: 1px solid black;
+    border: 3px solid cornflowerblue;
     align-items: flex-start;
     padding: 7px;
+    grid-area: messages;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow-y:auto;
+    max-height: 700px;
 
 }
 .dialog{
     padding-top:5px;
+    margin: 10px 5px;
+    border: 3px solid cornflowerblue;
+    background-color: #EAF1FD;
+    border-radius: 5px;
 
 }
-.lastMessage{
-    padding-top: 5px;
+.lastMessage :not(:first-child){
+    padding-top: 15px;
 }
 .useravatar{
     display: inline-block;
     max-width: 100px;
+    border-radius: 5px;
 }
 .username{
+    margin-left: 10px;
     display: inline-block;
+
 }
 
 button.sendMessage{
@@ -37,7 +56,26 @@ button.sendMessage{
     height: 20px;
 }
 
-textarea.textfield{
-    height: 150px;
+.inputArea textarea{
+    height: 120px;
+    width: 500px;
+    border-radius: 7px;
+
+}
+.inputArea{
+    margin-top: 10px;
+    grid-area: inputArea;
+}
+
+a.active{
+    font-weight: bold;
+    font-size: 20px;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: all 0.3s
+
+}
+.message{
+    word-wrap: break-word;
 
 }

@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
     return{
         isAuth: state.auth.isAuth,
         email: state.auth.email,
+        login: state.auth.login
     }
 }
 

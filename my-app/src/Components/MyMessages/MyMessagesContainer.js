@@ -12,9 +12,11 @@ import { withRouter } from "react-router"
 
 
 class MyMessagesСlassContainer extends React.Component{
+
+
     render() {
         return (
-            <MyMessages {...this.props}/>
+            <MyMessages {...this.props} messageId={this.props.match.params.messageId} />
         )
     }
 }

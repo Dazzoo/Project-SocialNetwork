@@ -2,7 +2,6 @@ import React from 'react'
 import style from '../MyNews.module.css'
 
 export const News = (props) => {
-    debugger
     return (
         <div className={style.newsWrapper} >
 
@@ -16,7 +15,7 @@ export const News = (props) => {
                 <img src={props.image ? props.image : null} />
             </div>
             <div className={style.sourceUrl}>
-                <a className={style.sourceUrl} href={props.url}>Source...</a>
+                <a className={style.sourceUrl} href={props.url}>Read more...</a>
             </div>
 
         </div>

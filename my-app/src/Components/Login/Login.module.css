@@ -1,17 +1,64 @@
 .Login{
     font-size: 40px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px;
+
 }
+.LoginWrapper {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    gap: 0px 0px;
+    grid-template-areas:
+            ". . . . . . . . . ."
+            ". . . Login Login Login Login . . ."
+            ". . . Login Login Login Login . . ."
+            ". . . . errorSubmit errorSubmit . . . ."
+            ". . . . errorSubmit errorSubmit . . . .";
+}
+.LoginContainer{
+    margin: 20% 0px;
+    grid-area: Login;
+    border: 5px solid cornflowerblue;
+    padding: 10px;
+
+}
+.LoginInput{
+}
+.errorInputArea{
+    display: inline;
+}
+.InputsWrapper{
+    text-align: center;
+}
+.inputArea{
+    padding-bottom: 10px;
+}
+
 
 .errorText{
     color:red;
+    display: inline-block;
 }
 
 .submitError{
     border: red 2px solid;
     width: 200px;
     padding: 3px;
+    align-items: center;
+    margin: auto;
+
 }
 .submitButton{
-    margin: 10px 0px;
+    margin: 5px 0px;
     display: inline-block;
+}
+.errorArea {
+    height: 20px;
+}
+.capchaInput{
+    width: 130px;
 }

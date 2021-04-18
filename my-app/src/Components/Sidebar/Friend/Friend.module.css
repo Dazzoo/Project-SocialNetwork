@@ -1,3 +1,8 @@
 img.onlineStatusImg{
     width: 15px;
+    margin-right:5px;
+}
+.friendsOnline{
+    font-size: 15px;
+    margin-left: 9px;
 }

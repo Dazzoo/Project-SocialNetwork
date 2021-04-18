@@ -6,9 +6,9 @@ import HeaderContainer from './Components/Header/HeaderContainer'
 import Sidebar from './Components/Sidebar/Sidebar.js'
 import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
-import MyMusic from './Components/MyMusic/MyMusic.js'
+import MyMusicContainer from './Components/MyMusic/MyMusicContainer'
 import MySettings from './Components/MySettings/MySettings.js'
-import {HashRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
 import {InitializeApp} from './redux/authReducer'
@@ -52,7 +52,7 @@ class App extends React.Component {
                             <Route path='/profile/:userId?' render={() => <MyProfileContainer />} />
                             <Route path='/messages/:messageId?' render={() => withReactLazy(MyMessagesContainer)} />
                             <Route path='/news' render={() => withReactLazy(MyNewsContainer)} />
-                            <Route path='/music' render={() => withReactLazy(MyMusic)} />
+                            <Route path='/music' render={() => withReactLazy(MyMusicContainer)} />
                             <Route path='/settings' render={() => withReactLazy(MySettings)} />
                             <Route path='/findUsers' render={() => withReactLazy(FindUsersContainer)} />
                             <Route path='/login' render={() => <LoginContainer/>} />
@@ -89,11 +89,11 @@ let AppContainer = compose(
 class AppHightContainer extends React.Component {
     render(){
         return (
-            <HashRouter>
+            <BrowserRouter>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
-            </HashRouter>
+            </BrowserRouter>
         )
     }
 }

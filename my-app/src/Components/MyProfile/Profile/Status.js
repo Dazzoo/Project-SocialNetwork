@@ -6,8 +6,8 @@ import style from '../MyProfile.module.css'
 const Status = (props) => {
 
     const onSubmit = (values) => {
-        if(values.status && values.status.length > 25){
-            return {status: 'Max lenght is 25 symbols'}
+        if(values.status && values.status.length > 100){
+            return {status: 'Max lenght is 100 symbols'}
         }
         props.DeactivateEditMode(values.status)
     }

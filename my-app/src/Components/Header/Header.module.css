@@ -7,7 +7,9 @@
     grid-template-areas:
     "logoPlace logoPlace logoPlace else else else else else else else else else"
     "logoPlace logoPlace logoPlace else else else else else else else else else";
-    border: 1px solid black;
+    border-bottom: 2px solid #9CBBF4 ;
+    border-left: 2px solid #9CBBF4 ;
+    border-right: 2px solid #9CBBF4 ;
 }
 
 .logoPlace { grid-area: logoPlace; }
@@ -31,7 +33,7 @@
 .themeButton{
     display: inline-block;
 }
-.Login{
+.LogOutWrap{
     display: inline-block;
     float: right;
     margin-right:10px;
@@ -42,9 +44,14 @@
     margin-right:10px;
 
 }
-.themeButton{
-    margin: 4px 0px;
+.Login{
+    margin-right: 20px;
+    margin-top: 10px;
+    float: right;
+
 }
+
 .emailInfo{
-    margin: 8px 0px;
+    margin: 15px 18px;
+    display: inline-block;
 }

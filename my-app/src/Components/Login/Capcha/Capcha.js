@@ -14,7 +14,7 @@ const Capcha = (props) => {
                         <Field name="capcha">
                             {({input, meta}) => (
                                 <div>
-                                    <input type="text" placeholder="capcha" {...input} />
+                                    <input className={style.capchaInput} type="text" placeholder="capcha" {...input} />
                                     {(meta.error || meta.submitError) && meta.touched && (
                                         <span  >{meta.error || meta.submitError}</span>
                                     )}

@@ -1,11 +1,12 @@
 import onlineImg from "./../../../img/greencircle.jpg"
-import c from './Friend.module.css';
+import style from './Friend.module.css';
 
  const Friend = (props) => {
     return (
-        <div>
+        <div className={style.friendsOnline} >
+            <img className={style.onlineStatusImg} src={onlineImg}/>
             {props.name}
-            <img className={c.onlineStatusImg} src={onlineImg}/>
+
         </div>
     );
 }

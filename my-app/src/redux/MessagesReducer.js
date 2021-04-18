@@ -19,12 +19,11 @@ let initialState = {
 }
 
 const messageReducer = (state = initialState, action) => {
-    debugger
     switch (action.type){
         case 'ADD-MESSAGE':
 
             return{...state,
-                messages: state.messages.map(m => {if(m.id == action.id){ return{id: action.id, message: [m.message, action.text] }}else{return{id: m.id, message: m.message}}})
+                messages: state.messages.map(m => {if(m.id == action.id){ return{id: action.id, message: [...m.message, action.text] }}else{return{id: m.id, message: m.message}}})
             };
         default:
             return state;
