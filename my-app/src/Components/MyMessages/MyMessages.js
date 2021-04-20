@@ -69,13 +69,13 @@ class MyMessages extends React.Component{
 
 const UserNames = (props) =>{
     return (
-        props.dialogs.map( n  => <DialogName name= {n.name} id= {n.id} avatar= {n.avatar} /> )
+        props.dialogs.map( n  => <DialogName key={n.id} name= {n.name} id={n.id} avatar= {n.avatar} /> )
     )
 }
 
 const LastMessages = (props) =>{
     return (
-        props.messages.map( (m) =>{ if(m.id == props.match.params.messageId){return <LastMessage text={m.message} />} } )
+        props.messages.map( (m) =>{ if(m.id == props.match.params.messageId){return <LastMessage key={m.id} text={m.message} />} } )
     )
 
 }

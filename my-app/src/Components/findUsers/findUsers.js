@@ -16,7 +16,7 @@ const FindUsers = (props) => {
                 {props.isFetching ? <PreloaderSkateboardForComponent/> : null}
                 <div className={style.findUsersWrapper}>
                 {props.users.map( u =>
-                    <User u={u} props={props} />
+                    <User key={u.id} u={u} props={props} />
 
                 )
                 }

@@ -11,7 +11,7 @@ const Status = (props) => {
         }
         props.DeactivateEditMode(values.status)
     }
-    debugger
+
     const initialValues = {
         status: props.status
     }

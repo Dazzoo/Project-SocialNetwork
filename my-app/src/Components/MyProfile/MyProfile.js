@@ -11,6 +11,18 @@ import cn from 'classnames'
 
 class MyProfile extends React.Component{
 
+    PressLike = (id) => {
+        if(this.props.likedPostsID.indexOf(id) === -1){
+            this.props.AddLikedPost(id)
+            this.props.AddOneLike(id)
+        }
+        else{
+            this.props.RemoveLikedPost(id)
+            this.props.RemoveOneLike(id)
+        }
+
+    }
+
     onSubmit = (values) => {
         if(!values.postField){
             return null
@@ -62,7 +74,7 @@ class MyProfile extends React.Component{
                             </form>
                         )}
                 />
-                <Posts {...this.props}/>
+                <Posts {...this.props} PressLike={this.PressLike} />
             </div>
             </div>
         )
@@ -71,7 +83,7 @@ class MyProfile extends React.Component{
 }
 
 const Posts = (props) =>{
-        return( props.posts.map(el => <Post {...props}  id={el.id} likeCount={el.likeCount} text={el.text} />) )
+        return( props.posts.map(el => <Post key={el.id} {...props}  id={el.id} likeCount={el.likeCount} text={el.text} />) )
 }
 
 

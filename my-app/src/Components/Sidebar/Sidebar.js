@@ -4,13 +4,8 @@ import  Friend from './Friend/Friend.js'
 import React, { useState, useEffect } from 'react';
 
 const Sidebar = (props) => {
-    const FriendShow = props.friends.map( n  => <Friend name= {n.name} id= {n.id} />);
 
-
-
-
-
-
+    const FriendShow = props.friends.map( n  => <Friend key={n.id} name= {n.name} id= {n.id} />);
 
     return (
         <div className={style.sidebarWrapper}>

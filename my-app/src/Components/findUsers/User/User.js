@@ -5,7 +5,7 @@ import style from '../findUsers.module.css';
 
 const User = ({u, props}) => {
     return (
-        <div key={u.id} className={style.userWrapper}>
+        <div className={style.userWrapper}>
             <div className={style.inlineBlock}>
                 <div className={style.profileImage}>
                     <NavLink className={style.userNav} to={"/profile/" + u.id}>

@@ -6,7 +6,6 @@ import style from './Friend.module.css';
         <div className={style.friendsOnline} >
             <img className={style.onlineStatusImg} src={onlineImg}/>
             {props.name}
-
         </div>
     );
 }
