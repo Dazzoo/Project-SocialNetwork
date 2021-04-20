@@ -37,3 +37,8 @@ img{
     flex-wrap: wrap;
     width: 100%;
 }
+.FollowUnfollowWrapper{
+    margin-left: 10px;
+    margin-top: 5px;
+
+}
