@@ -8,7 +8,8 @@ import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
 import MyMusicContainer from './Components/MyMusic/MyMusicContainer'
 import MySettings from './Components/MySettings/MySettings.js'
-import {BrowserRouter, Route} from "react-router-dom";
+import WeatherContainer from  './Components/Sidebar/Weather/WeatherContainer'
+import {HashRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
 import {InitializeApp} from './redux/authReducer'
@@ -43,9 +44,10 @@ class App extends React.Component {
                     <div className={style.gridbox}>
                         <div className={style.headerComponent} >
                             <HeaderContainer />
+                            <WeatherContainer/>
                         </div>
                         <div className={style.sidebar} >
-                            <Sidebar theme={this.props.theme} friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+                            <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
                         </div>
                         <div className={style.else}>
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />
@@ -89,11 +91,11 @@ let AppContainer = compose(
 class AppHightContainer extends React.Component {
     render(){
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }

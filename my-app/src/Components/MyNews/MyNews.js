@@ -7,11 +7,11 @@ const MyNews = (props) => {
     if(!props.newsList){
         return <PreloaderSkateboardForComponent/>
     }
-    debugger
+    console.log(props.newsList)
     return (
     <div className={c.MyNews}>
         {props.newsList.map(el => <News key={el.update_date} title={el.title} abstract={el.abstract} url={el.url}
-                                        image={el.multimedia[0].url}    />) }
+                                        image={el.multimedia ? el.multimedia[0].url : null}    />) }
         </div>
     );
 }
