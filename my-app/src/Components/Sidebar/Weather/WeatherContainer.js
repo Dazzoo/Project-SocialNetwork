@@ -1,21 +1,26 @@
 import React from 'react'
 import Weather from './Weather'
-import {SetWeatherThunk, getCurrentHour} from '../../../redux/SidebarReducer'
+import {SetWeatherThunk, getCurrentHour, IsDayThunk} from '../../../redux/SidebarReducer'
 import {connect} from 'react-redux'
-import {PreloaderSkateboardForComponent} from  '../../common/Preloaders/PreloaderSkateboard'
+import {PreloaderThreeDots} from  '../../common/Preloaders/PreloaderThreeDots'
+import style from './Weather.module.css'
+import {CurrentHour} from  './../../../redux/sidebar-selector'
 
-class WeatherContainer extends React.Component {
+class WeatherBarContainer extends React.Component {
 
-    componentDidMount(){
+    componentDidMount (){
         this.props.SetWeatherThunk()
         this.props.getCurrentHour()
+        this.props.IsDayThunk(this.props.currentHour)
+        let SkyIcon = null
+        if (this.props.isDay) { this.SkyIcon = style.SkyIconDay }
+        else { this.SkyIcon = style.SkyIconNight  }
     }
-
     render(){
         if(!this.props.weather){
-            return <PreloaderSkateboardForComponent/>
+            return <PreloaderThreeDots/>
         }
-        return <Weather {...this.props} currentHour={this.props.currentHour}  />
+        return <Weather {...this.props} SkyIcon={this.SkyIcon}   />
     }
 }
 
@@ -24,10 +29,11 @@ class WeatherContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         weather: state.sidebar.weather,
-        currentHour: state.sidebar.currentHour
+        currentHour: state.sidebar.currentHour,
+        isDay: state.sidebar.isDay
     }
 }
 
 
 
-export default connect(mapStateToProps, {SetWeatherThunk, getCurrentHour})(WeatherContainer)
+export default connect(mapStateToProps, {SetWeatherThunk, getCurrentHour, IsDayThunk})(WeatherBarContainer)

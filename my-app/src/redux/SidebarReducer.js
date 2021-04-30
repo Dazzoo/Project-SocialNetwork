@@ -13,7 +13,8 @@ let initialState = {
         ]
     },
     currentHour: null,
-    weather: null
+    weather: null,
+    isDay: null
 }
 
 const sidebarReducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ const sidebarReducer = (state = initialState, action) => {
                 currentHour: action.hour
             }
         }
+        case 'SIDEBAR-SET=IS-DAY':{
+            return {...state,
+                isDay: action.boolen
+            }
+        }
         default:
             return state
     }
@@ -35,6 +41,7 @@ const sidebarReducer = (state = initialState, action) => {
 
 export const SetWeather = (weather) => ({type: 'SIDEBAR-SET-WEATHER', weather})
 export const SetHour = (hour) => ({type: 'SIDEBAR-SET-HOUR', hour})
+export const IsDay = (boolen) => ({type: 'SIDEBAR-SET=IS-DAY', boolen})
 
 export const SetWeatherThunk = () => async (dispatch) => {
     try {
@@ -46,14 +53,25 @@ export const SetWeatherThunk = () => async (dispatch) => {
 
 }
 
-export const getCurrentHour = () => (dispatch) => {
+export const getCurrentHour = () => async (dispatch) => {
     let data = new Date()
+    debugger
     let dataArr = data.toString().split(' ')
     let currentTime = dataArr[4].split(':')
     let currentHour = currentTime[0]
-    dispatch(SetHour(currentHour))
+    await dispatch(SetHour(currentHour))
 }
 
+export const ShowCloudImage = (cloudcover, lifted_index, prec_type) => {
+
+
+}
+
+export const IsDayThunk = (currentHour) => (dispatch) => {
+    debugger
+    if(currentHour >= 21 || currentHour <= 5 ){ dispatch(IsDay(false))}
+    else { dispatch(IsDay(true)) }
+}
 
 
 export default sidebarReducer

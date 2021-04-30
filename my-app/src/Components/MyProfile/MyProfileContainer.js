@@ -2,11 +2,11 @@
 import MyProfile from './MyProfile'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-    import {AddPostActionCreator} from './../../redux/profileReducer'
+    import {AddPostActionCreator} from './../../redux/ProfileReducer'
 import {TakeProfile, TakePosts, TakeAuth, TakeLikedPostsID, TakeId} from '../../redux/profile-selector'
 import withAuthRedirect from './../../hoc/withAuthRedirect'
     import {AddLikedPost, RemoveLikedPost, AddOneLike, RemoveOneLike, GetProfile, getProfileThunk,
-        getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../redux/profileReducer'
+        getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../redux/ProfileReducer'
     import { withRouter } from "react-router"
 import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSkateboard'
 

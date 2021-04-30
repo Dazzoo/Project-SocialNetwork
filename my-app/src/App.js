@@ -8,7 +8,7 @@ import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
 import MyMusicContainer from './Components/MyMusic/MyMusicContainer'
 import MySettings from './Components/MySettings/MySettings.js'
-import WeatherContainer from  './Components/Sidebar/Weather/WeatherContainer'
+import WeatherBarContainer from  './Components/Sidebar/Weather/WeatherContainer'
 import {HashRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
@@ -44,10 +44,10 @@ class App extends React.Component {
                     <div className={style.gridbox}>
                         <div className={style.headerComponent} >
                             <HeaderContainer />
-                            <WeatherContainer/>
                         </div>
                         <div className={style.sidebar} >
                             <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+                            <WeatherBarContainer/>
                         </div>
                         <div className={style.else}>
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />

@@ -2,7 +2,7 @@
 import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Profile from './Profile'
-import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../../redux/profileReducer'
+import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../../redux/ProfileReducer'
 import { withRouter } from "react-router"
 import {TakeProfile, TakeStatus, TakeIs0wner, TakeId} from  '../../../redux/profile-selector'
  import {PreloaderSkateboardForComponent} from '../../common/Preloaders/PreloaderSkateboard'
