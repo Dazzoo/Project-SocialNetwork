@@ -1,4 +1,6 @@
 .SkyIconDay{
+    float:right;
+    margin-right: 5px;
     width: 59px;
     height: 60px;
     overflow: hidden;
