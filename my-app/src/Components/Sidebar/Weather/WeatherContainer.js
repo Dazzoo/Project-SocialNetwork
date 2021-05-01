@@ -10,9 +10,9 @@ class WeatherBarContainer extends React.Component {
 
     componentDidMount(){
         this.props.SetWeatherThunk()
+        this.props.getCurrentHour()
     }
     componentDidUpdate(){
-        this.props.getCurrentHour()
         this.props.IsDayThunk(this.props.currentHour)
     }
 
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
     return {
         weather: state.sidebar.weather,
         currentHour: state.sidebar.currentHour,
-        isDay: state.sidebar.isDay
+        isDay: state.sidebar.isDay,
+        currentData: state.sidebar.currentData,
     }
 }
 

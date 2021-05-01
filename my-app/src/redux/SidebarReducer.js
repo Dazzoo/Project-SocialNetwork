@@ -13,6 +13,7 @@ let initialState = {
         ]
     },
     currentHour: null,
+    currentData: [],
     weather: null,
     isDay: null
 }
@@ -34,6 +35,11 @@ const sidebarReducer = (state = initialState, action) => {
                 isDay: action.boolen
             }
         }
+        case 'SIDEBAR-SET-DATA':{
+            return {...state,
+                currentData: action.data
+            }
+        }
         default:
             return state
     }
@@ -41,6 +47,7 @@ const sidebarReducer = (state = initialState, action) => {
 
 export const SetWeather = (weather) => ({type: 'SIDEBAR-SET-WEATHER', weather})
 export const SetHour = (hour) => ({type: 'SIDEBAR-SET-HOUR', hour})
+export const SetData = (data) => ({type: 'SIDEBAR-SET-DATA', data})
 export const IsDay = (boolen) => ({type: 'SIDEBAR-SET-IS-DAY', boolen})
 
 export const SetWeatherThunk = () => async (dispatch) => {
@@ -58,8 +65,8 @@ export const getCurrentHour = () => async (dispatch) => {
     let dataArr = data.toString().split(' ')
     let currentTime = dataArr[4].split(':')
     let currentHour = currentTime[0]
-    await dispatch(SetHour(currentHour))
-    return null
+    dispatch(SetHour(currentHour))
+    dispatch(SetData(dataArr))
 }
 
 
