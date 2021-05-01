@@ -1,6 +1,6 @@
 import React from 'react'
 import Weather from './Weather'
-import {SetWeatherThunk, getCurrentHour, IsDayThunk} from '../../../redux/SidebarReducer'
+import {SetWeatherThunk, getCurrentHour, IsDayThunk, ChooseWeatherPic} from '../../../redux/SidebarReducer'
 import {connect} from 'react-redux'
 import {PreloaderThreeDots} from  '../../common/Preloaders/PreloaderThreeDots'
 import style from './Weather.module.css'
@@ -14,6 +14,7 @@ class WeatherBarContainer extends React.Component {
     }
     componentDidUpdate(){
         this.props.IsDayThunk(this.props.currentHour)
+
     }
 
     render(){
@@ -32,9 +33,11 @@ const mapStateToProps = (state) => {
         currentHour: state.sidebar.currentHour,
         isDay: state.sidebar.isDay,
         currentData: state.sidebar.currentData,
+        WeatherIcons: state.sidebar.WeatherIcons,
+        currentWeatherIcon: state.sidebar.currentWeatherIcon
     }
 }
 
 
 
-export default connect(mapStateToProps, {SetWeatherThunk, getCurrentHour, IsDayThunk})(WeatherBarContainer)
+export default connect(mapStateToProps, {SetWeatherThunk, getCurrentHour, IsDayThunk, ChooseWeatherPic})(WeatherBarContainer)
