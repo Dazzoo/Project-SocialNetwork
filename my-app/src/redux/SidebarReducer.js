@@ -94,16 +94,54 @@ export const getCurrentHour = () => (dispatch) => {
     dispatch(SetData(dataArr))
 }
 
-export const ChooseWeatherPic = (weatherData, WeatherIcons) => (dispatch) => {
-    if([1,2].includes(weatherData.cloudcover) ){
-        dispatch(SetCurrentWeatherIcon(WeatherIcons[0]))
-
-    }if([3,4,5].includes(weatherData.cloudcover)){
-            dispatch(SetCurrentWeatherIcon(WeatherIcons[8]))
-    }if([6,7].includes(weatherData.cloudcover)){
-        dispatch(SetCurrentWeatherIcon(WeatherIcons[6]))
-    }if([8,9].includes(weatherData.cloudcover)){
-        dispatch(SetCurrentWeatherIcon(WeatherIcons[1]))
+export const ChooseWeatherPic = (weatherData, WeatherIcons) => (dispatch) => {      //https://github.com/Yeqzids/7timer-issues/wiki/Wiki   DOCUMENTATION
+    let humidity = Number(weatherData.rh2m.replace(/%/g, ''))
+    if(weatherData.lifted_index <= -5){
+        if(weatherData.prec_amount < 4){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[13]))
+        } if(weatherData.prec_amount >= 4){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[12]))
+        }
+    }
+    if(weatherData.prec_type == "snow"){
+        if(weatherData.prec_amount <= 4){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[5]))
+        } else {
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[11]))
+        }
+    }
+    if(weatherData.prec_type == "rain"){
+        if(weatherData.prec_amount >= 4){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[9]))
+        }
+    }
+    if(weatherData.prec_type == "frzr" || weatherData.prec_type == "icep"  ){
+        dispatch(SetCurrentWeatherIcon(WeatherIcons[10]))
+    }
+    if([1,2].includes(weatherData.cloudcover) ){                       //Total cloud cover less than 20%
+        if(weatherData.prec_type == "rain"){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[3]))
+        }else {
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[0]))
+        }
+    }if([3,4,5].includes(weatherData.cloudcover)){                      //Total cloud cover between 20%-60%
+        if(weatherData.prec_type == "rain"){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[3]))
+        }else {
+        if(humidity >= 90){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[2]))
+        }else { dispatch(SetCurrentWeatherIcon(WeatherIcons[8]))
+        }}
+    }if([6,7].includes(weatherData.cloudcover)){                        //Total cloud cover between 60%-80%
+        if(weatherData.prec_type == "rain"){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[7]))
+        }else { dispatch(SetCurrentWeatherIcon(WeatherIcons[6]))
+        }
+    }if([8,9].includes(weatherData.cloudcover)){                        //Total cloud cover over over 80%
+        if(weatherData.prec_type == "rain"){
+            dispatch(SetCurrentWeatherIcon(WeatherIcons[4]))
+        }else{ dispatch(SetCurrentWeatherIcon(WeatherIcons[1]))
+        }
     }
 }
 
