@@ -76,7 +76,7 @@ export const NewsAPI = {
 
 export const SidebarAPI = {
     async getWeather(){
-        const response = await axios.get("https://www.7timer.info/bin/civil.php?lon=24.03&lat=49.84&ac=0&unit=metric&output=json&tzshift=0")
+        const response = await axios.get("https://www.7timer.info/bin/civil.php?lon=24.03&lat=49.84&ac=0&unit=metric&output=json&tzshift=+3")
         return response.data
     }
 }
