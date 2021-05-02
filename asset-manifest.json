@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Project-SocialNetwork/static/css/main.2a9f4bf3.chunk.css",
-    "main.js": "/Project-SocialNetwork/static/js/main.01f8a7a1.chunk.js",
-    "main.js.map": "/Project-SocialNetwork/static/js/main.01f8a7a1.chunk.js.map",
+    "main.css": "/Project-SocialNetwork/static/css/main.445eca73.chunk.css",
+    "main.js": "/Project-SocialNetwork/static/js/main.d57edaf2.chunk.js",
+    "main.js.map": "/Project-SocialNetwork/static/js/main.d57edaf2.chunk.js.map",
     "runtime-main.js": "/Project-SocialNetwork/static/js/runtime-main.2514114b.js",
     "runtime-main.js.map": "/Project-SocialNetwork/static/js/runtime-main.2514114b.js.map",
     "static/js/2.f310d38a.chunk.js": "/Project-SocialNetwork/static/js/2.f310d38a.chunk.js",
@@ -14,20 +14,20 @@
     "static/js/4.cb5ada20.chunk.js.map": "/Project-SocialNetwork/static/js/4.cb5ada20.chunk.js.map",
     "index.html": "/Project-SocialNetwork/index.html",
     "static/css/3.93eedc77.chunk.css.map": "/Project-SocialNetwork/static/css/3.93eedc77.chunk.css.map",
-    "static/css/main.2a9f4bf3.chunk.css.map": "/Project-SocialNetwork/static/css/main.2a9f4bf3.chunk.css.map",
+    "static/css/main.445eca73.chunk.css.map": "/Project-SocialNetwork/static/css/main.445eca73.chunk.css.map",
     "static/js/2.f310d38a.chunk.js.LICENSE.txt": "/Project-SocialNetwork/static/js/2.f310d38a.chunk.js.LICENSE.txt",
     "static/media/ComingSoon.17643e9b.png": "/Project-SocialNetwork/static/media/ComingSoon.17643e9b.png",
     "static/media/FadingLines.b1348dd1.gif": "/Project-SocialNetwork/static/media/FadingLines.b1348dd1.gif",
     "static/media/ThreeDots.fede1ada.gif": "/Project-SocialNetwork/static/media/ThreeDots.fede1ada.gif",
     "static/media/greencircle.ed5e3b14.jpg": "/Project-SocialNetwork/static/media/greencircle.ed5e3b14.jpg",
     "static/media/logo.6ce24c58.svg": "/Project-SocialNetwork/static/media/logo.6ce24c58.svg",
-    "static/media/logoPic.ec5ccf17.png": "/Project-SocialNetwork/static/media/logoPic.ec5ccf17.png",
-    "static/media/logoText.c791592f.png": "/Project-SocialNetwork/static/media/logoText.c791592f.png"
+    "static/media/logoPic.4e3afefc.png": "/Project-SocialNetwork/static/media/logoPic.4e3afefc.png",
+    "static/media/logoText.7ab8351f.png": "/Project-SocialNetwork/static/media/logoText.7ab8351f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2514114b.js",
     "static/js/2.f310d38a.chunk.js",
-    "static/css/main.2a9f4bf3.chunk.css",
-    "static/js/main.01f8a7a1.chunk.js"
+    "static/css/main.445eca73.chunk.css",
+    "static/js/main.d57edaf2.chunk.js"
   ]
 }
