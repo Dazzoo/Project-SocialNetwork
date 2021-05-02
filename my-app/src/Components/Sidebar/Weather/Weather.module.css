@@ -1,6 +1,6 @@
 .SkyIconDay{
     float:right;
-    margin-right: 5px;
+    margin-right: 2px;
     width: 59px;
     height: 60px;
     overflow: hidden;
@@ -10,7 +10,7 @@
 }
 .SkyIconNight{
     float:right;
-    margin-right: 5px;
+    margin-right: 2px;
     width: 59px;
     height: 60px;
     overflow: hidden;
@@ -36,10 +36,13 @@
     display: inline-block;
     float:right;
     font-weight: bold;
-    margin-right: 0px;
+}
+.WeatherWrapper{
+    background-color: #EAF1FD;
+    margin: 3px;
+
 }
 .WeatherBar{
-    background-color: #EAF1FD;
     display: inline-block;
     padding: 8px;
     width: 100%;

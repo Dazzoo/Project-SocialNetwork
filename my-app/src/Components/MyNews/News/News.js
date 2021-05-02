@@ -10,12 +10,10 @@ export const News = (props) => {
             </div>
             <div className={style.description} >
                 {props.abstract}
+            <a className={style.sourceUrl} href={props.url}>  Read more...</a>
             </div>
             <div className={style.image} >
                 <img src={props.image ? props.image : null} />
-            </div>
-            <div className={style.sourceUrl}>
-                <a className={style.sourceUrl} href={props.url}>Read more...</a>
             </div>
 
         </div>

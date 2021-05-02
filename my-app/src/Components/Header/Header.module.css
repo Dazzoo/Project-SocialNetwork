@@ -8,8 +8,8 @@
     "logoPlace logoPlace logoPlace else else else else else else else else else"
     "logoPlace logoPlace logoPlace else else else else else else else else else";
     border-bottom: 2px solid #9CBBF4 ;
-    border-left: 2px solid #9CBBF4 ;
-    border-right: 2px solid #9CBBF4 ;
+    background-color: #EAF1FD;
+    margin-left: 3px;
 }
 
 .logoPlace { grid-area: logoPlace; }
