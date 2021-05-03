@@ -8,7 +8,7 @@ import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
 import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
 import MyMusicContainer from './Components/MyMusic/MyMusicContainer'
 import MySettings from './Components/MySettings/MySettings.js'
-import WeatherBarContainer from  './Components/Sidebar/Weather/WeatherContainer'
+import WeatherBarContainer from  './Components/Sidebar/Weather/WeatherBarContainer'
 import {HashRouter, Route} from "react-router-dom";
 import FindUsersContainer from './Components/findUsers/findUsersContainer'
 import LoginContainer from  './Components/Login/LoginContainer'
@@ -20,6 +20,7 @@ import {Provider} from "react-redux"
 import store from './redux/store-redux'
 import withReactLazy from './hoc/withReactLazy'
 import { Redirect } from "react-router-dom"
+import WeatherContainer from './Components/MyWeather/WeatherContainer'
 const MyMessagesContainer = React.lazy(() => import('./Components/MyMessages/MyMessagesContainer'))
 
 
@@ -58,6 +59,7 @@ class App extends React.Component {
                             <Route path='/settings' render={() => withReactLazy(MySettings)} />
                             <Route path='/findUsers' render={() => withReactLazy(FindUsersContainer)} />
                             <Route path='/login' render={() => <LoginContainer/>} />
+                            <Route path='/weather' render={() => <WeatherContainer/>} />
                         </div>
                     </div>
                 </div>

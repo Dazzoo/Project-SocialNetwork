@@ -1,10 +1,9 @@
 import React from 'react'
-import Weather from './Weather'
+import WeatherBar from './WeatherBar'
 import {SetWeatherThunk, getCurrentHour, IsDayThunk, ChooseWeatherPic} from '../../../redux/SidebarReducer'
 import {connect} from 'react-redux'
 import {PreloaderThreeDots} from  '../../common/Preloaders/PreloaderThreeDots'
 import style from './Weather.module.css'
-import {CurrentHour} from  './../../../redux/sidebar-selector'
 
 class WeatherBarContainer extends React.Component {
 
@@ -21,7 +20,7 @@ class WeatherBarContainer extends React.Component {
         if(!this.props.weather){
             return <PreloaderThreeDots/>
         }
-        return <Weather {...this.props}   />
+        return <WeatherBar {...this.props}   />
     }
 }
 
