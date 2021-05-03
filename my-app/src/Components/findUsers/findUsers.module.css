@@ -11,7 +11,7 @@ img{
 
 .userWrapper{
     display: block;
-    margin-left: 50px;
+    margin-left: auto;
     margin-top: 10px;
     border: 3px solid cornflowerblue;
     border-radius: 4px;

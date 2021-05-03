@@ -9,13 +9,13 @@
 }
 
 .paginatorWrapper{
-    border: 2px solid cornflowerblue;
-    padding: 8px 8px;
-    margin-left: 10px;
+    border-top: 2px solid cornflowerblue;
+    border-bottom: 2px solid cornflowerblue;
+    padding: 10px;
     display: flex;
     justify-content: center;
-    margin: 5px;
+    margin: 2px;
     background-color: #EAF1FD;
-    border-radius: 10px;
+    border-radius: 0px;
 
 }
