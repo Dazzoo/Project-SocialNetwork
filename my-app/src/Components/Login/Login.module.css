@@ -62,3 +62,8 @@
 .capchaInput{
     width: 130px;
 }
+.prompt{
+    color: red;
+    text-align: center;
+    font-size: 16px;
+}

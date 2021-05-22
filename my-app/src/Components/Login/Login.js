@@ -100,10 +100,15 @@ class Login extends React.Component{
                                     </div>
                                     {submitError && <div className={style.submitError}>{submitError}</div>}
                                     {this.props.isFetching? <PreloaderThreeDots/> : null}
+
                                 </form>
                             )}
                         />
                     </div>
+            <div className={style.prompt}>Welcome =)</div>
+            <div className={style.prompt} >Email: yuraks46@gmail.com Password: test8841</div>
+            <div className={style.prompt} >or</div>
+            <div className={style.prompt} >Email: free@samuraijs.com Password: free</div>
             </div>
         </div>
     )
