@@ -13,7 +13,26 @@ import about_civil_rainsnow from './../assets/Weather/about_civil_rainsnow.png'
 import about_civil_snow from './../assets/Weather/about_civil_snow.png'
 import about_civil_tsrain from './../assets/Weather/about_civil_tsrain.png'
 import about_civil_tstorm from './../assets/Weather/about_civil_tstorm.png'
+const SET_WEATHER = 'SIDEBAR/SET-WEATHER'
+const SET_HOUR = 'SIDEBAR/SET-HOUR'
+const SET_DATA = 'SIDEBAR/SET-DATA'
+const SET_IS_DAY = 'SIDEBAR/SET-IS-DAY'
+const SET_CURRENT_WEATHER_ICON = 'SIDEBAR/SET-CURRENT-WEATHER-ICON'
 
+
+
+
+type SidebarType = {friendsOnline: Array<{id: number, name: string}>}
+type WeatherType = {product: string,init: string, dataseries: Array<{timepoint: number, cloudcover: number, lifted_index: number,
+                    prec_type: string, prec_amount: number, temp2m: number, rh2m: string, wind10m: {direction: string, speed: number},
+                    weather: string}>}
+type WeatherDataseriesType = {timepoint: number, cloudcover: number, lifted_index: number,
+    prec_type: string, prec_amount: number, temp2m: number, rh2m: string, wind10m: {direction: string, speed: number},
+    weather: string}
+type WeatherIconsType = Array<typeof about_civil_clear | typeof about_civil_cloudy | typeof about_civil_fog
+    | typeof about_civil_ishower | typeof about_civil_lightrain | typeof
+    about_civil_lightsnow | typeof about_civil_mcloudy | typeof about_civil_oshower | typeof about_civil_pcloudy | typeof about_civil_rain
+    | typeof about_civil_rainsnow | typeof about_civil_snow | typeof about_civil_tsrain | typeof about_civil_tstorm>
 
 let initialState = {
     Sidebar: {
@@ -25,40 +44,42 @@ let initialState = {
             {id: 5, name: 'Nasty'},
             {id: 6, name: 'Monica'}
         ]
-    },
-    currentHour: null,
-    currentData: [],
-    weather: null,
-    isDay: null,
+    } as SidebarType,
+    currentHour: null as null | string,
+    currentData: [] as Array<string>,
+    weather: null as null | WeatherType,
+    isDay: null as null | boolean,
     WeatherIcons: [about_civil_clear, about_civil_cloudy, about_civil_fog, about_civil_ishower, about_civil_lightrain,
         about_civil_lightsnow, about_civil_mcloudy, about_civil_oshower, about_civil_pcloudy,
-        about_civil_rain, about_civil_rainsnow, about_civil_snow, about_civil_tsrain, about_civil_tstorm],
-    currentWeatherIcon: null
+        about_civil_rain, about_civil_rainsnow, about_civil_snow, about_civil_tsrain, about_civil_tstorm] as WeatherIconsType,
+    currentWeatherIcon: null as any
 }
 
-const sidebarReducer = (state = initialState, action) => {
+export type initialStateType = typeof initialState
+
+const sidebarReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type){
-        case 'SIDEBAR-SET-WEATHER':{
+        case SET_WEATHER:{
             return {...state,
                 weather: action.weather
             }
         }
-        case 'SIDEBAR-SET-HOUR':{
+        case SET_HOUR:{
             return {...state,
                 currentHour: action.hour
             }
         }
-        case 'SIDEBAR-SET-IS-DAY':{
+        case SET_IS_DAY:{
             return {...state,
                 isDay: action.boolen
             }
         }
-        case 'SIDEBAR-SET-DATA':{
+        case SET_DATA:{
             return {...state,
                 currentData: action.data
             }
         }
-        case 'SIDEBAR-SET-CURRENT-WEATHER-ICON':{
+        case SET_CURRENT_WEATHER_ICON:{
             return {...state,
                 currentWeatherIcon: action.icon
             }
@@ -68,14 +89,35 @@ const sidebarReducer = (state = initialState, action) => {
     }
 }
 
-export const SetWeather = (weather) => ({type: 'SIDEBAR-SET-WEATHER', weather})
-export const SetHour = (hour) => ({type: 'SIDEBAR-SET-HOUR', hour})
-export const SetData = (data) => ({type: 'SIDEBAR-SET-DATA', data})
-export const IsDay = (boolen) => ({type: 'SIDEBAR-SET-IS-DAY', boolen})
-export const SetCurrentWeatherIcon = (icon) => ({type: 'SIDEBAR-SET-CURRENT-WEATHER-ICON', icon})
+type SetWeatherType = {
+    type: typeof SET_WEATHER,
+    weather: WeatherType
+}
+export const SetWeather = (weather: WeatherType): SetWeatherType => ({type: SET_WEATHER, weather})
+type SetHourType = {
+    type: typeof SET_HOUR,
+    hour: string
+}
+export const SetHour = (hour: string): SetHourType => ({type: SET_HOUR, hour})
+type SetDataType = {
+    type: typeof SET_DATA,
+    data: Array<string>
+
+}
+export const SetData = (data: Array<string>): SetDataType => ({type: SET_DATA, data})
+type IsDayType = {
+    type: typeof SET_IS_DAY,
+    boolen: boolean
+}
+export const IsDay = (boolen: boolean): IsDayType => ({type: SET_IS_DAY, boolen})
+type SetCurrentWeatherIconType = {
+    type: typeof  SET_CURRENT_WEATHER_ICON,
+    icon: any
+}
+export const SetCurrentWeatherIcon = (icon: any): SetCurrentWeatherIconType => ({type: SET_CURRENT_WEATHER_ICON, icon})
 
 
-export const SetWeatherThunk = () => async (dispatch) => {
+export const SetWeatherThunk = () => async (dispatch: any) => {
     try {
         const weatherJson = await SidebarAPI.getWeather()
         dispatch(SetWeather(weatherJson))
@@ -85,7 +127,7 @@ export const SetWeatherThunk = () => async (dispatch) => {
 
 }
 
-export const getCurrentHour = () => (dispatch) => {
+export const getCurrentHour = () => (dispatch: any) => {
     let data = new Date()
     let dataArr = data.toString().split(' ')
     let currentTime = dataArr[4].split(':')
@@ -94,7 +136,7 @@ export const getCurrentHour = () => (dispatch) => {
     dispatch(SetData(dataArr))
 }
 
-export const ChooseWeatherPic = (weatherData, WeatherIcons) => (dispatch) => {      //https://github.com/Yeqzids/7timer-issues/wiki/Wiki   DOCUMENTATION
+export const ChooseWeatherPic = (weatherData: WeatherDataseriesType, WeatherIcons: WeatherIconsType) => (dispatch: any) => {      //https://github.com/Yeqzids/7timer-issues/wiki/Wiki   DOCUMENTATION
     let humidity = Number(weatherData.rh2m.replace(/%/g, ''))
     if(weatherData.lifted_index <= -5){
         if(weatherData.prec_amount < 4){
@@ -147,7 +189,7 @@ export const ChooseWeatherPic = (weatherData, WeatherIcons) => (dispatch) => {  
 
 
 
-export const IsDayThunk = (currentHour) => (dispatch) => {
+export const IsDayThunk = (currentHour: number) => (dispatch: any) => {
     if(currentHour >= 21 || currentHour <= 5 ){ dispatch(IsDay(false)) }
     else { dispatch(IsDay(true)) }
 
