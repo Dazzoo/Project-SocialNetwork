@@ -13,6 +13,7 @@ import about_civil_rainsnow from './../assets/Weather/about_civil_rainsnow.png'
 import about_civil_snow from './../assets/Weather/about_civil_snow.png'
 import about_civil_tsrain from './../assets/Weather/about_civil_tsrain.png'
 import about_civil_tstorm from './../assets/Weather/about_civil_tstorm.png'
+import {SidebarType, WeatherType, WeatherDataseriesType} from '../types/types'
 const SET_WEATHER = 'SIDEBAR/SET-WEATHER'
 const SET_HOUR = 'SIDEBAR/SET-HOUR'
 const SET_DATA = 'SIDEBAR/SET-DATA'
@@ -20,19 +21,11 @@ const SET_IS_DAY = 'SIDEBAR/SET-IS-DAY'
 const SET_CURRENT_WEATHER_ICON = 'SIDEBAR/SET-CURRENT-WEATHER-ICON'
 
 
-
-
-type SidebarType = {friendsOnline: Array<{id: number, name: string}>}
-type WeatherType = {product: string,init: string, dataseries: Array<{timepoint: number, cloudcover: number, lifted_index: number,
-                    prec_type: string, prec_amount: number, temp2m: number, rh2m: string, wind10m: {direction: string, speed: number},
-                    weather: string}>}
-type WeatherDataseriesType = {timepoint: number, cloudcover: number, lifted_index: number,
-    prec_type: string, prec_amount: number, temp2m: number, rh2m: string, wind10m: {direction: string, speed: number},
-    weather: string}
 type WeatherIconsType = Array<typeof about_civil_clear | typeof about_civil_cloudy | typeof about_civil_fog
     | typeof about_civil_ishower | typeof about_civil_lightrain | typeof
     about_civil_lightsnow | typeof about_civil_mcloudy | typeof about_civil_oshower | typeof about_civil_pcloudy | typeof about_civil_rain
     | typeof about_civil_rainsnow | typeof about_civil_snow | typeof about_civil_tsrain | typeof about_civil_tstorm>
+
 
 let initialState = {
     Sidebar: {

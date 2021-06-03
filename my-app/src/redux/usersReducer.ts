@@ -1,4 +1,5 @@
 import {UserAPI} from './API'
+import {UsersType} from '../types/types'
 const FOLLOWED = 'USERS/FOLLOWED'
 const UNFOLLOWED = 'USERS/UNFOLLOWED'
 const SET_USERS = 'USERS/SET-USERS'
@@ -9,7 +10,6 @@ const IN_PROGRESS_ADD = 'USERS/IN-PROGRESS-ADD'
 const IN_PROGRESS_REMOVE = 'USERS/IN-PROGRESS-REMOVE'
 
 
-type UsersType = Array<{name: string, id: number, uniqueUrlName: null, photos: {small: null | string, large: null | string}, status: null | string, followed: boolean}>
 let initialState = {
     users: [ ] as UsersType,
     pageSize: 20 as number,

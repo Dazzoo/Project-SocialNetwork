@@ -1,7 +1,7 @@
+import {MessagesType, DialogsType} from '../types/types'
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
-type MessagesType = Array<{id: number, message: Array<string>}>
-type DialogsType = Array<{id: number, name: string, avatar: string}>
+
 
 let initialState = {
         messages: [
