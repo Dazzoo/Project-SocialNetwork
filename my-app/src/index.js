@@ -16,8 +16,6 @@ let state = store.getState()
                     <App state={state}/>
             </React.StrictMode>,
             document.getElementById('bodyRoot')
-
-
         )
 
 

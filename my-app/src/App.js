@@ -4,8 +4,8 @@ import React, { Suspense } from 'react'
 import {connect} from 'react-redux'
 import HeaderContainer from './Components/Header/HeaderContainer'
 import Sidebar from './Components/Sidebar/Sidebar.js'
-import MyProfileContainer from './Components/MyProfile/MyProfileContainer.js'
-import MyNewsContainer from './Components/MyNews/MyNewsContainer.js'
+import MyProfileContainer from './Components/MyProfile/MyProfileContainer'
+import MyNewsContainer from './Components/MyNews/MyNewsContainer'
 import MyMusicContainer from './Components/MyMusic/MyMusicContainer'
 import MySettings from './Components/MySettings/MySettings.js'
 import WeatherBarContainer from  './Components/Sidebar/Weather/WeatherBarContainer'
@@ -21,9 +21,8 @@ import store from './redux/store-redux'
 import withReactLazy from './hoc/withReactLazy'
 import { Redirect } from "react-router-dom"
 import WeatherContainer from './Components/MyWeather/WeatherContainer'
+import {RootStateType} from './redux/store-redux'
 const MyMessagesContainer = React.lazy(() => import('./Components/MyMessages/MyMessagesContainer'))
-
-
 
 
 
@@ -47,12 +46,12 @@ class App extends React.Component {
                             <HeaderContainer />
                         </div>
                         <div className={style.sidebar} >
-                            <Sidebar friends={this.props.state.sidebar.Sidebar.friendsOnline} />
+                            <Sidebar friends={this.props.friendsOnline} />
                             <WeatherBarContainer/>
                         </div>
                         <div className={style.else}>
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />
-                            <Route path='/profile/:userId?' render={() => <MyProfileContainer />} />
+                            <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
                             <Route path='/messages/:messageId?' render={() => withReactLazy(MyMessagesContainer)} />
                             <Route path='/news' render={() => withReactLazy(MyNewsContainer)} />
                             <Route path='/music' render={() => withReactLazy(MyMusicContainer)} />
@@ -74,10 +73,10 @@ class App extends React.Component {
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: RootStateType): MapStatePropsType => {
     return {
-        state: state,
         initialized: state.auth.initialized,
+        friendsOnline: state.sidebar.Sidebar.friendsOnline
     }
 }
 

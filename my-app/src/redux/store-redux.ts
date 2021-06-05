@@ -15,7 +15,8 @@ let reducers = combineReducers({
     auth: authReducer,
     news: newsReducer
 })
-
+type RootReducersType = typeof reducers
+export type RootStateType = ReturnType<RootReducersType>
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

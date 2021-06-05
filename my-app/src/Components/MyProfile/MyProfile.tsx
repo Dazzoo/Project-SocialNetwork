@@ -6,12 +6,16 @@ import React from 'react';
 import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import cn from 'classnames'
+// @ts-ignore
+import {PropsType} from './MyProfileContainer';
+
+type Values = {postField?: string, submit?: string}
+
+class MyProfile extends React.Component<PropsType>{
 
 
 
-class MyProfile extends React.Component{
-
-    PressLike = (id) => {
+    PressLike = (id: number) => {
         if(this.props.likedPostsID.indexOf(id) === -1){
             this.props.AddLikedPost(id)
             this.props.AddOneLike(id)
@@ -23,7 +27,7 @@ class MyProfile extends React.Component{
 
     }
 
-    onSubmit = (values) => {
+    onSubmit = (values: Values) => {
         if(!values.postField){
             return null
         }
@@ -31,16 +35,17 @@ class MyProfile extends React.Component{
         values.postField = ''
         values.submit = ''
     }
-    validate = (values) => {
+    validate = (values: Values) => {
         const errors = {}
 
         if(values.postField && values.postField.length < 10){
+            // @ts-ignore
             errors.postField = 'Minimum post length is 10 symbols'
         }
 
         return errors
     }
-
+        // @ts-ignore
     render() {
         return (
             <div className={style.MyProfileWrapper} >
