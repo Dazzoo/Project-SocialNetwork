@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import style from './App.module.css';
+import './App.css';
 import React, { Suspense } from 'react'
 import {connect} from 'react-redux'
 import HeaderContainer from './Components/Header/HeaderContainer'
@@ -40,16 +40,16 @@ class App extends React.Component {
 
         return (
             <div >
-                <div className={style.wrapper}>
-                    <div className={style.gridbox}>
-                        <div className={style.headerComponent} >
+                <div className="wrapper">
+                    <div className="gridbox">
+                        <div className="headerComponent" >
                             <HeaderContainer />
                         </div>
-                        <div className={style.sidebar} >
+                        <div className="sidebar" >
                             <Sidebar friends={this.props.friendsOnline} />
                             <WeatherBarContainer/>
                         </div>
-                        <div className={style.else}>
+                        <div className="else">
                             <Route path='/' render={() => <Redirect from="/" to="/profile/:userId?" />} />
                             <Route path='/profile/:userId?' render={() => <MyProfileContainer/>} />
                             <Route path='/messages/:messageId?' render={() => withReactLazy(MyMessagesContainer)} />

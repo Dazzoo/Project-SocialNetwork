@@ -17,12 +17,14 @@ const Sidebar = (props) => {
                 <li><NavLink   to="/settings" activeClassName={style.active}>Settings</NavLink></li>
                 <li><NavLink   to="/findUsers" activeClassName={style.active}>FindUsers</NavLink></li>
             </ul>
+        <div className={style.friendsHide} >
             <div className={style.friends}>
                 Friends online
             </div>
             <div>
                 {FriendShow}
             </div>
+        </div>
         </div>
     );
 };

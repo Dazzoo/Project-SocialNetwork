@@ -1,5 +1,5 @@
 .sidebarWrapper{
-    margin: 3px;
+    margin: 3px 0px;
     background-color: #EAF1FD;
 }
 
@@ -8,12 +8,15 @@ a{
 }
 li{
     list-style: none;
-    padding: 5px 0px;
+    padding: 4px 0px;
 }
 a {
     position: relative;
     color: #000;
     text-decoration: none;
+}
+ul{
+    padding-left: auto;
 }
 
 
@@ -53,10 +56,58 @@ a.active{
     font-size: 19px;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
-    transition: all 0.1s
-
+    transition: all 0.1s;
+    margin-left: 1px;
 }
 .friends{
     margin-left: 7px;
     font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+    a.active{
+        font-weight: bold;
+        font-size: 17px;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        transition: all 0.1s
+    }
+}
+@media (max-width: 992px) {
+    a.active{
+        font-weight: bold;
+        font-size: 17px;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        transition: all 0.1s
+    }
+    ul{
+        padding-left: 15%;
+    }
+}
+@media (max-width: 767px) {
+    ul{
+        padding-left: 5%;
+        font-size: 20px;
+    }
+    .friendsHide{
+        height: 0;
+        overflow: hidden;
+    }
+    a.active{
+        font-weight: bold;
+        font-size: 20px;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        transition: all 0.1s
+    }
+}
+@media (max-width: 575px) {
+    ul{
+        padding-left: 0%;
+    }
+    .friendsHide{
+        height: 0;
+        overflow: hidden;
+    }
 }

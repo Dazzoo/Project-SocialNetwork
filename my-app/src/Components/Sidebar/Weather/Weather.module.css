@@ -114,3 +114,15 @@
     transition: all 0.1s
 
 }
+@media (max-width: 767px) {
+    .WeatherWrapper{
+        height: 0;
+        overflow: hidden;
+    }
+}
+@media (max-width: 575px) {
+    .WeatherWrapper{
+        height: 0;
+        overflow: hidden;
+    }
+}

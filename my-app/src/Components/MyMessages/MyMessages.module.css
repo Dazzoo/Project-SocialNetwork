@@ -3,7 +3,7 @@
 
 .dialogsWrapper{
     display: grid;
-    grid-template-columns: 300px 400px;
+    grid-template-columns: 250px 400px;
     grid-template-rows: 500px 200px;
     gap: 0px 0px;
     grid-template-areas:
@@ -44,8 +44,9 @@
     padding-top: 15px;
 }
 .useravatar{
+    margin: 2px;
     display: inline-block;
-    max-width: 100px;
+    max-width: 60px;
     border-radius: 5px;
 }
 .username{
@@ -63,7 +64,7 @@ button.sendMessage{
     height: 120px;
     width: 400px;
     border-radius: 7px;
-
+    line-height: normal;
 }
 .inputArea{
     margin-top: 10px;
@@ -76,9 +77,76 @@ a.active{
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     transition: all 0.1s
-
 }
 .message{
     word-wrap: break-word;
+}
+
+@media (max-width: 1200px) {
+    a.active{
+        font-weight: bold;
+        font-size: 17px;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        transition: all 0.1s
+    }
+}
+@media (max-width: 992px) {
+    .useravatar{
+        margin: 2px;
+        display: inline-block;
+        max-width: 50px;
+        border-radius: 5px;
+    }
+    .dialogsWrapper{
+        display: grid;
+        grid-template-columns: 250px 300px;
+        grid-template-rows: 500px 200px;
+        gap: 0px 0px;
+        grid-template-areas:
+                "dialogNames messages"
+                "dialogNames inputArea"
+                "dialogNames ."
+                "dialogNames .";
+        border-right: 2px solid #9CBBF4;
+        border-left: 2px solid #9CBBF4;
+    }
+    .inputArea textarea{
+        height: 70px;
+        width: 100%;
+        border-radius: 7px;
+        line-height: 1.3;
+    }
+
+}
+@media (max-width: 767px) {
+    .useravatar{
+        margin: 2px;
+        display: inline-block;
+        max-width: 50px;
+        border-radius: 5px;
+    }
+    .dialogsWrapper{
+        display: grid;
+        grid-template-columns: 160px 280px;
+        grid-template-rows: 500px 200px;
+        gap: 0px 0px;
+        grid-template-areas:
+                "dialogNames messages"
+                "dialogNames inputArea"
+                "dialogNames ."
+                "dialogNames .";
+        border-right: 2px solid #9CBBF4;
+        border-left: 2px solid #9CBBF4;
+    }
+    .inputArea textarea{
+        height: 70px;
+        width: 100%;
+        border-radius: 7px;
+        line-height: 1.3;
+    }
+
+}
+@media (max-width: 575px) {
 
 }

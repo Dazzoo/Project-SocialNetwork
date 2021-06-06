@@ -48,16 +48,18 @@ const Profile = (props) => {
 
     return (
         <div className={style.gridContainer} >
-            <Avatar {...props} isOwner={props.isOwner} changeProfilePhoto={changeProfilePhoto} editModeProfile={editModeProfile}
-                    editMode={editMode} ActivateEditMode={ActivateEditMode} status={status} DeactivateEditMode={DeactivateEditMode} />
+
 
             {editModeProfile ?
 
                 <EditProfile {...props} setEditModeProfile={setEditModeProfile} profileConstructor={props.profileConstructor}  />
 
                 :
-
+                <>
+            <Avatar {...props} isOwner={props.isOwner} changeProfilePhoto={changeProfilePhoto} editModeProfile={editModeProfile}
+                editMode={editMode} ActivateEditMode={ActivateEditMode} status={status} DeactivateEditMode={DeactivateEditMode} />
                 <ProfileInfo {...props} editModeProfile={editModeProfile}  setEditModeProfile={setEditModeProfile}  />
+                </>
             }
             <div className={style.editInfo}>
 

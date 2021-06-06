@@ -1,0 +1,88 @@
+
+.wrapper{
+  max-width:1200px;
+  margin:0 auto;
+  font-size: 18px;
+}
+
+
+.gridbox{
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-columns: 7.66% 7.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 5.66% 5.66% 5.66%;
+  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+  gap: 0px 0px;
+  grid-template-areas:
+    "headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else"
+    "sidebar sidebar else else else else else else else else else else else else else";
+}
+
+.headerComponent { grid-area: headerComponent;}
+.sidebar { grid-area: sidebar;}
+.else { grid-area: else; }
+.footer { grid-area: footer;}
+
+@media (max-width: 1200px) {
+  .wrapper{
+    max-width: 970px;
+    margin:0 auto;
+    font-size: 16px;
+  }
+}
+@media (max-width: 992px) {
+  .wrapper{
+    max-width: 750px;
+    margin:0 auto;
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .wrapper{
+    max-width: 550px;
+    margin:0 auto;
+  }
+  .gridbox{
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    grid-template-columns: 9.66% 9.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 6.66% 5.66% 5.66% 5.66% 5.66% 5.66% 5.66% 5.66%;
+    grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+    gap: 0px 0px;
+    grid-template-areas:
+            "headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent headerComponent"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else"
+            "sidebar sidebar else else else else else else else else else else else else else";
+  }
+}
+@media (max-width: 575px) {
+  .wrapper{
+    max-width: 450px;
+    margin:0 auto;
+  }
+}
+
+

@@ -4,6 +4,11 @@
     background-color: yellow;
 
 }
+.musicItem{
+    width: 28%;
+    height: 380px;
+    margin: 5px;
+}
 .MyMusicWrapper{
     text-align: center;
     background-color: #EAF1FD;
@@ -12,4 +17,27 @@
 }
 .MyMusicWrapper div{
     display: inline-block;
+}
+@media (max-width: 1200px) {
+    .musicItem{
+        width: 28%;
+        height: 320px;
+        margin: 3px;
+    }
+}
+@media (max-width: 992px) {
+    .musicItem{
+        width: 42%;
+        height: 340px;
+        margin: 3px;
+    }
+}
+@media (max-width: 767px) {
+    .musicItem{
+        width: 90%;
+        height: 80px;
+    }
+}
+@media (max-width: 575px) {
+
 }

@@ -5,12 +5,32 @@
     margin: 4px 0px;
     border-radius: 5px;
     border: 3px solid #9CBBF4 ;
+    word-wrap: break-word;
 }
 .postText{
-    display: inline-block;
+    display: block;
     margin: 0px  5px;
+    word-wrap: break-word;
 }
 .postWrapper{
+    display: block;
     border-top: 4px solid #9CBBF4;
     margin: 3px;
+
+}
+.LikeWrapper{
+    display: block;
+    margin-left: 90%;
+}
+@media (max-width: 767px) {
+    .LikeWrapper{
+        display: block;
+        margin-left: 85%;
+    }
+}
+@media (max-width: 575px) {
+    .LikeWrapper{
+        display: block;
+        margin-left: 75%;
+    }
 }

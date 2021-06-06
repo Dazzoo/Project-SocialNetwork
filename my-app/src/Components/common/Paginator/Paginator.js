@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './paginator.module.css'
 
 const Paginator = ({totalUsersCount, pageSize, currentPage, ChangeCurrentPage}) => {
+
+    const [PortionSize, setPortionSize] = useState(15)
+
+    useEffect(() => {
+        if(document.documentElement.clientWidth < 767){
+            setPortionSize(6)
+        }
+        else{
+            setPortionSize(15)
+        }
+    },[document.documentElement.clientWidth])
+
     let pagesCount = Math.ceil (totalUsersCount / pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++){
         pages.push(i)
     }
-    let PositionSize = 15
-    let PositionCount = (pagesCount / PositionSize)
+    let PositionCount = (pagesCount / PortionSize)
     const [PositionNumber, setCurrentPageArea] = useState(1)
-    let leftAreaBorder = (PositionNumber - 1) * PositionSize + 1
-    let rightAreaBorder = (PositionNumber * PositionSize)
+    let leftAreaBorder = (PositionNumber - 1) * PortionSize + 1
+    let rightAreaBorder = (PositionNumber * PortionSize)
 
     return (
         <div className={style.paginatorWrapper}>

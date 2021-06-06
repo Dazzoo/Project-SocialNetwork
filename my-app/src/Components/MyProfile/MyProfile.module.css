@@ -12,8 +12,6 @@
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
-
-
 }
 .editProfileWrapper{
     margin: 10px 10px;
@@ -26,27 +24,23 @@
 .MyProfileWrapper{
     border-right: 2px solid #9CBBF4;
     border-left: 2px solid #9CBBF4;
-
 }
 
 .Avatar{
     border: 2px solid cornflowerblue;
-    width: 100%;
+    width: 95%;
     max-height: 400px;
     display: inline-block;
     grid-area: avatar;
-    margin-top: 10px;
-    margin-left: 7px;
+    margin: 10px auto;
     border-radius: 3px;
     background-color: #EAF1FD;
-
 }
 .avatarIcon{
     display: flex;
     border-radius: 7px;
     width: 220px;
     margin: 5px auto;
-
 }
 
 
@@ -60,7 +54,6 @@
     border-bottom-width: 2px;
     margin-top: 30px;
     word-wrap: break-word;
-
 }
 .statusWrapper{
     grid-area: status;
@@ -118,7 +111,7 @@
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100%;
     gap: 0px 0px;
     grid-template-areas:
             "avatar avatar info info info info"
@@ -152,7 +145,7 @@
     margin-top: 5px;
 }
 .infoWrapper{
-    width: 97%;
+    width: 94%;
     display: inline-block;
     border: 2px solid cornflowerblue;
     grid-area: info;
@@ -162,8 +155,6 @@
     margin-left: 15px;
     padding: 10px 0px;
     background-color: #EAF1FD;
-
-
 }
 
 .infoBlockWrapper{
@@ -179,5 +170,42 @@
     border: 2px solid cornflowerblue;
     margin: 4px 4px;
     background-color: #EAF1FD;
+
+}
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+    .avatarIcon{
+        display: flex;
+        border-radius: 7px;
+        width: 180px;
+        margin: 5px auto;
+    }
+
+}
+@media (max-width: 767px) {
+    .gridContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+                "avatar avatar avatar avatar avatar avatar"
+                "info info info info info info"
+                "editInfo editInfo editInfo editInfo editInfo editInfo";
+    }
+    .status{
+        color: black;
+        font-weight: bold;
+        border-bottom-style: solid;
+        border-bottom-color: black;
+        border-bottom-width: 2px;
+        margin-top: 30px;
+        word-wrap: break-word;
+    }
+
+}
+@media (max-width: 575px) {
 
 }
