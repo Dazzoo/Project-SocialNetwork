@@ -1,18 +1,18 @@
 import style from './MyProfile.module.css'
 import Post from './Posts/Post.js'
 
-import ProfileContainer from './Profile/ProfileContainer.js'
+import ProfileContainer from './Profile/ProfileContainer'
 import React from 'react';
 import {Form, Field} from 'react-final-form'
 import {FORM_ERROR} from 'final-form'
 import cn from 'classnames'
 // @ts-ignore
 import {PropsType} from './MyProfileContainer';
+import {RootStateType} from '../../redux/store-redux'
 
-type Values = {postField?: string, submit?: string}
+type Values = {postField?: string , submit?: string}
 
 class MyProfile extends React.Component<PropsType>{
-
 
 
     PressLike = (id: number) => {
@@ -45,7 +45,6 @@ class MyProfile extends React.Component<PropsType>{
 
         return errors
     }
-        // @ts-ignore
     render() {
         return (
             <div className={style.MyProfileWrapper} >

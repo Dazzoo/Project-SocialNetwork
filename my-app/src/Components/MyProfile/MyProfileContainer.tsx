@@ -1,4 +1,4 @@
-import React from 'react'
+    import React from 'react'
 import MyProfile from './MyProfile'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
@@ -7,8 +7,7 @@ import {TakeProfile, TakePosts, TakeAuth, TakeLikedPostsID, TakeId} from '../../
 import withAuthRedirect from './../../hoc/withAuthRedirect'
 import {AddLikedPost, RemoveLikedPost, AddOneLike, RemoveOneLike, GetProfile, getProfileThunk,
         getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../redux/ProfileReducer'
-// @ts-ignore
-import { withRouter } from "react-router"
+    import { withRouter } from "react-router"
 import {PreloaderSkateboardForComponent} from '../common/Preloaders/PreloaderSkateboard'
 import {ProfileType, PostType} from '../../types/types'
 import {RootStateType} from '../../redux/store-redux'
@@ -35,8 +34,10 @@ type MapDispatchPropsType = {
     SetIsOwner: (boolen: boolean) => void,
     SetProfileThunk: (profile: any) => void
 }
+
 type OwnPropsType = {
 }
+
 export type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 class MyProfileClassContainer extends React.Component<PropsType>{

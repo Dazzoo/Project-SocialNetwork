@@ -42,7 +42,7 @@ class App extends React.Component {
             <div >
                 <div className="wrapper">
                     <div className="gridbox">
-                        <div className="headerComponent" >
+                        <div className="headerComponent">
                             <HeaderContainer />
                         </div>
                         <div className="sidebar" >

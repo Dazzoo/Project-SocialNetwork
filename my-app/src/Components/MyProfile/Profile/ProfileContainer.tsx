@@ -3,16 +3,23 @@ import {connect} from 'react-redux'
 import * as axios from 'axios'
 import Profile from './Profile'
 import {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk} from '../../../redux/ProfileReducer'
+ // @ts-ignore
 import { withRouter } from "react-router"
 import {TakeProfile, TakeStatus, TakeIs0wner, TakeId} from  '../../../redux/profile-selector'
  import {PreloaderSkateboardForComponent} from '../../common/Preloaders/PreloaderSkateboard'
+ import {RootStateType} from '../../../redux/store-redux';
+
+ type formDataType = {aboutMe: string, userId: number, lookingForAJob: boolean, lookingForAJobDescription: string | null,
+                        fullName: string | null, contacts: {github: string | null, vk: string | null, facebook: string | null,
+                        instagram: string | null, twitter: string | null, website: string | null,
+                        youtube: string | null, mainLink: string | null}}
 
 class ProfileClassContainer extends React.Component {
 
-    profileConstructor(formData){
+    profileConstructor(formData: formDataType){
         let profile = {
             photos:{
-                small: this.profile.photos.small,
+                small: this.props.profile.photos.small,
                 large: this.profile.photos.large
             },
             aboutMe: formData.aboutMe ? formData.aboutMe : (this.profile.aboutMe ? this.profile.aboutMe : null ) ,
@@ -51,7 +58,7 @@ class ProfileClassContainer extends React.Component {
 
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: RootStateType) => {
     return {
         profile: TakeProfile(state),
         status: TakeStatus(state),
