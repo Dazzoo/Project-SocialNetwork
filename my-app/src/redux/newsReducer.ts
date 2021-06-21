@@ -1,4 +1,8 @@
 import {NewsAPI} from './API'
+import {Dispatch} from 'redux';
+import {RootStateType} from './store-redux';
+import {ThunkAction} from 'redux-thunk';
+
 const SET_NEWS = 'NEWS/SET-NEWS'
 
 let initialState = {
@@ -18,6 +22,12 @@ const newsReducer = (state = initialState, action: any): newsReducerType => {
     }
 }
 
+type ActionTypes = SetNewsType
+
+type DispatchType = Dispatch<ActionTypes>
+
+type UsualThunkActionType = ThunkAction<void, RootStateType, unknown, ActionTypes>
+
 type NewsType = Array<{section: string, subsection: any, title: string, abstract: string, url: string, uri: string,byline: string,
     item_type: string, updated_date: string, created_date: string, published_date: string, material_type_facet: string,
     kicker: string, des_facet: Array<string>, org_facet: Array<string>, per_facet: Array<string>, geo_facet: Array<string>,
@@ -28,7 +38,8 @@ type SetNewsType = {
 }
 export const SetNews = (news: NewsType): SetNewsType => ({type: SET_NEWS, news})
 
-export const SetNewsTrunk = () => async (dispatch: any) => {
+export const SetNewsTrunk = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try{
         let response = await NewsAPI.getNews()
         dispatch(SetNews(response))

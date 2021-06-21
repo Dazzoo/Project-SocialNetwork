@@ -1,4 +1,8 @@
 import {AuthAPI} from './API'
+import {Dispatch} from 'redux';
+import {RootStateType} from './store-redux';
+import {ThunkAction} from 'redux-thunk';
+
 const SET_USER_DATA = 'AUTH/SET-USER-DATA'
 const SET_AUTH = 'AUTH/SET-AUTH'
 const IS_FETCHING = 'AUTH/IS-FETCHING'
@@ -81,6 +85,13 @@ const authReducer = (state = initialState, action: any): initialStateType => {
         }
 }
 
+type ActionTypes = SetUserLoginDataType | SetAuthType | SetFetchingType | InitializeType | LoginDataErrorType | LoginErrorMessageType | ShowOrHideCapchaType |
+    SetCapchaType | DeleteAuthType
+
+type DispatchType = Dispatch<ActionTypes>
+
+type UsualThunkActionType = ThunkAction<void, RootStateType, unknown, ActionTypes>
+
 type SetUserLoginDataType = {
     type: typeof SET_USER_DATA,
     data: {id: number, email: string, login: string}
@@ -125,7 +136,8 @@ type DeleteAuthType = {
 }
 export const DeleteAuth = (): DeleteAuthType => ({type: DELETE_AUTH})
 
-export const GetCapchaThunk = () => async (dispatch: any) => {
+export const GetCapchaThunk = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         let respons = await AuthAPI.getCapcha()
         dispatch(SetCapcha(respons.data.url))
@@ -135,7 +147,8 @@ export const GetCapchaThunk = () => async (dispatch: any) => {
     }
 }
 
-export const SetAuthThunk = () => async (dispatch: any) => {
+export const SetAuthThunk = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         let data = await AuthAPI.getAuth()
         if (data.resultCode === 0) {
@@ -149,7 +162,8 @@ export const SetAuthThunk = () => async (dispatch: any) => {
     }
 }
 
-export const LoginThunk = (email: string, password: string, captcha: boolean) => async (dispatch: any) =>{
+export const LoginThunk = (email: string, password: string, captcha: boolean): UsualThunkActionType =>
+    async (dispatch: DispatchType) =>{
     try {
         let response = await AuthAPI.postAuth(email, password, captcha)
         debugger
@@ -184,8 +198,10 @@ export const LoginThunk = (email: string, password: string, captcha: boolean) =>
     }
 }
 
-export const InitializeApp = () => async (dispatch: any) =>{
+export const InitializeApp = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) =>{
     try {
+        // @ts-ignore
         await dispatch(SetAuthThunk())
         dispatch(Initialize())
     } catch (error) {
@@ -199,7 +215,8 @@ export const InitializeApp = () => async (dispatch: any) =>{
 
 
 
-export const LogOutThunk = () => async (dispatch: any) => {
+export const LogOutThunk = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         let response = await AuthAPI.deleteAuth()
         if (response.data.resultCode === 0) {

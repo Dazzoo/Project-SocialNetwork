@@ -14,6 +14,10 @@ import about_civil_snow from './../assets/Weather/about_civil_snow.png'
 import about_civil_tsrain from './../assets/Weather/about_civil_tsrain.png'
 import about_civil_tstorm from './../assets/Weather/about_civil_tstorm.png'
 import {SidebarType, WeatherType, WeatherDataseriesType} from '../types/types'
+import {Dispatch} from 'redux';
+import {RootStateType} from './store-redux';
+import {ThunkAction} from 'redux-thunk';
+
 const SET_WEATHER = 'SIDEBAR/SET-WEATHER'
 const SET_HOUR = 'SIDEBAR/SET-HOUR'
 const SET_DATA = 'SIDEBAR/SET-DATA'
@@ -82,6 +86,13 @@ const sidebarReducer = (state = initialState, action: any): initialStateType => 
     }
 }
 
+type ActionTypes = SetWeatherType | SetHourType | SetDataType | IsDayType | SetCurrentWeatherIconType
+
+
+type DispatchType = Dispatch<ActionTypes>
+
+type UsualThunkActionType = ThunkAction<void, RootStateType, unknown, ActionTypes>
+
 type SetWeatherType = {
     type: typeof SET_WEATHER,
     weather: WeatherType
@@ -110,7 +121,8 @@ type SetCurrentWeatherIconType = {
 export const SetCurrentWeatherIcon = (icon: any): SetCurrentWeatherIconType => ({type: SET_CURRENT_WEATHER_ICON, icon})
 
 
-export const SetWeatherThunk = () => async (dispatch: any) => {
+export const SetWeatherThunk = (): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         const weatherJson = await SidebarAPI.getWeather()
         dispatch(SetWeather(weatherJson))
@@ -120,7 +132,8 @@ export const SetWeatherThunk = () => async (dispatch: any) => {
 
 }
 
-export const getCurrentHour = () => (dispatch: any) => {
+export const getCurrentHour = (): UsualThunkActionType =>
+    (dispatch: DispatchType) => {
     let data = new Date()
     let dataArr = data.toString().split(' ')
     let currentTime = dataArr[4].split(':')
@@ -129,7 +142,8 @@ export const getCurrentHour = () => (dispatch: any) => {
     dispatch(SetData(dataArr))
 }
 
-export const ChooseWeatherPic = (weatherData: WeatherDataseriesType, WeatherIcons: WeatherIconsType) => (dispatch: any) => {      //https://github.com/Yeqzids/7timer-issues/wiki/Wiki   DOCUMENTATION
+export const ChooseWeatherPic = (weatherData: WeatherDataseriesType, WeatherIcons: WeatherIconsType): UsualThunkActionType =>
+    (dispatch: DispatchType) => {      //https://github.com/Yeqzids/7timer-issues/wiki/Wiki   DOCUMENTATION
     let humidity = Number(weatherData.rh2m.replace(/%/g, ''))
     if(weatherData.lifted_index <= -5){
         if(weatherData.prec_amount < 4){
@@ -182,7 +196,8 @@ export const ChooseWeatherPic = (weatherData: WeatherDataseriesType, WeatherIcon
 
 
 
-export const IsDayThunk = (currentHour: number) => (dispatch: any) => {
+export const IsDayThunk = (currentHour: number): UsualThunkActionType =>
+    (dispatch: DispatchType) => {
     if(currentHour >= 21 || currentHour <= 5 ){ dispatch(IsDay(false)) }
     else { dispatch(IsDay(true)) }
 

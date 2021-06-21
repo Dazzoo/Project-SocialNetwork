@@ -8,38 +8,52 @@ import { withRouter } from "react-router"
 import {TakeProfile, TakeStatus, TakeIs0wner, TakeId} from  '../../../redux/profile-selector'
  import {PreloaderSkateboardForComponent} from '../../common/Preloaders/PreloaderSkateboard'
  import {RootStateType} from '../../../redux/store-redux';
+ import {ProfileType, ContactsType, formDataType} from '../../../types/types';
+ import {compose} from 'redux';
 
- type formDataType = {aboutMe: string, userId: number, lookingForAJob: boolean, lookingForAJobDescription: string | null,
-                        fullName: string | null, contacts: {github: string | null, vk: string | null, facebook: string | null,
-                        instagram: string | null, twitter: string | null, website: string | null,
-                        youtube: string | null, mainLink: string | null}}
 
-class ProfileClassContainer extends React.Component {
+ type  MapStatePropsType = {
+        profile: ProfileType,
+        status: string | null,
+        isOwner: boolean,
+        id: number | number
+ }
+ type MapDispatchPropsType = {
+     GetProfile: (getProfile: ProfileType) => void,
+     getProfileThunk:(userId: number) => void,
+     getStatusThunk:(userId: number) => void,
+     putStatusThunk:(status: string) => void,
+     savePhoto:(photoFile: any) => void,
+     SetIsOwner: (boolen: boolean) => void,
+     SetProfileThunk: (profile: any) => void
+ }
+ type PropsType = MapStatePropsType & MapDispatchPropsType
 
-    profileConstructor(formData: formDataType){
-        let profile = {
-            photos:{
-                small: this.props.profile.photos.small,
-                large: this.profile.photos.large
-            },
-            aboutMe: formData.aboutMe ? formData.aboutMe : (this.profile.aboutMe ? this.profile.aboutMe : null ) ,
-            userId: formData.userId,
-            lookingForAJob: formData.lookingForAJob ? formData.lookingForAJob : this.profile.lookingForAJob,
-            lookingForAJobDescription: formData.lookingForAJobDescription ? formData.lookingForAJobDescription : (this.profile.lookingForAJobDescription ? this.profile.lookingForAJobDescription : null ) ,
-            fullName: formData.fullName ? formData.fullName : this.profile.fullName,
-            contacts:{
-                github: formData.github? formData.github : this.profile.contacts.github,
-                vk: formData.vk? formData.vk : this.profile.contacts.vk,
-                facebook: formData.facebook? formData.facebook : this.profile.contacts.facebook,
-                instagram: formData.instagram? formData.instagram : this.profile.contacts.instagram,
-                twitter: formData.twitter? formData.twitter : this.profile.contacts.twitter,
-                website: formData.website? formData.website : this.profile.contacts.website,
-                youtube: formData.youtube? formData.youtube : this.profile.contacts.youtube,
-                mainLink: formData.mainLink? formData.mainLink : this.profile.contacts.mainLink,
+class ProfileClassContainer extends React.Component<PropsType> {
+        profileConstructor(formData: formDataType): any{
+            let profile = {
+                photos:{
+                    small: this.profile.photos.small,
+                    large: this.profile.photos.large
+                },
+                aboutMe: formData.aboutMe ? formData.aboutMe : (this.props.profile.aboutMe ? this.props.profile.aboutMe : null ) ,
+                userId: formData.userId,
+                lookingForAJob: formData.lookingForAJob ? formData.lookingForAJob : this.props.profile.lookingForAJob,
+                lookingForAJobDescription: formData.lookingForAJobDescription ? formData.lookingForAJobDescription : (this.props.profile.lookingForAJobDescription ? this.props.profile.lookingForAJobDescription : null ) ,
+                fullName: formData.fullName ? formData.fullName : this.props.profile.fullName,
+                contacts:{
+                    github: formData.github? formData.github : this.props.profile.contacts.github,
+                    vk: formData.vk? formData.vk : this.props.profile.contacts.vk,
+                    facebook: formData.facebook? formData.facebook : this.props.profile.contacts.facebook,
+                    instagram: formData.instagram? formData.instagram : this.props.profile.contacts.instagram,
+                    twitter: formData.twitter? formData.twitter : this.props.profile.contacts.twitter,
+                    website: formData.website? formData.website : this.props.profile.contacts.website,
+                    youtube: formData.youtube? formData.youtube : this.props.profile.contacts.youtube,
+                    mainLink: formData.mainLink? formData.mainLink : this.profile.contacts.mainLink,
+                }
             }
+            return profile
         }
-        return profile
-    }
 
 
 
@@ -69,10 +83,11 @@ let mapStateToProps = (state: RootStateType) => {
 
 let WithRouterContainer = withRouter(ProfileClassContainer)
 
-
 const ProfileContainer = connect(mapStateToProps, {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk})(WithRouterContainer)
 
 
 
 
-export default ProfileContainer;
+export default compose(withRouter,
+    connect(mapStateToProps, {GetProfile, getProfileThunk, getStatusThunk, putStatusThunk, savePhoto, SetIsOwner, SetProfileThunk})
+)(WithRouterContainer);

@@ -1,5 +1,9 @@
 import {UserAPI} from './API'
 import {UsersType} from '../types/types'
+import {Dispatch} from 'redux';
+import {ThunkAction} from 'redux-thunk';
+import {RootStateType} from './store-redux';
+
 const FOLLOWED = 'USERS/FOLLOWED'
 const UNFOLLOWED = 'USERS/UNFOLLOWED'
 const SET_USERS = 'USERS/SET-USERS'
@@ -80,6 +84,13 @@ export const usersReducer = (state = initialState, action: any): initialStateTyp
         }
 }
 
+type ActionTypes = FollowType | UnfollowType | SetUsersType | ChangePageType | SetTotalUsersCountType | SetFetchingType | AddInProgressType |
+    RemoveInProgressType
+
+type DispatchType = Dispatch<ActionTypes>
+
+type UsualThunkActionType = ThunkAction<void, RootStateType, unknown, ActionTypes>
+
 type FollowType = {
     type: typeof FOLLOWED,
     userId: number
@@ -121,7 +132,8 @@ type RemoveInProgressType = {
 }
 export const RemoveInProgress = (removeId: number): RemoveInProgressType => ({type: IN_PROGRESS_REMOVE, removeId})
 
-export const FollowThunk = (id: number) => async (dispatch: any) => {
+export const FollowThunk = (id: number): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         dispatch(AddInProgress(id))
         let data = await UserAPI.deleteFollow(id)
@@ -135,7 +147,8 @@ export const FollowThunk = (id: number) => async (dispatch: any) => {
     }
 }
 
-export const UnfollowThunk = (id: number) => async (dispatch: any) => {
+export const UnfollowThunk = (id: number): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         dispatch(AddInProgress(id))
         let data = await UserAPI.postFollow(id)
@@ -149,7 +162,8 @@ export const UnfollowThunk = (id: number) => async (dispatch: any) => {
     }
 }
 
-export const GetUsers = (currentPage: number, pageSize: number) => async (dispatch: any) => {
+export const GetUsers = (currentPage: number, pageSize: number): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         dispatch(SetFetching(true))
         let data = await UserAPI.getUsers(currentPage, pageSize)
@@ -162,7 +176,8 @@ export const GetUsers = (currentPage: number, pageSize: number) => async (dispat
     }
 }
 
-export const ChangeCurrentPage = (newCurrentPage: number, pageSize: number) => async (dispatch: any) => {
+export const ChangeCurrentPage = (newCurrentPage: number, pageSize: number): UsualThunkActionType =>
+    async (dispatch: DispatchType) => {
     try {
         dispatch(SetFetching(true))
         dispatch(ChangePage(newCurrentPage))

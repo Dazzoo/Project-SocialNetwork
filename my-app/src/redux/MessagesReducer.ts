@@ -1,4 +1,8 @@
 import {MessagesType, DialogsType} from '../types/types'
+import {Dispatch} from 'redux';
+import {RootStateType} from './store-redux';
+import {ThunkAction} from 'redux-thunk';
+
 const ADD_MESSAGE = 'ADD-MESSAGE'
 
 
@@ -36,6 +40,12 @@ const messageReducer = (state = initialState, action: any): initialStateType => 
 
     }
 }
+
+type ActionTypes = AddMessagetActionCreatorType
+
+type DispatchType = Dispatch<ActionTypes>
+
+type UsualThunkActionType = ThunkAction<void, RootStateType, unknown, ActionTypes>
 
 type AddMessagetActionCreatorType = {
     type: typeof ADD_MESSAGE,
